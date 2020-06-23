@@ -31,10 +31,10 @@ const  HomePage = () => {
 //     console.log(`Error getting Entries for ${contentType.name}.`)
 //   }
   return (
-    <div className='h-screen w-screen  bg-no-repeat bg-110% bg-center ' style={{backgroundImage: windowWidth > 430 ? `url(${homePagePic})` : `url(${mobileHomePagePic})`}} >
+    <div className='h-screen w-screen  bg-no-repeat bg-103p bg-center flex justify-center items-center' style={{backgroundSize: '103%', backgroundImage: windowWidth > 430 ? `url(${homePagePic})` : `url(${mobileHomePagePic})`}} >
       {/* <img className='w-full h-80p object-cover' src={homePagePic} alt="my image" /> */}
 
-      <h1>Heeyeyeyey Guuuuys</h1>
+      <h1 className='m-auto text-3xl text-white'>Heeyeyeyey Guuuuys</h1>
     </div>
   )
 }

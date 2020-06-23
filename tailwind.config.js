@@ -174,7 +174,8 @@ module.exports = {
       auto: 'auto',
       cover: 'cover',
       contain: 'contain',
-      '110%': '110%'
+      '110%': '110%',
+      '103p': '103p'
     },
     borderColor: theme => ({
       ...theme('colors'),
@@ -398,6 +399,8 @@ module.exports = {
       full: '100%',
       '50ch': '50ch',
       '120rem': '120rem',
+      'screen-md': '768px',
+      'screen-lg': '1024px',
     },
     minHeight: {
       '0': '0',
@@ -518,6 +521,7 @@ module.exports = {
       25: '.25',
       50: '.5',
       75: '.75',
+      90: '.90',
       100: '1',
       110: '1.1'
     },
