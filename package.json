@@ -1,6 +1,7 @@
 {
-  "name": "nextjs-tailwind-purgecss",
-  "version": "0.1.0",
+  "name": "vegan-iranian",
+  "version": "1.0.0",
+  "description": "The best site for iranian vegan recipes",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,6 +9,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "contentful": "^7.14.4",
+    "framer-motion": "^1.11.1",
     "next": "9.0.5",
     "react": "16.9.0",
     "react-dom": "16.9.0"
