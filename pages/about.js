@@ -1,10 +1,12 @@
 import '../assets/styles/main.css';
-import PostList from '../components/post-list';
+// import PostList from '../components/post-list';
 
 const  About = () => {
 
   return (
-    <PostList posts={posts} />
+    <div className='m-auto text-2xl'>
+      About
+    </div>
   )
 }
 

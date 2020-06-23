@@ -1,15 +1,16 @@
 import React from 'react';
 import { AnimatePresence } from 'framer-motion';
-import Layout from '../components/layout';
+import Header from '../components/shared/Header';
 
 function MyApp({ Component, pageProps, router }) {
 
   return (
-    <Layout>
+    <div>
+      <Header />
       <AnimatePresence exitBeforeEnter>
         <Component {...pageProps} key={router.route} />
       </AnimatePresence>
-    </Layout>
+    </div>
   )
 }
 export default MyApp;

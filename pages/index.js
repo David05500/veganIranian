@@ -4,12 +4,12 @@ import contentfulClient from '../lib/contentful';
 import '../assets/styles/main.css';
 
 const GetHomePageData = async () => {
-    const res = await contentfulClient.getEntries({
-      content_type: 'manasHomePage',
-      limit: 100,
-    });
-    const data = res.items.map(item => item.fields);
-    return data;
+  const res = await contentfulClient.getEntries({
+    content_type: 'manasHomePage',
+    limit: 100,
+  });
+  const data = res.items.map(item => item.fields);
+  return data;
 };
 
 const  HomePage = () => {
@@ -45,6 +45,8 @@ const  HomePage = () => {
   return (
     <div className='h-screen w-screen  bg-no-repeat bg-110% bg-center ' style={{backgroundImage: windowWidth > 430 ? `url(${homePagePic})` : `url(${mobileHomePagePic})`}} >
       {/* <img className='w-full h-80p object-cover' src={homePagePic} alt="my image" /> */}
+
+      <h1>Heeyeyeyey Guuuuys</h1>
     </div>
   )
 }
