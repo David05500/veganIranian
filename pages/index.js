@@ -30,18 +30,6 @@ const  HomePage = () => {
 //     if (entries.items) return entries.items
 //     console.log(`Error getting Entries for ${contentType.name}.`)
 //   }
-
-//   const [posts, setPosts] = useState([])
-
-//   useEffect(() => {
-//     async function getPosts() {
-//       const allPosts = await fetchEntries()
-//       setPosts([...allPosts])
-//     }
-//     getPosts()
-//     console.log(posts);
-//   }, [])
-
   return (
     <div className='h-screen w-screen  bg-no-repeat bg-110% bg-center ' style={{backgroundImage: windowWidth > 430 ? `url(${homePagePic})` : `url(${mobileHomePagePic})`}} >
       {/* <img className='w-full h-80p object-cover' src={homePagePic} alt="my image" /> */}
