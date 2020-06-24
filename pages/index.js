@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import {createClient} from 'contentful';
 import contentfulClient from '../lib/contentful';
 import '../assets/styles/main.css';
+import { GrInstagram } from "react-icons/gr";
 
 const GetHomePageData = async () => {
   const res = await contentfulClient.getEntries({
-    content_type: 'manasHomePage',
+    content_type: 'homePage',
     limit: 100,
   });
   const data = res.items.map(item => item.fields);
@@ -19,6 +20,7 @@ const  HomePage = () => {
     
   useEffect(() => {
     GetHomePageData().then(phrases => {
+      console.log('phrases', phrases);
         setHomePagePic(phrases[0].homePageImage.fields.file.url);
         setMobileHomePagePic(phrases[0].mobileHomePageImage.fields.file.url);
     });
@@ -33,10 +35,8 @@ const  HomePage = () => {
   return (
     <div className='h-screen w-screen  bg-no-repeat bg-103p bg-center flex justify-center items-center' style={{backgroundSize: '103%', backgroundImage: windowWidth > 430 ? `url(${homePagePic})` : `url(${mobileHomePagePic})`}} >
       {/* <img className='w-full h-80p object-cover' src={homePagePic} alt="my image" /> */}
-
-      <h1 className='m-auto text-3xl text-white'>Heeyeyeyey there   ;)</h1>
+      <GrInstagram className='text-white' size={32}/>
     </div>
   )
 }
-
 export default HomePage;
