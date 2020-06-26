@@ -23,7 +23,7 @@ const Header = () => {
         </li>
 
         <li>
-          <Link href="/blog">
+          <Link href="/recipes/blog">
             <a className="block p-4 text-black hover:text-blue-200 text-base lg:text-2xl font-semibold" style={{
               color: 'rgba(0,0,0,0.6)',
               textShadow: '2px 8px 6px rgba(0,0,0,0.2) 0px -5px 35px rgba(255,255,255,0.3);'

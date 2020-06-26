@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import {createClient} from 'contentful';
-import contentfulClient from '../lib/contentful';
-import '../assets/styles/main.css';
+import contentfulClient from '../../lib/contentful';
+import '../../assets/styles/main.css';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const GetHomePageData = async () => {
@@ -34,7 +34,7 @@ const  Blog = () => {
                                     <img className='w-full pointer h-80p object-cover hover:scale-95 transform ease-in duration-500 pointer' src={item.smallBlogPostImage.fields.file.url} alt="my image" />
                                 </div>
                                 <div >
-                                    <h2 className='text-base'>{item.name}</h2>
+                                    <h2 className='text-base'>{item.title}</h2>
                                 </div>
                             </div>
                         </div>
