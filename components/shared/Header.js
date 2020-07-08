@@ -1,36 +1,28 @@
 import React from 'react';
 import Link from 'next/link';
+import '../../assets/styles/main.css';
 
 const Header = () => {
   return (
-    <nav className="bg-white bg-opacity-75 fixed bottom-0 left-0 w-full flex justify-center z-150">
-      <ul className="flex w-full lg:w-60% justify-around">
-        <li>
-          <Link href="/">
-            <a className="block p-4 text-black hover:text-blue-200 text-base lg:text-2xl font-semibold" style={{
-              color: 'rgba(0,0,0,0.6)',
-              textShadow: '2px 8px 6px rgba(0,0,0,0.2) 0px -5px 35px rgba(255,255,255,0.3);'
-            }}>Home</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/about">
-            <a className="block p-4 text-black hover:text-blue-200 text-base lg:text-2xl font-semibold" style={{
-              color: 'rgba(0,0,0,0.6)',
-              textShadow: '2px 8px 6px rgba(0,0,0,0.2) 0px -5px 35px rgba(255,255,255,0.3);'
-            }}>About Me</a>
-          </Link>
-        </li>
+    <nav className="max-w-1170 bg-gray-1000 border-btm  sticky top-0 left-0 m-auto flex flex-col justify-center items-center z-150 py-4">
+        <Link href="/">
+          <h1 className='italic text-xl lg:text-3xl text-black font-bold z-50 mb-8 pointer'>THE IRANIAN VEGAN</h1>
+        </Link>
 
-        <li>
-          <Link href="/recipes/blog">
-            <a className="block p-4 text-black hover:text-blue-200 text-base lg:text-2xl font-semibold" style={{
-              color: 'rgba(0,0,0,0.6)',
-              textShadow: '2px 8px 6px rgba(0,0,0,0.2) 0px -5px 35px rgba(255,255,255,0.3);'
-            }}>Blog</a>
-          </Link>
-        </li>
-      </ul>
+
+      <div className='flex w-4/5 lg:w-1/4 m-auto justify-around'> 
+        <Link href="/recipes/blog">
+          <h1 className='checking pointer text-sm'>RECIPES</h1>
+        </Link>
+
+        <Link href="/about">
+          <h1 className='pointer text-sm'>ABOUT</h1>
+        </Link>
+
+        <Link href="/contact">
+          <h1 className='pointer text-sm'>CONTACT</h1>
+        </Link>
+      </div>
     </nav>
   );
 }

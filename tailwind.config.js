@@ -33,6 +33,8 @@ module.exports = {
         700: '#4A5568',
         800: '#2D3748',
         900: '#1A202C',
+        1000: '#f1f3f5',
+        'primary': '#f1f3f5',
       },
       red: {
         100: '#fff5f5',
@@ -225,6 +227,7 @@ module.exports = {
     },
     flex: {
       '1': '1 1 0%',
+      '5': '5 1 0%',
       auto: '1 1 auto',
       initial: '0 1 auto',
       none: 'none',
@@ -311,6 +314,7 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
+      '7xl': '5rem',
       '8xl': '6rem',
     },
     fontWeight: {
@@ -367,6 +371,7 @@ module.exports = {
       normal: '1.5',
       relaxed: '1.625',
       loose: '2',
+      '7': '1.75rem', 
     },
     listStyleType: {
       none: 'none',
@@ -401,12 +406,14 @@ module.exports = {
       '120rem': '120rem',
       'screen-md': '768px',
       'screen-lg': '1024px',
-      '1170': '1170px'
+      '1170': '1170px',
+      '80' : '20rem',
     },
     minHeight: {
       '0': '0',
       full: '100%',
       screen: '100vh',
+      '24': '6rem'
     },
     minWidth: {
       '0': '0',

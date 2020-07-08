@@ -4,9 +4,73 @@
 
 
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 body {
-    background: #f1f3f5;
+  background: #f1f3f5;
+  font-family: 'Work Sans', sans-serif;
+  letter-spacing: 0.8px;
+  word-break: break-word;
+}
+
+
+
+body{
+  margin:0;
+}
+
+.hollla{
+  background:url(''),linear-gradient(233deg, #80e56420, #80c22525, #803d9c31);
+  width:100%;
+  height:100vh;
+  background-size:cover;
+  background-blend-mode: hard-light;
+  animation: hue-rotate 20s linear infinite;
+}
+
+@keyframes hue-rotate {
+  from {
+    -webkit-filter: hue-rotate(0);
+    -moz-filter: hue-rotate(0);
+    -ms-filter: hue-rotate(0);
+    filter: hue-rotate(0);
+  }
+  to {
+    -webkit-filter: hue-rotate(360deg);
+    -moz-filter: hue-rotate(360deg);
+    -ms-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+ul, li {
+  list-style-type: none !important;
+  display: flex;
+}
+
+ul, li:before {
+  content: '•';
+  margin-right: 6px;
+}
+
+
+ul li {
+  /*
+   * We want the bullets outside of the list,
+   * so the text is aligned. Now the actual bullet
+   * is outside of the list’s container
+   */
+  list-style-position: outside;
+
+  /*
+   * Because the bullet is outside of the list’s
+   * container, indent the list entirely
+   */
+  margin-left: 1em;
+}
+
+
+.border-btm {
+  border-bottom: 1px solid #E2E8F0;
 }
