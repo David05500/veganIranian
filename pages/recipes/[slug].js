@@ -21,7 +21,7 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop - 220);
 const Bold = ({ children }) => <p className="text-6xl text-green-700">{children}</p>;
  
 const Text = ({ children }) => {
-    return <p className="text-lg">{children}</p>
+    return <p className="text-lg text-justify">{children}</p>
 };
 
 const HEADING1 = ({ children }) => <p className="align-center text-gray-800 text-2xl">{children}</p>;
@@ -94,52 +94,52 @@ const BlogPost = ({blogPost}) => {
                         {documentToReactComponents(post.recipeDescription, options)}
 
                         {/* Recipe Card */}
-                        <div ref={myRef} className='m-20 border-solid border-15 border-white'>
+                        <div ref={myRef} className='lg:m-20 border-solid border-8 lg:border-15 border-white'>
                             <div className='w-full bg-white'>
                                 <h1 className='py-10 text-center text-3xl font-medium'>{post.title}</h1>
                             </div>
-                            <div className='px-8'> 
+                            <div className='px-4 lg:px-8'> 
                                 <div className='my-10 text-lg mt-16'>
                                     <div className='flex items-center w-full mb-2'>
-                                        <IoIosInformationCircleOutline size={26} className='text-gray-800 mr-4'/>
+                                        <IoIosInformationCircleOutline size={26} className='text-gray-800 mr-1 lg:mr-4'/>
                                         <div className='w-full flex'>
-                                            <h1 className='w-1/3 self-center'>Course: </h1>
-                                            <h1 className='w-2/3 text-gray-800 font-medium'>{post.course}</h1>
+                                            <h1 className='w-1/2 lg:w-1/3 self-center'>Course: </h1>
+                                            <h1 className='w-1/2 lg:w-2/3 text-gray-800 font-medium'>{post.course}</h1>
                                         </div>
                                     </div>
 
                                     <div className='flex items-center w-full mb-2'>
-                                        <RiKnifeLine size={26} className='text-gray-800 mr-4'/>
+                                        <RiKnifeLine size={26} className='text-gray-800 mr-1 lg:mr-4'/>
                                         <div className='w-full flex'>
-                                            <h1 className='w-1/3 self-center'>Prep Time: </h1>
-                                            <h1 className='w-2/3 text-gray-800 font-medium '>{post.prepTime}</h1>
-                                        </div>
-                                    </div>
-
-
-                                    <div className='flex items-center w-full mb-2'>
-                                        <GiCookingPot size={26} className='text-gray-800 mr-4'/>
-                                        <div className='w-full flex'>
-                                            <h1 className='w-1/3 self-center'>Cook Time: </h1>
-                                            <h1 className='w-2/3 text-gray-800 font-medium'>{post.cookTime}</h1>
+                                            <h1 className='w-1/2 lg:w-1/3 self-center'>Prep Time: </h1>
+                                            <h1 className='w-1/2 lg:w-2/3 text-gray-800 font-medium '>{post.prepTime}</h1>
                                         </div>
                                     </div>
 
 
                                     <div className='flex items-center w-full mb-2'>
-                                        <IoMdTime size={26} className='text-gray-800 mr-4'/>
+                                        <GiCookingPot size={26} className='text-gray-800 mr-1 lg:mr-4'/>
                                         <div className='w-full flex'>
-                                            <h1 className='w-1/3 self-center'>Total Time: </h1>
-                                            <h1 className='w-2/3 text-gray-800 font-medium'>{post.totalTime}</h1>
+                                            <h1 className='w-1/2 lg:w-1/3 self-center'>Cook Time: </h1>
+                                            <h1 className='w-1/2 lg:w-2/3 text-gray-800 font-medium'>{post.cookTime}</h1>
                                         </div>
                                     </div>
 
 
                                     <div className='flex items-center w-full mb-2'>
-                                        <IoIosPeople size={26} className='text-gray-800 mr-4'/>
+                                        <IoMdTime size={26} className='text-gray-800 mr-1 lg:mr-4'/>
                                         <div className='w-full flex'>
-                                            <h1 className='w-1/3 self-center'>Servings: </h1>
-                                            <h1 className='w-2/3 text-gray-800 font-medium'>{post.servings}</h1>
+                                            <h1 className='w-1/2 lg:w-1/3 self-center'>Total Time: </h1>
+                                            <h1 className='w-1/2 lg:w-2/3 text-gray-800 font-medium'>{post.totalTime}</h1>
+                                        </div>
+                                    </div>
+
+
+                                    <div className='flex items-center w-full mb-2'>
+                                        <IoIosPeople size={26} className='text-gray-800 mr-1 lg:mr-4'/>
+                                        <div className='w-full flex'>
+                                            <h1 className='w-1/2 lg:w-1/3 self-center'>Servings: </h1>
+                                            <h1 className='w-1/2 lg:w-2/3 text-gray-800 font-medium'>{post.servings}</h1>
                                         </div>
                                     </div>
 
@@ -156,7 +156,7 @@ const BlogPost = ({blogPost}) => {
                                     <h1  className="align-center text-gray-800 font-bold text-xl mb-5 mt-10">Instructions</h1>
                                     {documentToReactComponents(post.instructions, options)}
                                 </div>
-                                <div className='my-10 bg-white p-8'>
+                                <div className='my-10 bg-white p-4 lg:p-8'>
                                     <h1 className="align-center text-gray-800 font-bold text-xl mb-5 ">Notes</h1>
                                     {documentToReactComponents(post.notes, options)}
                                 </div>

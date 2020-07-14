@@ -32,7 +32,7 @@ const  Blog = ( props ) => {
                             <div key={item.slug} className='lg:w-1/3 p-6'>
                                 <Link  href='/recipes/[slug]' as={`/recipes/${item.slug}/`}>
                                     <div className='card'>
-                                        <div className='mb-4 pointer set-blog-index-images pointer hover:opacity-60 transform ease-in duration-300 ' style={{backgroundSize: '100%', backgroundImage:`url(${item.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
+                                        <div className='m-auto mb-4 pointer set-blog-index-images pointer hover:opacity-60 transform ease-in duration-300 ' style={{backgroundSize: '100%', backgroundImage:`url(${item.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
                                         </div>
                                         <div >
                                             <h2 className='text-base text-center'>{item.title}</h2>
