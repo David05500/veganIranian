@@ -9,7 +9,7 @@ const Header = () => {
       <Head>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet"></link>
       </Head>
-      <nav className="max-w-1170 bg-gray-1000 border-btm  left-0 m-auto flex flex-col justify-center items-center z-150 py-4">
+      <nav className="max-width-1170 bg-gray-1000 border-btm  left-0 m-auto flex flex-col justify-center items-center z-150 py-4">
           <Link href="/">
             <h1 className='italic text-xl lg:text-6xl text-black font-bold mb-8 pointer main-logo mt-8'>THE IRANIAN VEGAN</h1>
           </Link>

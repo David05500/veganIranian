@@ -66,3 +66,11 @@ ol, ul {
   padding: 0;
   padding-left: 0.7rem;
 }
+
+.max-width-1000{
+  max-width: '1000px';
+}
+
+.max-width-1170{
+  max-width: '1170px';
+}

@@ -26,7 +26,7 @@ const  Blog = ( props ) => {
             </Head>
             <div className='m-auto text-2xl bg-gray-primary'>
                 <Header />
-                <div className='max-w-1000 mx-auto lg:flex lg:flex-wrap mt-5'>
+                <div className='max-width-1000 mx-auto lg:flex lg:flex-wrap mt-5'>
                     {_.map(blogPosts, item => {
                         return(
                             <div key={item.slug} className='lg:w-1/3 p-6'>
