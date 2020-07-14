@@ -1,0 +1,133 @@
+import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+const ContactForm = () => {
+    const [contact, setContact] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        honeypot: '', // if any value received in this field, form submission will be ignored.
+        message: '',
+        replyTo: '@', // this will set replyTo of email to email address entered in the form
+        accessKey: '15331551-9dbc-455d-899d-73531e4e156b' // get your access key from https://www.staticforms.xyz
+    });
+
+    const [response, setResponse] = useState({
+        type: '',
+        message: ''
+    });
+
+    const handleChange = e => setContact({ ...contact, [e.target.name]: e.target.value });
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        try {
+        const res = await fetch('https://api.staticforms.xyz/submit', {
+            method: 'POST',
+            body: JSON.stringify(contact),
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        const json = await res.json();
+
+        if (json.success) {
+            setContact({
+                name: '',
+                email: '',
+                subject: '',
+                honeypot: '', 
+                message: '',
+                replyTo: '@', 
+            });
+            notify();
+        } else {
+            notify();
+        }
+        } catch (e) {
+            console.log('An error occurred', e);
+            setResponse({type: 'error', message: 'An error occured while submitting the form'});
+        }
+    };
+
+    const notify = () => {
+        toast.success("Your message has been sent!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            className: 'bg-success'
+        });
+    }
+
+    return (
+        <div className='lg:w-2/3 w-full m-auto'>
+            <form 
+                action="https://api.staticforms.xyz/submit" 
+                method="post" 
+                className=''
+                onSubmit={handleSubmit}
+            >
+                <h1 className=' mb-5 sub-title text-center'>Contact form</h1>
+                <input 
+                    type="hidden" 
+                    name="accessKey" 
+                    value="scxc-9dbc-455d-899d-73531e4e156b" 
+                />
+                <div className="mb-4">
+                    <input 
+                        className="bg-off-white appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        id="name" 
+                        type="text" 
+                        name="name" 
+                        placeholder="Name"
+                        value={contact.name}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="mb-4">
+                    <input 
+                        className="bg-off-white appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        id="email" 
+                        type="email" 
+                        name="email" 
+                        placeholder="example@example.com" 
+                        value={contact.email}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="mb-4">
+                    <input 
+                        className="bg-off-white appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        id="subject" 
+                        type="subject" 
+                        name="subject" 
+                        placeholder="Subject"
+                        value={contact.subject}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="mb-4">
+                    <textarea 
+                        className="bg-off-white h-10-em appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        id="message" 
+                        type="message" 
+                        name="message" 
+                        placeholder="Message"
+                        value={contact.message}
+                        onChange={handleChange}
+                        required 
+                    />
+                </div>
+                <div className="flex items-center justify-end cursor-pointer">
+                    <input className="border-solid border border-gray-600  cursor-pointer bg-white  w-full hover:bg-blue-700 text-gray-600 font-bold py-2 px-4 focus:outline-none focus:shadow-outline" type="submit" value="Submit" />
+                </div>
+                <input type="text" name="honeypot" style={{display: 'none'}} /> 
+            </form>
+            <ToastContainer />
+        </div>
+    );
+};
+
+export default ContactForm;
