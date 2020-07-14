@@ -1,28 +1,33 @@
 import '../assets/styles/main.css';
 // import PostList from '../components/post-list';
 import Header from '../components/shared/Header';
+import Head from 'next/head';
 
 const  About = () => {
 
   return (
-    <div className='m-auto text-2xl bg-gray-primary'>
-        <Header />
-        <div className='max-w-1170 px-4 lg:px-8 mx-auto mt-20'>
-          <p className='text-center text-base leading-7'>
-            IRANIAN BORN DIRECTOR AND PHOTOGRAPHER, SOMAYEH COMBINES HER EYE FOR THE CINEMATIC
-            MOMENT WITH HER DOCUMENTARY EXPERIENCE AND INTEREST. HER PERSONAL HISTORY IS OFTEN LAYERED INTO HER WORK, SOMETIMES RAW, OFTEN POETIC. THE STORY OF HER OWN HERITAGE AND SELF-IDENTITY OFTEN BECOMES INTERLACED WITH HER SUBJECT MATTER TO PRODUCE AN INTIMATE AND VERY FEMININE LANGUAGE ON-SCREEN.
-          </p>
+    <div>
+      <Head>
+          <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Cookie|Dancing+Script|Sacramento&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet"></link>
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet"></link>
+      </Head>
+      <div className='m-auto text-2xl bg-gray-primary'>
+          <Header />
+          <div className='max-w-1000 px-4 lg:px-8 mx-auto my-20'>
+            <p className='text-justify text-base leading-7 mb-4'>
+            One of the cultural traits that immigrant communities pass on from generation to generation is the heritage of our cuisine. For us, as Iranians, and especially as the Iranian diaspora, food is so much more than just food. Engaging with the rituals and practices of creating and eating food are ways in which we connect with and hold on to our culture. Our identities are often fragmented, confused and we feel estranged from the world outside of our homes and our families. Given our history, and the political upheaval and change that has displaced us, consuming such food offers a stability of identity and ties us to our lineage in spaces of uncertainty.          </p>
 
-          <p className='text-center text-base'>EMAIL: MANNAROSESHAMSHIRI@GMAIL.COM</p>
+            <p className='text-justify text-base leading-7 mb-4'> Like many vegans from non-Western backgrounds, we often feel like we’re entering into a white-dominated space. Like veganism isn’t ours. With meat being such a huge staple in Iranian culture and diet, it often feels hard to disconnect with our culture and distance ourselves from our family, friends, social situations and identify with veganism, which is often dominated by western neoliberal narratives. This space is created to change that.          </p>
 
-          <div className='w-full flex justify-center mb-10'>
-            <button className='px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base'>take me to the recipe</button>
+            <p className='text-justify text-base leading-7 mb-4'>Our vegan practices don't mean that we have to leave our culture behind. As we know, the means of meat production today are nothing like it was on the farms of our ancestors. Animals are made a commodity, mass-produced and abused, whilst they are injected with hormones and medicated, having disastrous effects on our health, not to mention our dying Earth. This space is created to engage with our heritage, origins and anthropology of our food, as a way of maintaining the thread of continuity with our ancestors whilst offering a space for growth as times change, and as we change. For me, there is so much love and honour in creating the foods of my ancestors and knowing there is no pain and suffering in the dish, only love.          </p>
+
+            <p className='text-justify text-base leading-7 font-medium mb-4'>I’m Mana. A young woman from the Iranian diaspora based in London. That’s all you need to know really. Apart from the fact I’m probably a lot like you. I believe in compassion. I think we have a duty to create a world that is more ethical and just than the one in which we were raised. For me, this duty extends to all forms of life.
+            </p>
+
           </div>
-
-          <div className='w-full flex justify-center mb-10'>
-            <button className='px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base'>take me to the recipe</button>
-          </div>
-        </div>
+      </div>
     </div>
 )
 }

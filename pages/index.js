@@ -4,7 +4,7 @@ import {createClient} from 'contentful';
 import contentfulClient from '../lib/contentful';
 import '../assets/styles/main.css';
 import Link from 'next/link';
-import { FiInstagram } from "react-icons/fi";
+import { GrInstagram } from "react-icons/gr";
 
 const GetHomePageData = async () => {
   const res = await contentfulClient.getEntries({
@@ -22,7 +22,6 @@ const  HomePage = () => {
     
   useEffect(() => {
     GetHomePageData().then(phrases => {
-      console.log('phrases', phrases);
         setHomePagePic(phrases[0].homePageImage.fields.file.url);
         setMobileHomePagePic(phrases[0].mobileHomePageImage.fields.file.url);
     });
@@ -39,31 +38,34 @@ const  HomePage = () => {
         <Head>
           <title>Home</title>
           <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet" />
-          {/* <link href="https://fonts.googleapis.com/css?family=Cookie|Dancing+Script|Sacramento&display=swap" rel="stylesheet" /> */}
+          <link href="https://fonts.googleapis.com/css?family=Cookie|Dancing+Script|Sacramento&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet"></link>
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet"></link>
         </Head>
         <div className='h-screen w-screen  bg-no-repeat bg-103p bg-center flex justify-center items-center' style={{backgroundSize: '100%', backgroundImage: windowWidth > 430 ? `url(${homePagePic})` : `url(${mobileHomePagePic})`}} >
           <div style={{background: 'linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3))', pointerEvents: 'none',  width: '100vw', height: '100vh', position: 'absolute'}} />
-          <div className='flex flex-col justify-center items-center  hollla'>
-            <h1 className='italic text-3xl lg:text-7xl text-white font-bold z-50 mb-16' style={{textShadow: '6px 6px 0px rgba(0,0,0,0.2)'}} >THE IRANIAN VEGAN</h1>
-            <div className='flex flex-col lg:flex-row items-center text-white w-5/7 min-h-24 max-w-80 tracking-wide z-50 justify-around'>
+          <div className='flex flex-col justify-center items-center'>
+            <h1 className='italic text-3xl lg:text-8.5xl text-white font-bold z-50 main-logo text-spaceping-4 mt-20' style={{textShadow: '6px 6px 0px rgba(0,0,0,0.1)'}} >THE    IRANIAN    VEGAN</h1>
+            <div className='flex flex-col lg:flex-row items-center text-white w-5/7 min-h-24 max-w-26 tracking-wide z-50 justify-around'>
               <Link href="/recipes/blog">
-                <h1 className='checking pointer text-sm'>RECIPES</h1>
+                <h1 className='checking pointer text-lg font-medium'>RECIPES</h1>
               </Link>
 
               <Link href="/about">
-                <h1 className='pointer text-sm' >ABOUT</h1>
+                <h1 className='pointer text-lg font-medium' >ABOUT</h1>
               </Link>
 
               <Link href="/contact">
-                <h1 className='pointer text-sm'>CONTACT</h1>
+                <h1 className='pointer text-lg font-medium'>CONTACT</h1>
               </Link>
 
             </div>
+
+            <a href='https://www.instagram.com/theiranianvegan/' className='text-white mt-10 z-50'> 
+              <GrInstagram  size={30}/>
+            </a>
           </div>
-          <a href='https://www.instagram.com/theiranianvegan/' className='text-white absolute bottom-0 mb-10'> 
-            <FiInstagram  size={26}/>
-          </a>
+     
         </div>
     </div>
     

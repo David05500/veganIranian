@@ -13,14 +13,15 @@ body {
   letter-spacing: 0.8px;
   word-break: break-word;
 }
-
-
+.main-logo {
+  font-family: 'Montserrat';
+}
 
 body{
   margin:0;
 }
 
-.hollla{
+/* .hollla{
   background:url(''),linear-gradient(233deg, #80e56420, #80c22525, #803d9c31);
   width:100%;
   height:100vh;
@@ -42,35 +43,26 @@ body{
     -ms-filter: hue-rotate(360deg);
     filter: hue-rotate(360deg);
   }
+} */
+
+.text-spaceping-4 {
+  word-spacing: 1rem;
 }
-
-ul, li {
-  list-style-type: none !important;
-  display: flex;
-}
-
-ul, li:before {
-  content: '•';
-  margin-right: 6px;
-}
-
-
-ul li {
-  /*
-   * We want the bullets outside of the list,
-   * so the text is aligned. Now the actual bullet
-   * is outside of the list’s container
-   */
-  list-style-position: outside;
-
-  /*
-   * Because the bullet is outside of the list’s
-   * container, indent the list entirely
-   */
-  margin-left: 1em;
-}
-
 
 .border-btm {
   border-bottom: 1px solid #E2E8F0;
+}
+
+.set-blog-index-images {
+  min-width: 285.33px;
+  min-height: 355.33px;
+  max-width: 285.33px;
+  max-height: 355.33px;
+}
+
+ol, ul {
+  margin: 0;
+  margin-left: 0.7rem;
+  padding: 0;
+  padding-left: 0.7rem;
 }
