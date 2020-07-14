@@ -121,7 +121,7 @@ const ContactForm = () => {
                     />
                 </div>
                 <div className="flex items-center justify-end cursor-pointer">
-                    <input className="border-solid border border-gray-600  cursor-pointer bg-white  w-full hover:bg-blue-700 text-gray-600 font-bold py-2 px-4 focus:outline-none focus:shadow-outline" type="submit" value="Submit" />
+                    <input className="border-solid border border-gray-600  cursor-pointer bg-white text-base lg:text-lg  w-full hover:bg-blue-700 text-gray-600 font-bold py-2 px-4 focus:outline-none focus:shadow-outline" type="submit" value="Submit" />
                 </div>
                 <input type="text" name="honeypot" style={{display: 'none'}} /> 
             </form>
