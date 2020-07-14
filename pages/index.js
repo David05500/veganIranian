@@ -49,15 +49,15 @@ const  HomePage = () => {
             <h1 className='italic text-3xl lg:text-8xl text-white font-bold z-50 main-logo lg:text-spaceping-4 mt-20' style={{textShadow: '6px 6px 0px rgba(0,0,0,0.1)'}} >THE    IRANIAN    VEGAN</h1>
             <div className='flex flex-col lg:flex-row items-center text-white w-5/7 min-h-24 max-w-26 tracking-wide z-50 justify-around'>
               <Link href="/recipes/blog">
-                <h1 className='checking pointer text-lg font-medium hover:opacity-60 transform ease-in duration-300'>RECIPES</h1>
+                <h1 className='checking pointer text-lg font-medium hover:opacity-60 transform ease-in duration-100'>RECIPES</h1>
               </Link>
 
               <Link href="/about">
-                <h1 className='pointer text-lg font-medium hover:opacity-60 transform ease-in duration-300' >ABOUT</h1>
+                <h1 className='pointer text-lg font-medium hover:opacity-60 transform ease-in duration-100' >ABOUT</h1>
               </Link>
 
               <a href="/contact">
-                <h1 className='pointer text-lg font-medium hover:opacity-60 transform ease-in duration-300'>CONTACT</h1>
+                <h1 className='pointer text-lg font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
               </a>
 
             </div>
