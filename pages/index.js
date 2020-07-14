@@ -41,6 +41,7 @@ const  HomePage = () => {
           <link href="https://fonts.googleapis.com/css?family=Cookie|Dancing+Script|Sacramento&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet"></link>
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet"></link>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         </Head>
         <div className='h-screen w-screen  bg-no-repeat bg-103p bg-center flex justify-center items-center' style={{backgroundSize: '100%', backgroundImage: windowWidth > 430 ? `url(${homePagePic})` : `url(${mobileHomePagePic})`}} >
           <div style={{background: 'linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3))', pointerEvents: 'none',  width: '100vw', height: '100vh', position: 'absolute'}} />
