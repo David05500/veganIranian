@@ -23,9 +23,9 @@ const Header = () => {
             <h1 className='pointer text-baseLg font-medium hover:opacity-60 transform ease-in duration-300'>ABOUT</h1>
           </Link>
 
-          <Link href="contact">
+          <a href="contact">
             <h1 className='pointer text-baseLg font-medium hover:opacity-60 transform ease-in duration-300'>CONTACT</h1>
-          </Link>
+          </a>
         </div>
       </nav>
     </div>
