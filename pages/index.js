@@ -56,9 +56,9 @@ const  HomePage = () => {
                 <h1 className='pointer text-lg font-medium' >ABOUT</h1>
               </Link>
 
-              <Link href="/contact">
+              <a href="/contact">
                 <h1 className='pointer text-lg font-medium'>CONTACT</h1>
-              </Link>
+              </a>
 
             </div>
 
