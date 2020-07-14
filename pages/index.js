@@ -48,7 +48,7 @@ const  HomePage = () => {
           <div className='flex flex-col justify-center items-center'>
             <h1 className='italic text-3xl lg:text-8xl text-white font-bold z-50 main-logo lg:text-spaceping-4 mt-20' style={{textShadow: '6px 6px 0px rgba(0,0,0,0.1)'}} >THE    IRANIAN    VEGAN</h1>
             <div className='flex flex-col lg:flex-row items-center text-white w-5/7 min-h-24 max-w-26 tracking-wide z-50 justify-around'>
-              <Link href="/recipes/blog" className='checking pointer text-lg font-medium'>
+              <Link href="/recipes/blog" className='pointer text-lg font-medium'>
                 RECIPES
               </Link>
 
