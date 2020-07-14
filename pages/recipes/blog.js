@@ -26,16 +26,16 @@ const  Blog = ( props ) => {
             </Head>
             <div className='m-auto text-2xl bg-gray-primary'>
                 <Header />
-                <div className='max-width-1000 mx-auto lg:flex lg:flex-wrap mt-5'>
+                <div className='max-width-920 mx-auto lg:flex lg:flex-wrap mt-10'>
                     {_.map(blogPosts, item => {
                         return(
-                            <div key={item.slug} className='lg:w-1/3 p-6'>
+                            <div key={item.slug} className='lg:w-1/3 mb-8'>
                                 <Link  href='/recipes/[slug]' as={`/recipes/${item.slug}/`}>
                                     <div className='card'>
                                         <div className='m-auto mb-4 pointer set-blog-index-images pointer hover:opacity-60 transform ease-in duration-300 ' style={{backgroundSize: '100%', backgroundImage:`url(${item.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
                                         </div>
                                         <div >
-                                            <h2 className='text-base text-center'>{item.title}</h2>
+                                            <h2 className='text-base text-center px-4'>{item.title}</h2>
                                         </div>
                                     </div>
                                 </Link>
