@@ -74,7 +74,7 @@ const ContactForm = () => {
                 />
                 <div className="mb-4">
                     <input 
-                        className="bg-off-white appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="bg-off-white text-base lg:text-lg appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
                         id="name" 
                         type="text" 
                         name="name" 
@@ -86,7 +86,7 @@ const ContactForm = () => {
                 </div>
                 <div className="mb-4">
                     <input 
-                        className="bg-off-white appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="bg-off-white text-base lg:text-lg appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
                         id="email" 
                         type="email" 
                         name="email" 
@@ -98,7 +98,7 @@ const ContactForm = () => {
                 </div>
                 <div className="mb-4">
                     <input 
-                        className="bg-off-white appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="bg-off-white text-base lg:text-lg appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
                         id="subject" 
                         type="subject" 
                         name="subject" 
@@ -110,7 +110,7 @@ const ContactForm = () => {
                 </div>
                 <div className="mb-4">
                     <textarea 
-                        className="bg-off-white h-10-em appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="bg-off-white text-base lg:text-lg h-10-em appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
                         id="message" 
                         type="message" 
                         name="message" 
