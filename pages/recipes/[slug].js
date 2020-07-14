@@ -103,16 +103,16 @@ const BlogPost = ({blogPost}) => {
                                     <div className='flex items-center w-full mb-2'>
                                         <IoIosInformationCircleOutline size={26} className='text-gray-800 mr-4'/>
                                         <div className='w-full flex'>
-                                            <h1 className='w-1/3 self-center lg:flex-1'>Course: </h1>
-                                            <h1 className='w-2/3 text-gray-800 lg:flex-5 font-medium'>{post.course}</h1>
+                                            <h1 className='w-1/3 self-center'>Course: </h1>
+                                            <h1 className='w-2/3 text-gray-800 font-medium'>{post.course}</h1>
                                         </div>
                                     </div>
 
                                     <div className='flex items-center w-full mb-2'>
                                         <RiKnifeLine size={26} className='text-gray-800 mr-4'/>
                                         <div className='w-full flex'>
-                                            <h1 className='w-1/3 self-center lg:flex-1'>Prep Time: </h1>
-                                            <h1 className='w-2/3 text-gray-800 lg:flex-5 font-medium '>{post.prepTime}</h1>
+                                            <h1 className='w-1/3 self-center'>Prep Time: </h1>
+                                            <h1 className='w-2/3 text-gray-800 font-medium '>{post.prepTime}</h1>
                                         </div>
                                     </div>
 
@@ -120,8 +120,8 @@ const BlogPost = ({blogPost}) => {
                                     <div className='flex items-center w-full mb-2'>
                                         <GiCookingPot size={26} className='text-gray-800 mr-4'/>
                                         <div className='w-full flex'>
-                                            <h1 className='w-1/3 self-center lg:flex-1'>Cook Time: </h1>
-                                            <h1 className='w-2/3 text-gray-800 lg:flex-5 font-medium'>{post.cookTime}</h1>
+                                            <h1 className='w-1/3 self-center'>Cook Time: </h1>
+                                            <h1 className='w-2/3 text-gray-800 font-medium'>{post.cookTime}</h1>
                                         </div>
                                     </div>
 
@@ -129,8 +129,8 @@ const BlogPost = ({blogPost}) => {
                                     <div className='flex items-center w-full mb-2'>
                                         <IoMdTime size={26} className='text-gray-800 mr-4'/>
                                         <div className='w-full flex'>
-                                            <h1 className='w-1/3 self-center lg:flex-1'>Total Time: </h1>
-                                            <h1 className='w-2/3 text-gray-800 lg:flex-5 font-medium'>{post.totalTime}</h1>
+                                            <h1 className='w-1/3 self-center'>Total Time: </h1>
+                                            <h1 className='w-2/3 text-gray-800 font-medium'>{post.totalTime}</h1>
                                         </div>
                                     </div>
 
@@ -138,8 +138,8 @@ const BlogPost = ({blogPost}) => {
                                     <div className='flex items-center w-full mb-2'>
                                         <IoIosPeople size={26} className='text-gray-800 mr-4'/>
                                         <div className='w-full flex'>
-                                            <h1 className='w-1/3 self-center lg:flex-1'>Servings: </h1>
-                                            <h1 className='w-2/3 text-gray-800 lg:flex-5 font-medium'>{post.servings}</h1>
+                                            <h1 className='w-1/3 self-center'>Servings: </h1>
+                                            <h1 className='w-2/3 text-gray-800 font-medium'>{post.servings}</h1>
                                         </div>
                                     </div>
 
