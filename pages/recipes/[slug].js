@@ -11,7 +11,7 @@ import { IoMdTime, IoIosPeople, IoIosInformationCircleOutline } from "react-icon
 import { FaBatteryThreeQuarters } from "react-icons/fa";
 import Head from 'next/head';
 import { GiKnifeFork } from "react-icons/gi";
-
+import { GrInstagram } from "react-icons/gr";
 
 
 
@@ -94,7 +94,7 @@ const BlogPost = ({blogPost}) => {
                         {documentToReactComponents(post.recipeDescription, options)}
 
                         {/* Recipe Card */}
-                        <div ref={myRef} className='lg:m-20 border-solid border-8 lg:border-15 border-white'>
+                        <div ref={myRef} className='mb-8 lg:m-20  border-solid border-8 lg:border-15 border-white'>
                             <div className='w-full bg-white'>
                                 <h1 className='py-10 text-center text-3xl font-medium'>{post.title}</h1>
                             </div>
@@ -162,16 +162,16 @@ const BlogPost = ({blogPost}) => {
                                 </div>
                             </div>
                            
-                            <div className='w-full bg-white'>
-                                <h1 className='py-10 text-center'>{post.title}</h1>
+                            <div className='w-full flex bg-white p-4 lg:p-8'>
+                                <div className='w-1/3 flex justify-left lg:justify-center items-center'>
+                                    <GrInstagram  size={60}/>
+                                </div>
+                                <div className='w-2/3'>
+                                    <h1 className='text-xl mb-4'>Did you make this recipe?</h1>
+                                    <h1 className='text-base'>Tag @theiranianvegan on Instagram and hashtag it #theiranianvegan</h1>
+                                </div>
                             </div>
                         </div>
-
-        
-                        {/* <div>
-                            <h1>Nutrition</h1>
-                            {documentToReactComponents(post.nutrition)}
-                        </div> */}
                     </div>
                 </div>
             </div>
