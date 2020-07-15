@@ -21,12 +21,12 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop - 220);
 const Bold = ({ children }) => <p className="text-6xl text-green-700">{children}</p>;
  
 const Text = ({ children }) => {
-    return <p className="text-lg text-justify">{children}</p>
+    return <p className="text-base text-justify">{children}</p>
 };
 
-const HEADING1 = ({ children }) => <p className="align-center text-gray-800 text-2xl">{children}</p>;
+const HEADING1 = ({ children }) => <p className="align-center text-gray-800 text-xl">{children}</p>;
 
-const HEADING3 = ({ children }) => <p className="align-center text-gray-800 text-xl ">{children}</p>;
+const HEADING3 = ({ children }) => <p className="align-center text-gray-800 text-lg ">{children}</p>;
 
 const MyLink = ({ children }) => <a className=" text-gray-600 pointer hover:opacity-60 transform ease-in duration-300">{children}</a>;
 

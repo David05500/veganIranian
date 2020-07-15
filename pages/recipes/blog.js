@@ -30,7 +30,7 @@ const  Blog = ( props ) => {
                     {_.map(blogPosts, item => {
                         return(
                             <div key={item.slug} className='lg:w-1/3 mb-8'>
-                                <Link  href='/recipes/[slug]' as={`/recipes/${item.slug}/`}>
+                                <Link prefetch='ture'  href='/recipes/[slug]' as={`/recipes/${item.slug}/`}>
                                     <div className='card'>
                                         <div className='m-auto mb-4 relative pointer set-blog-index-images pointer hover:opacity-60 transform ease-in duration-300 ' style={{backgroundSize: '100%', backgroundImage:`url(${item.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
                                             {/* <div className='absolute inset-auto font-black text-5xl w-full h-full flex justify-center items-center'>
