@@ -87,14 +87,16 @@ const BlogPost = ({blogPost}) => {
                     <div className='max-width-1000 px-4 lg:px-8 mx-auto mt-20'>
 
                         <h1 className='mb-10 text-center'>{post.title}</h1>
+
                         <div className='w-full flex justify-center mb-10'>
                             <button onClick={executeScroll}  className='px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'><GiKnifeFork size={20} className='text-gray-600 mr-2'/> JUMP TO RECIPE</button>
+                            <img src="/cutlery.svg"  />
                         </div>
 
                         {documentToReactComponents(post.recipeDescription, options)}
 
                         {/* Recipe Card */}
-                        <div ref={myRef} className='mb-8 lg:m-20  border-solid border-2 lg:border-15 border-white shadow-md'>
+                        <div ref={myRef} className='mb-8 lg:m-20  border-solid border-8 lg:border-15 border-white shadow-md'>
                             <div className='w-full bg-white'>
                                 <h1 className='py-10 text-center text-3xl font-medium'>{post.title}</h1>
                             </div>
