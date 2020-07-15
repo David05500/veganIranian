@@ -4,7 +4,8 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
     './pages/*.js',
     './pages/**/*.js',
     './components/*.js',
-    './components/**/*.js'
+    './components/**/*.js',
+    './public/**/*.js'
   ],
 
   // make sure css reset isnt removed on html and body

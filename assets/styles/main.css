@@ -86,3 +86,6 @@ ol, ul {
 .max-width-850{
   max-width: 850px;
 }
+.bg-clip-text{
+  -webkit-background-clip: text;
+}
