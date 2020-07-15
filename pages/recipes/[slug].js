@@ -84,7 +84,7 @@ const BlogPost = ({blogPost}) => {
                 </Head>
                 <div className='m-auto text-2xl bg-gray-primary '>
                     <Header />
-                    <div className='max-width-1000 px-4 lg:px-8 mx-auto mt-20'>
+                    <div className='max-width-735 px-4 mx-auto mt-20'>
 
                         <h1 className='mb-10 text-center'>{post.title}</h1>
 
@@ -96,70 +96,74 @@ const BlogPost = ({blogPost}) => {
                         {documentToReactComponents(post.recipeDescription, options)}
 
                         {/* Recipe Card */}
-                        <div ref={myRef} className='mb-8 lg:m-20  border-solid border-8 lg:border-15 border-white shadow-md'>
-                            <div className='w-full bg-white'>
-                                <h1 className='py-10 text-center text-3xl font-medium'>{post.title}</h1>
-                            </div>
-                            <div className='px-4 lg:px-8'> 
-                                <div className='my-10 text-lg mt-16'>
-                                    <div className='flex items-center w-full mb-2'>
-                                        <IoIosInformationCircleOutline size={26} className='text-gray-800 mr-1 lg:mr-4'/>
-                                        <div className='w-full flex'>
-                                            <h1 className='w-1/2 lg:w-1/3 self-center'>Course: </h1>
-                                            <h1 className='w-1/2 lg:w-2/3 text-gray-800 font-medium'>{post.course}</h1>
+                        <div ref={myRef} className='mb-8 lg:mx-16 p-2 lg:p-8 lg:my-20 shadow-md bg-white'>
+                            <div className='w-full '>
+                                <h1 className='py-10 text-center text-3xl font-medium border-btm mb-10'>{post.title}</h1>
+                                <div className='my-2 text-lg'>
+                                    <div className='flex items-center justify-center w-full mb-4'>
+                                        <IoIosInformationCircleOutline size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
+                                        <div className='flex'>
+                                            <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Course: </h1>
+                                            <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.course}</h1>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className='flex items-center justify-center mb-4'>
+
+                                        <div className='w-1/2 flex items-center w-full'>
+                                            <GiCookingPot size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
+                                            <div className='flex'>
+                                                <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1>
+                                                <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.cookTime}</h1>
+                                            </div>
+                                        </div>
+
+                                        <div className='w-1/2 flex items-center w-full'>
+                                            <IoMdTime size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
+                                            <div className='flex'>
+                                                <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Total Time: </h1>
+                                                <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.totalTime}</h1>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div className='flex items-center w-full mb-2'>
-                                        <RiKnifeLine size={26} className='text-gray-800 mr-1 lg:mr-4'/>
-                                        <div className='w-full flex'>
-                                            <h1 className='w-1/2 lg:w-1/3 self-center'>Prep Time: </h1>
-                                            <h1 className='w-1/2 lg:w-2/3 text-gray-800 font-medium '>{post.prepTime}</h1>
+                                    <div className='flex items-center justify-center mb-4'>
+                                        <div className='w-1/2 flex items-center w-full'>
+                                            <RiKnifeLine size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
+                                            <div className='flex'>
+                                                <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Prep Time: </h1>
+                                                <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.prepTime}</h1>
+                                            </div>
                                         </div>
-                                    </div>
 
-
-                                    <div className='flex items-center w-full mb-2'>
-                                        <GiCookingPot size={26} className='text-gray-800 mr-1 lg:mr-4'/>
-                                        <div className='w-full flex'>
-                                            <h1 className='w-1/2 lg:w-1/3 self-center'>Cook Time: </h1>
-                                            <h1 className='w-1/2 lg:w-2/3 text-gray-800 font-medium'>{post.cookTime}</h1>
-                                        </div>
-                                    </div>
-
-
-                                    <div className='flex items-center w-full mb-2'>
-                                        <IoMdTime size={26} className='text-gray-800 mr-1 lg:mr-4'/>
-                                        <div className='w-full flex'>
-                                            <h1 className='w-1/2 lg:w-1/3 self-center'>Total Time: </h1>
-                                            <h1 className='w-1/2 lg:w-2/3 text-gray-800 font-medium'>{post.totalTime}</h1>
-                                        </div>
-                                    </div>
-
-
-                                    <div className='flex items-center w-full mb-2'>
-                                        <IoIosPeople size={26} className='text-gray-800 mr-1 lg:mr-4'/>
-                                        <div className='w-full flex'>
-                                            <h1 className='w-1/2 lg:w-1/3 self-center'>Servings: </h1>
-                                            <h1 className='w-1/2 lg:w-2/3 text-gray-800 font-medium'>{post.servings}</h1>
+                                        <div className='w-1/2 flex items-center w-full'>
+                                            <IoIosPeople size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
+                                            <div className='flex'>
+                                                <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-4'>Servings: </h1>
+                                                <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.servings}</h1>
+                                            </div>
                                         </div>
                                     </div>
 
                                 </div>
+                            </div>
 
-
-                                <div className='my-16'>
-                                    <h1  className="align-center text-gray-800 font-bold text-xl mb-5 mt-10">Ingredients</h1>
+                            <div className='px-4 lg:px-8 bg-gray-primary lg:pb-8 py-8'> 
+                                
+                                <div className='border-btm mb-12 mt-4 pb-8'>
+                                    <h1  className="align-center text-gray-500 font-bold text-lg mb-8 font-serif ">Ingredients</h1>
                                     {documentToReactComponents(post.ingredients, options)}
                                 </div>
                 
                                 
-                                <div className='my-10'>
-                                    <h1  className="align-center text-gray-800 font-bold text-xl mb-5 mt-10">Instructions</h1>
+                                <div className='border-btm mb-12 pb-8'>
+                                    <h1  className="align-center text-gray-500 font-bold text-lg mb-8 font-serif ">Instructions</h1>
                                     {documentToReactComponents(post.instructions, options)}
                                 </div>
-                                <div className='my-10 bg-white p-4 lg:p-8'>
-                                    <h1 className="align-center text-gray-800 font-bold text-xl mb-5 ">Notes</h1>
+                                <div className=' bg-white p-4 lg:p-8 mb-12 pb-8'>
+                                    <h1 className="align-center flex items-center text-gray-500 font-bold text-lg mb-8 font-serif ">
+                                    <IoIosInformationCircleOutline size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
+                                    Notes</h1>
                                     {documentToReactComponents(post.notes, options)}
                                 </div>
                             </div>
