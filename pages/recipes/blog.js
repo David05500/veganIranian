@@ -38,7 +38,7 @@ const  Blog = ( props ) => {
                                             </div> */}
                                         </div>
                                         <div >
-                                            <h2 className='text-base text-center px-4'>{item.title}</h2>
+                                            <h2 className='text-sm text-center px-4'>{item.title}</h2>
                                         </div>
                                     </div>
                                 </Link>
