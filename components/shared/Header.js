@@ -16,15 +16,15 @@ const Header = () => {
 
         <div className='flex w-4/5 lg:w-1/3 m-auto justify-around'> 
           <Link href="/recipes/blog">
-            <h1 className='pointer text-baseLg font-medium  hover:opacity-60 transform ease-in duration-100'>RECIPES</h1>
+            <h1 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100'>RECIPES</h1>
           </Link>
 
           <Link href="/about">
-            <h1 className='pointer text-baseLg font-medium hover:opacity-60 transform ease-in duration-100'>ABOUT</h1>
+            <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>ABOUT</h1>
           </Link>
 
           <a href="/contact">
-            <h1 className='pointer text-baseLg font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
+            <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
           </a>
         </div>
       </nav>
