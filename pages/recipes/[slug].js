@@ -94,7 +94,7 @@ const BlogPost = ({blogPost}) => {
                         {documentToReactComponents(post.recipeDescription, options)}
 
                         {/* Recipe Card */}
-                        <div ref={myRef} className='mb-8 lg:m-20  border-solid border-2 lg:border-15 border-white shadow-sm'>
+                        <div ref={myRef} className='mb-8 lg:m-20  border-solid border-2 lg:border-15 border-white shadow-md'>
                             <div className='w-full bg-white'>
                                 <h1 className='py-10 text-center text-3xl font-medium'>{post.title}</h1>
                             </div>
