@@ -15,7 +15,7 @@ const Header = () => {
           <Link href="/">
             <h1 className='italic text-3xl lg:text-52xl text-black font-bold mb-8 pointer main-logo mt-8'>THE IRANIAN VEGAN</h1>
           </Link>
-          <div style={{backgroundSize: '100%', backgroundImage: 'url("logoBG.jpg")'}} >
+          <div style={{backgroundSize: '100%', backgroundImage: 'url("/public/logoBG.jpg")'}} >
              
           </div>
         </div>
