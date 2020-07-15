@@ -16,7 +16,7 @@ const  About = () => {
       </Head>
       <div className='m-auto text-2xl bg-gray-primary'>
           <Header />
-          <div className='max-width-1000 px-4 lg:px-8 mx-auto my-20'>
+          <div className='max-width-735 mx-auto my-20'>
             <p className='text-justify text-sm leading-7 mb-4'>
             One of the cultural traits that immigrant communities pass on from generation to generation is the heritage of our cuisine. For us, as Iranians, and especially as the Iranian diaspora, food is so much more than just food. Engaging with the rituals and practices of creating and eating food are ways in which we connect with and hold on to our culture. Our identities are often fragmented, confused and we feel estranged from the world outside of our homes and our families. Given our history, and the political upheaval and change that has displaced us, consuming such food offers a stability of identity and ties us to our lineage in spaces of uncertainty.          </p>
 
