@@ -54,10 +54,10 @@ body{
 }
 
 .set-blog-index-images {
-  min-width: 226.33px;
-  min-height: 355.33px;
-  max-width: 285.33px;
-  max-height: 355.33px;
+  min-width: 228.33px;
+  min-height: 284.33px;
+  max-width: 228.33px;
+  max-height: 284.33px;
 }
 
 ol, ul {
@@ -75,8 +75,8 @@ ol, ul {
   max-width: 1170px;
 }
 
-.max-width-700{
-  max-width: 700px;
+.max-width-735{
+  max-width: 735px;
 }
 
 .max-width-920{
