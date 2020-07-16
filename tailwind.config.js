@@ -320,6 +320,7 @@ module.exports = {
       '5xl': '3rem',
       '52xl': '3.2rem',
       '6xl': '4rem',
+      '65xl': '4.5rem',
       '7xl': '5rem',
       '8xl': '6rem',
       '8.5xl': '6.5rem',
