@@ -150,7 +150,7 @@ const BlogPost = ({blogPost}) => {
 
                             <div className='px-4 lg:px-8 bg-gray-primary lg:pb-8 py-5'> 
                                 
-                                <div className='border-btm mb-12 mt-4 pb-8'>
+                                <div className='border-btm mb-10 mt-4 pb-8'>
                                     <h1  className="align-center text-gray-500 font-bold text-base mb-5">INGREDIENTS</h1>
                                     {documentToReactComponents(post.ingredients, options)}
                                 </div>
