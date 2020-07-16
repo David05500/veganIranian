@@ -89,8 +89,8 @@ const BlogPost = ({blogPost}) => {
                         <h1 className='mb-10 text-center'>{post.title}</h1>
 
                         <div className='w-full flex justify-center mb-10'>
-                            <button onClick={executeScroll}  className='px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'><GiKnifeFork size={20} className='text-gray-600 mr-2'/> JUMP TO RECIPE</button>
-                            <img src="/cutlery.svg"  />
+                            <button onClick={executeScroll}  className='px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'><img src="/cutlery.svg"  className='w-8 text-gray-300' /> JUMP TO RECIPE</button>
+                            
                         </div>
 
                         {documentToReactComponents(post.recipeDescription, options)}
