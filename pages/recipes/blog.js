@@ -26,16 +26,13 @@ const  Blog = ( props ) => {
             </Head>
             <div className='m-auto text-2xl bg-gray-primary'>
                 <Header />
-                <div className='max-width-735 px-4 mx-auto lg:flex lg:flex-wrap mt-10'>
+                <div className='max-width-735 px-4 lg:px-0 mx-auto lg:flex lg:flex-wrap mt-10'>
                     {_.map(blogPosts, item => {
                         return(
                             <div key={item.slug} className='lg:w-1/3 mb-8'>
                                 <Link prefetch='ture'  href='/recipes/[slug]' as={`/recipes/${item.slug}/`}>
                                     <div className='card'>
-                                        <div className='m-auto mb-4 relative pointer set-blog-index-images pointer hover:opacity-60 transform ease-in duration-300 ' style={{backgroundSize: '100%', backgroundImage:`url(${item.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
-                                            {/* <div className='absolute inset-auto font-black text-5xl w-full h-full flex justify-center items-center'>
-                                                HELLLOO
-                                            </div> */}
+                                        <div className='m-auto mb-4 relative pointer max-w-280px max-h-284px min-h-284px min-w-228px lg:max-w-228px   pointer hover:opacity-60 transform ease-in duration-100 ' style={{backgroundSize: '50%', backgroundImage:`url(${item.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
                                         </div>
                                         <div >
                                             <h2 className='text-sm text-center px-4'>{item.title}</h2>

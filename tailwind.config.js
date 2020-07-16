@@ -396,6 +396,7 @@ module.exports = {
       5: '5em',
       '40em': '40em',
       '4rem': '4rem',
+      '284px': '284px'
     },
     maxWidth: {
       xs: '20rem',
@@ -416,17 +417,21 @@ module.exports = {
       'screen-lg': '1024px',
       '1000': '1000px',
       '1170': '1170px',
-      '80' : '20rem',
+      '80': '20rem',
+      '228px': '228px',
+      '280px': '280px'
     },
     minHeight: {
       '0': '0',
       full: '100%',
       screen: '100vh',
-      '24': '6rem'
+      '24': '6rem',
+      '284px': '284px'
     },
     minWidth: {
       '0': '0',
       full: '100%',
+      '228px': '228px',
     },
     objectPosition: {
       bottom: 'bottom',

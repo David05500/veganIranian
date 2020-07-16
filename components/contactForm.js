@@ -66,7 +66,6 @@ const ContactForm = () => {
                 className=''
                 onSubmit={handleSubmit}
             >
-                <h1 className=' mb-5 sub-title text-center'>Contact form</h1>
                 <input 
                     type="hidden" 
                     name="accessKey" 
@@ -74,7 +73,7 @@ const ContactForm = () => {
                 />
                 <div className="mb-4">
                     <input 
-                        className="bg-off-white text-base lg:text-lg appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="bg-gray-primary text-base lg:text-base text-gray-700 appearance-none border rounded border-gray-400 w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
                         id="name" 
                         type="text" 
                         name="name" 
@@ -86,7 +85,7 @@ const ContactForm = () => {
                 </div>
                 <div className="mb-4">
                     <input 
-                        className="bg-off-white text-base lg:text-lg appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="bg-gray-primary text-base lg:text-base text-gray-700 appearance-none border rounded border-gray-400 w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
                         id="email" 
                         type="email" 
                         name="email" 
@@ -98,7 +97,7 @@ const ContactForm = () => {
                 </div>
                 <div className="mb-4">
                     <input 
-                        className="bg-off-white text-base lg:text-lg appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="bg-gray-primary text-base lg:text-base text-gray-700 appearance-none border rounded border-gray-400 w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
                         id="subject" 
                         type="subject" 
                         name="subject" 
@@ -110,7 +109,7 @@ const ContactForm = () => {
                 </div>
                 <div className="mb-4">
                     <textarea 
-                        className="bg-off-white text-base lg:text-lg h-10-em appearance-none border rounded border-secondary-color w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
+                        className="bg-gray-primary text-base lg:text-base text-gray-700 h-10-em appearance-none border rounded border-gray-400 w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" 
                         id="message" 
                         type="message" 
                         name="message" 
@@ -121,7 +120,7 @@ const ContactForm = () => {
                     />
                 </div>
                 <div className="flex items-center justify-end cursor-pointer">
-                    <input className="border-solid border border-gray-600  cursor-pointer bg-white text-base lg:text-lg  w-full hover:bg-blue-700 text-gray-600 font-bold py-2 px-4 focus:outline-none focus:shadow-outline" type="submit" value="Submit" />
+                    <input className="border-solid border border-gray-600 bg-gray-primary cursor-pointer text-base lg:text-base text-gray-700  w-full hover:bg-white  font-bold py-2 px-4 focus:outline-none focus:shadow-outline" type="submit" value="Submit" />
                 </div>
                 <input type="text" name="honeypot" style={{display: 'none'}} /> 
             </form>

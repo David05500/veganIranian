@@ -17,6 +17,7 @@ const  Contact = () => {
       <div className='m-auto text-2xl bg-gray-primary'>
           <Header />
           <div className='max-width-920 px-4 lg:px-8 mx-auto my-20'>
+            <h1 className=' mb-5 sub-title text-center text-lg text-gray-600'>Contact form</h1>
             <ContactForm />
           </div>
       </div>
