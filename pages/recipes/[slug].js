@@ -89,7 +89,7 @@ const BlogPost = ({blogPost}) => {
                         <h1 className='mb-10 text-center'>{post.title}</h1>
 
                         <div className='w-full flex justify-center mb-10'>
-                            <button onClick={executeScroll}  className='px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'><img src="/cutlery.svg"  className='w-8 text-gray-300' /> JUMP TO RECIPE</button>
+                            <button onClick={executeScroll}  className='flex items-center px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'><img src="/cutlery.svg"  className='w-8 text-gray-300 mr-3' /> JUMP TO RECIPE</button>
                             
                         </div>
 
