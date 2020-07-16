@@ -84,7 +84,7 @@ const BlogPost = ({blogPost}) => {
                 </Head>
                 <div className='m-auto text-2xl bg-gray-primary '>
                     <Header />
-                    <div className='max-width-735 px-4 mx-auto mt-20'>
+                    <div className='max-width-735 px-4 mx-auto mt-10 lg:mt-20'>
 
                         <h1 className='mb-10 text-center'>{post.title}</h1>
 
