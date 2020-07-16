@@ -120,7 +120,7 @@ const ContactForm = () => {
                     />
                 </div>
                 <div className="flex items-center justify-end cursor-pointer">
-                    <input className="border-solid border border-gray-600 bg-gray-primary cursor-pointer text-base lg:text-base text-gray-700  w-full hover:bg-white  font-bold py-2 px-4 focus:outline-none focus:shadow-outline" type="submit" value="Submit" />
+                    <input className="border-solid border border-gray-600 bg-gray-primary cursor-pointer text-base lg:text-base text-gray-700  w-full hover:bg-white  font-bold py-2 px-4 focus:outline-none focus:shadow-outline" type="submit" value="SUBMIT" />
                 </div>
                 <input type="text" name="honeypot" style={{display: 'none'}} /> 
             </form>

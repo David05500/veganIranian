@@ -35,7 +35,7 @@ const  Blog = ( props ) => {
                                         <div className='m-auto mb-4 relative pointer max-w-280px max-h-284px min-h-284px min-w-228px lg:max-w-228px   pointer hover:opacity-60 transform ease-in duration-100 ' style={{backgroundSize: '50%', backgroundImage:`url(${item.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
                                         </div>
                                         <div >
-                                            <h2 className='text-sm text-center px-4'>{item.title}</h2>
+                                            <h2 className='text-xs text-center px-4'>{item.title}</h2>
                                         </div>
                                     </div>
                                 </Link>
