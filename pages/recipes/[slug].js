@@ -110,7 +110,7 @@ const BlogPost = ({blogPost}) => {
                                     
                                     <div className='flex items-center justify-center mb-4'>
 
-                                        <div className='w-1/2 flex items-center w-full'>
+                                        <div className='w-1/2 flex items-center w-full lg:ml-8'>
                                             <GiCookingPot size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
                                             <div className='flex'>
                                                 <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1>
@@ -128,7 +128,7 @@ const BlogPost = ({blogPost}) => {
                                     </div>
 
                                     <div className='flex items-center justify-center mb-4'>
-                                        <div className='w-1/2 flex items-center w-full'>
+                                        <div className='w-1/2 flex items-center w-full lg:ml-8'>
                                             <RiKnifeLine size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
                                             <div className='flex'>
                                                 <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Prep Time: </h1>
@@ -148,16 +148,16 @@ const BlogPost = ({blogPost}) => {
                                 </div>
                             </div>
 
-                            <div className='px-4 lg:px-8 bg-gray-primary lg:pb-8 py-8'> 
+                            <div className='px-4 lg:px-8 bg-gray-primary lg:pb-8 py-5'> 
                                 
                                 <div className='border-btm mb-12 mt-4 pb-8'>
-                                    <h1  className="align-center text-gray-500 font-bold text-base mb-8">INGREDIENTS</h1>
+                                    <h1  className="align-center text-gray-500 font-bold text-base mb-5">INGREDIENTS</h1>
                                     {documentToReactComponents(post.ingredients, options)}
                                 </div>
                 
                                 
                                 <div className='border-btm mb-12 pb-8'>
-                                    <h1  className="align-center text-gray-500 font-bold text-base mb-8">INSTRUCTIONS</h1>
+                                    <h1  className="align-center text-gray-500 font-bold text-base mb-5">INSTRUCTIONS</h1>
                                     {documentToReactComponents(post.instructions, options)}
                                 </div>
                                 <div className=' bg-white p-4 lg:p-8 mb-12 pb-8'>
