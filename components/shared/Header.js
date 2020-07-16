@@ -33,7 +33,7 @@ const Header = props => {
       <nav className="max-width-1170 bg-gray-1000 border-btm  left-0 m-auto flex flex-col justify-center items-center z-150 py-4">
 
         <Link href="/">
-          <h1 className='italic relative z-10 text-3xl lg:text-52xl text-black font-bold mb-8 pointer main-logo mt-8 bg-gray-1000 bg-clip-text' style={{color: 'transparent', backgroundSize: '94%', backgroundImage: `url(${logoBgImage})`}}>THE IRANIAN VEGAN</h1>
+          <h1 className='italic relative z-10 text-3xl lg:text-52xl text-black font-bold my-4 lg:my-8 pointer main-logo  bg-gray-1000 bg-clip-text' style={{color: 'transparent', backgroundSize: '94%', backgroundImage: `url(${logoBgImage})`}}>THE IRANIAN VEGAN</h1>
         </Link>
 
         <div className='flex w-4/5 lg:w-1/3 m-auto justify-around'> 
