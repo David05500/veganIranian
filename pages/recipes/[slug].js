@@ -151,17 +151,17 @@ const BlogPost = ({blogPost}) => {
                             <div className='px-4 lg:px-8 bg-gray-primary lg:pb-8 py-8'> 
                                 
                                 <div className='border-btm mb-12 mt-4 pb-8'>
-                                    <h1  className="align-center text-gray-500 font-bold text-lg mb-8 font-serif ">INGREDIENTS</h1>
+                                    <h1  className="align-center text-gray-500 font-bold text-base mb-8 font-serif ">INGREDIENTS</h1>
                                     {documentToReactComponents(post.ingredients, options)}
                                 </div>
                 
                                 
                                 <div className='border-btm mb-12 pb-8'>
-                                    <h1  className="align-center text-gray-500 font-bold text-lg mb-8 font-serif ">INSTRUCTIONS</h1>
+                                    <h1  className="align-center text-gray-500 font-bold text-base mb-8 font-serif ">INSTRUCTIONS</h1>
                                     {documentToReactComponents(post.instructions, options)}
                                 </div>
                                 <div className=' bg-white p-4 lg:p-8 mb-12 pb-8'>
-                                    <h1 className="align-center flex items-center text-gray-500 font-bold text-lg mb-8 font-serif ">
+                                    <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-8 font-serif ">
                                     <IoIosInformationCircleOutline size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
                                     NOTES</h1>
                                     {documentToReactComponents(post.notes, options)}
