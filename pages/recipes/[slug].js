@@ -96,12 +96,27 @@ const BlogPost = ({blogPost}) => {
                         {documentToReactComponents(post.recipeDescription, options)}
 
                         {/* Recipe Card */}
-                        <div ref={myRef} className='mb-8 lg:mx-16 p-2 lg:p-8 lg:my-20 shadow-md bg-white'>
-                            <div className='w-full '>
+
+
+
+
+
+
+
+                        <div ref={myRef} className='mb-8 lg:mx-16 p-2 lg:p-8 lg:mb-20 lg:mt-48 relative shadow-md bg-white'>
+                            
+
+                            <div className='w-48 absolute my-auto left-30 top-9n h-64'>
+                                <div className='clip-polygon w-full h-full absolute' style={{clipPath: 'polygon(50% 0, 100% 100%, 50% 100%, 0 50%)', backgroundSize: '62%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  backgroundImage: `url(${blogPost.smallBlogPostImage.fields.file.url})`}}>
+                                </div>
+                                <img src="/paisley.png"  className=' h-64 absolute text-gray-500' />
+                            </div>
+
+                            <div className='w-full lg:mt-16'>
                                 <h1 className='py-10 text-center text-3xl font-medium border-btm mb-10'>{post.title}</h1>
                                 <div className='my-2 text-lg'>
                                     <div className='flex items-center justify-center w-full mb-4'>
-                                        <img src="/course.svg"  className='w-6 text-gray-300 mr-3' />
+                                        <img src="/course.svg"  className='w-5 text-gray-500 mr-3' />
                                         <div className='flex'>
                                             <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Course: </h1>
                                             <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.course}</h1>
@@ -111,7 +126,7 @@ const BlogPost = ({blogPost}) => {
                                     <div className='flex items-center justify-center mb-4'>
 
                                         <div className='w-1/2 flex items-center w-full lg:ml-4'>
-                                            <img src="/cook-time.svg"  className='w-6 text-gray-300 mr-3' />
+                                            <img src="/cook-time.svg"  className='w-5 text-gray-500 mr-3' />
                                             <div className='flex'>
                                                 <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1>
                                                 <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.cookTime}</h1>
@@ -119,7 +134,7 @@ const BlogPost = ({blogPost}) => {
                                         </div>
 
                                         <div className='w-1/2 flex items-center w-full lg:ml-4'>
-                                            <img src="/total-time.svg"  className='w-6 text-gray-300 mr-3' />
+                                            <img src="/total-time.svg"  className='w-5 text-gray-500 mr-3' />
                                             <div className='flex'>
                                                 <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Total Time: </h1>
                                                 <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.totalTime}</h1>
@@ -129,7 +144,7 @@ const BlogPost = ({blogPost}) => {
 
                                     <div className='flex items-center justify-center mb-4'>
                                         <div className='w-1/2 flex items-center w-full lg:ml-4'>
-                                            <img src="/prep-time.svg"  className='w-6 text-gray-300 mr-3' />
+                                            <img src="/prep-time.svg"  className='w-5 text-gray-500 mr-3' />
                                             <div className='flex'>
                                                 <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Prep Time: </h1>
                                                 <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.prepTime}</h1>
@@ -137,7 +152,7 @@ const BlogPost = ({blogPost}) => {
                                         </div>
 
                                         <div className='w-1/2 flex items-center w-full lg:ml-4'>
-                                            <img src="/servings.svg"  className='w-6 text-gray-300 mr-3' />
+                                            <img src="/servings.svg"  className='w-5 text-gray-500 mr-3' />
                                             <div className='flex'>
                                                 <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-4'>Servings: </h1>
                                                 <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.servings}</h1>
@@ -160,10 +175,8 @@ const BlogPost = ({blogPost}) => {
                                     <h1  className="align-center text-gray-500 font-bold text-base mb-5">INSTRUCTIONS</h1>
                                     {documentToReactComponents(post.instructions, options)}
                                 </div>
-                                <div className=' bg-white p-4 lg:p-8 mb-12 pb-8'>
-                                    <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-8">
-                                    <IoIosInformationCircleOutline size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
-                                    NOTES</h1>
+                                <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-8"><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
+                                <div className='bg-white p-4 lg:p-8 mb-12 pb-8'>
                                     {documentToReactComponents(post.notes, options)}
                                 </div>
                             </div>
@@ -182,7 +195,7 @@ const BlogPost = ({blogPost}) => {
                 </div>
 
 
-                <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                <div className='hidden'>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
             </div>
         )
     }

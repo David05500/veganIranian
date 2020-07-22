@@ -89,3 +89,12 @@ ol, ul {
 .bg-clip-text{
   -webkit-background-clip: text;
 }
+.clip-circle {
+  clip-path: circle(60px at center);
+}
+.clip-ellipse {
+  clip-path: ellipse(60px 40px at center);
+}
+.clip-polygon {
+  clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 100%, 50% 0%, 0% 0%);
+}

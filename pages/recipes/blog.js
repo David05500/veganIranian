@@ -12,7 +12,7 @@ const  Blog = ( props ) => {
     const [blogPosts, setBlogPosts] = useState([]);
     
     useEffect(() => {
-        setBlogPosts(props);
+        setBlogPosts(_.sortBy(props, 'createdAt'));
     }, []);
 
     return (
