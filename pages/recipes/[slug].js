@@ -112,10 +112,10 @@ const BlogPost = ({blogPost}) => {
                                 <img src="/paisley.png"  className=' h-64 absolute text-gray-500' />
                             </div>
 
-                            <div className='w-full mt-16'>
+                            <div className='w-full mt-24 '>
                                 <h1 className='py-10 text-center text-3xl font-medium border-btm mb-10'>{post.title}</h1>
-                                <div className='my-2 text-lg'>
-                                    <div className='flex items-center justify-center w-full mb-4'>
+                                <div className='my-2 text-lg pl-4 lg:pl-0'>
+                                    <div className='flex items-center lg:justify-center w-full mb-4'>
                                         <img src="/course.svg"  className='w-5 text-gray-500 mr-3' />
                                         <div className='flex'>
                                             <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Course: </h1>
@@ -123,9 +123,9 @@ const BlogPost = ({blogPost}) => {
                                         </div>
                                     </div>
                                     
-                                    <div className='flex items-center justify-center mb-4'>
+                                    <div className='flex flex-col lg:flex-row items-center justify-center mb-4'>
 
-                                        <div className='w-1/2 flex items-center w-full lg:ml-4'>
+                                        <div className='w-1/2 flex items-center w-full lg:ml-4 mb-4 lg:mb-0'>
                                             <img src="/cook-time.svg"  className='w-5 text-gray-500 mr-3' />
                                             <div className='flex'>
                                                 <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1>
@@ -142,8 +142,8 @@ const BlogPost = ({blogPost}) => {
                                         </div>
                                     </div>
 
-                                    <div className='flex items-center justify-center mb-4'>
-                                        <div className='w-1/2 flex items-center w-full lg:ml-4'>
+                                    <div className='flex flex-col lg:flex-row items-center justify-center mb-4'>
+                                        <div className='w-1/2 flex items-center w-full lg:ml-4 mb-4 lg:mb-0'>
                                             <img src="/prep-time.svg"  className='w-5 text-gray-500 mr-3' />
                                             <div className='flex'>
                                                 <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Prep Time: </h1>
