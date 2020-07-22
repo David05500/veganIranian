@@ -103,16 +103,16 @@ const BlogPost = ({blogPost}) => {
 
 
 
-                        <div ref={myRef} className='mb-8 lg:mx-16 p-2 lg:p-8 lg:mb-20 lg:mt-48 relative shadow-md bg-white'>
+                        <div ref={myRef} className='mb-8  lg:mx-16 p-2 lg:p-8 lg:mb-20 mt-48 relative shadow-md bg-white'>
                             
 
-                            <div className='w-48 absolute my-auto left-30 top-9n h-64'>
+                            <div className='w-48 absolute my-auto left-23 lg:left-34 top-9n h-64'>
                                 <div className='clip-polygon w-full h-full absolute' style={{clipPath: 'polygon(50% 0, 100% 100%, 50% 100%, 0 50%)', backgroundSize: '62%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  backgroundImage: `url(${blogPost.smallBlogPostImage.fields.file.url})`}}>
                                 </div>
                                 <img src="/paisley.png"  className=' h-64 absolute text-gray-500' />
                             </div>
 
-                            <div className='w-full lg:mt-16'>
+                            <div className='w-full mt-16'>
                                 <h1 className='py-10 text-center text-3xl font-medium border-btm mb-10'>{post.title}</h1>
                                 <div className='my-2 text-lg'>
                                     <div className='flex items-center justify-center w-full mb-4'>
