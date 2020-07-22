@@ -101,7 +101,7 @@ const BlogPost = ({blogPost}) => {
                                 <h1 className='py-10 text-center text-3xl font-medium border-btm mb-10'>{post.title}</h1>
                                 <div className='my-2 text-lg'>
                                     <div className='flex items-center justify-center w-full mb-4'>
-                                        <IoIosInformationCircleOutline size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
+                                        <img src="/course.svg"  className='w-6 text-gray-300 mr-3' />
                                         <div className='flex'>
                                             <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Course: </h1>
                                             <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.course}</h1>
@@ -110,16 +110,16 @@ const BlogPost = ({blogPost}) => {
                                     
                                     <div className='flex items-center justify-center mb-4'>
 
-                                        <div className='w-1/2 flex items-center w-full lg:ml-8'>
-                                            <GiCookingPot size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
+                                        <div className='w-1/2 flex items-center w-full lg:ml-4'>
+                                            <img src="/cook-time.svg"  className='w-6 text-gray-300 mr-3' />
                                             <div className='flex'>
                                                 <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1>
                                                 <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.cookTime}</h1>
                                             </div>
                                         </div>
 
-                                        <div className='w-1/2 flex items-center w-full'>
-                                            <IoMdTime size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
+                                        <div className='w-1/2 flex items-center w-full lg:ml-4'>
+                                            <img src="/total-time.svg"  className='w-6 text-gray-300 mr-3' />
                                             <div className='flex'>
                                                 <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Total Time: </h1>
                                                 <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.totalTime}</h1>
@@ -128,16 +128,16 @@ const BlogPost = ({blogPost}) => {
                                     </div>
 
                                     <div className='flex items-center justify-center mb-4'>
-                                        <div className='w-1/2 flex items-center w-full lg:ml-8'>
-                                            <RiKnifeLine size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
+                                        <div className='w-1/2 flex items-center w-full lg:ml-4'>
+                                            <img src="/prep-time.svg"  className='w-6 text-gray-300 mr-3' />
                                             <div className='flex'>
                                                 <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Prep Time: </h1>
                                                 <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.prepTime}</h1>
                                             </div>
                                         </div>
 
-                                        <div className='w-1/2 flex items-center w-full'>
-                                            <IoIosPeople size={20} className='hidden lg:block text-gray-700 mr-1 lg:mr-2'/>
+                                        <div className='w-1/2 flex items-center w-full lg:ml-4'>
+                                            <img src="/servings.svg"  className='w-6 text-gray-300 mr-3' />
                                             <div className='flex'>
                                                 <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-4'>Servings: </h1>
                                                 <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.servings}</h1>
@@ -180,6 +180,9 @@ const BlogPost = ({blogPost}) => {
                         </div>
                     </div>
                 </div>
+
+
+                <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
             </div>
         )
     }
