@@ -2,7 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-
+input:focus { 
+  outline: none !important;
+  border-color: rgba(203, 213, 224, 0.5)  !important;
+  box-shadow: 0 0 10px rgba(203, 213, 224, 0.5)  !important;
+}
+textarea:focus { 
+  outline: none !important;
+  border-color: rgba(203, 213, 224, 0.5)  !important;
+  box-shadow: 0 0 10px rgba(203, 213, 224, 0.5)  !important;
+}
 .pointer {
   cursor: pointer;
 }

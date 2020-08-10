@@ -65,6 +65,7 @@ const ContactForm = () => {
                 method="post" 
                 className=''
                 onSubmit={handleSubmit}
+                noValidate
             >
                 <input 
                     type="hidden" 
