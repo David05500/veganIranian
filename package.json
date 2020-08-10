@@ -11,12 +11,14 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.1",
     "@contentful/rich-text-types": "^14.1.1",
+    "algoliasearch": "^4.4.0",
     "contentful": "^7.14.4",
     "framer-motion": "^1.11.1",
     "next": "9.1.6",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-icons": "^3.10.0",
+    "react-instantsearch-dom": "^6.7.0",
     "react-toastify": "^6.0.8",
     "react-waypoint": "^9.0.3"
   },
