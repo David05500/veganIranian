@@ -16,10 +16,13 @@ function MyApp(props) {
   }, []);
 
   const updateBlogs = data => {
-    if (data != [] && data.length != initialBlogs.length && data.length != 0){
-      setIsSearching(true);
-    }else{
-      setIsSearching(false);
+    console.log(data);
+    if (data && initialBlogs) {
+      if (data != [] && data.length != initialBlogs.length && data.length != 0){
+        setIsSearching(true);
+      }else{
+        setIsSearching(false);
+      }
     }
     let slug = '';
     let hitData = '';
