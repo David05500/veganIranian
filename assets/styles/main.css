@@ -112,3 +112,15 @@ ol, ul {
 .clip-polygon {
   clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 100%, 50% 0%, 0% 0%);
 }
+.cut-corrner{
+  position: relative;
+}
+.cut-corrner:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top: 44px solid #f1f3f5;
+  border-right: 44px solid transparent;
+  width: 0;
+}

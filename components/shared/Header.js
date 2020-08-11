@@ -34,13 +34,13 @@ const CustomHits = connectHits(Hits);
 
 
 const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
-  <form noValidate action="" role="search">
+  <form noValidate action="" role="search" className='mt-4 lg:mt-0'>
     <input
       type="search"
       value={currentRefinement}
       onChange={event =>  refine(event.currentTarget.value)}
       className=' text-sm font-medium px-2 py-1'
-      placeholder='Search here...'
+      placeholder='SEARCH HERE...'
     />
   </form>
 );
@@ -102,7 +102,7 @@ const Header = props => {
     const offset = window.pageYOffset - posY;
     offset > 200 ? isShrink ? '' : setIsShrink(true) : isShrink == false ? '' : setIsShrink(false);
   };
-  const { filteredBlogs, blogs, isSearching } = useContext(BlogDataContext);
+  const { filteredBlogs, blogs, isSearching, setIsSearching } = useContext(BlogDataContext);
 
   return (
     <div className='sticky top-0 z-50'>
@@ -134,12 +134,11 @@ const Header = props => {
             indexName="dev_Iranian"
             searchClient={searchClient}
           >
-            <CustomSearchBox submit={<img src="" alt=""/>}/>
+            <CustomSearchBox submit={<img src="" alt=""/>} setIsSearching={setIsSearching}/>
             <CustomHits />
           </InstantSearch>
         </div>
       </nav>
-      {console.log(filteredBlogs)}
       {slug.includes('/recipes/blog') ?
       ''
       :

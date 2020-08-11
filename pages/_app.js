@@ -16,7 +16,6 @@ function MyApp(props) {
   }, []);
 
   const updateBlogs = data => {
-    console.log(data);
     if (data && initialBlogs) {
       if (data != [] && data.length != initialBlogs.length && data.length != 0){
         setIsSearching(true);
