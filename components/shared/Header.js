@@ -124,9 +124,9 @@ const Header = props => {
             <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>ABOUT</h1>
           </Link>
 
-          <Link href="/contact">
+          <a href="/contact">
             <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
-          </Link>
+          </a>
           
         </div>
         <div className='lg:absolute lg:right-185px lg:bottom-12px'>
