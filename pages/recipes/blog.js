@@ -27,7 +27,7 @@ const  Blog = ( props ) => {
                                 if(blog != undefined ) {
                                     return(
                                         <div key={blog.slug} className='lg:w-1/3 mb-8'>
-                                            <Link prefetch='ture'  href='/recipes/[slug]' as={`/recipes/${blog.slug}/`}>
+                                            <Link   href='/recipes/[slug]' as={`/recipes/${blog.slug}/`}>
                                                 <div className='card'>
                                                     <div className='m-auto mb-4 relative pointer max-w-280px max-h-284px min-h-284px min-w-228px lg:max-w-228px   pointer hover:opacity-60 transform ease-in duration-100 ' style={{backgroundSize: '50%', backgroundImage:`url(${blog.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
                                                     </div>

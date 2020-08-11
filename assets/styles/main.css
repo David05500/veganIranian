@@ -31,7 +31,10 @@ body {
 body{
   margin:0;
 }
-
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
 /* .hollla{
   background:url(''),linear-gradient(233deg, #80e56420, #80c22525, #803d9c31);
   width:100%;

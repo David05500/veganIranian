@@ -2,6 +2,7 @@ import '../assets/styles/main.css';
 import Header from '../components/shared/Header';
 import Head from 'next/head';
 import ContactForm from '../components/contactForm';
+import _ from 'lodash';
 
 const  Contact = () => {
 

@@ -6,6 +6,10 @@ import contentfulClient from '../../lib/contentful';
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch,   connectHits, connectSearchBox } from 'react-instantsearch-dom';
 import BlogDataContext from '../BlogDataContext';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
+import {useRouter} from 'next/router';
+import _ from 'lodash';
 
 
 const getData = async () => {
@@ -22,7 +26,7 @@ const searchClient = algoliasearch(
   '70231e407e7e59d0ed63b92e2f0a8be7'
 );
 const Hits = data => {
-  const { blogs, updateBlogs } = useContext(BlogDataContext);
+  const { updateBlogs } = useContext(BlogDataContext);
   updateBlogs(data.hits);
   return('');
 };
@@ -34,7 +38,7 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
     <input
       type="search"
       value={currentRefinement}
-      onChange={event => refine(event.currentTarget.value)}
+      onChange={event =>  refine(event.currentTarget.value)}
       className=' text-sm font-medium px-2 py-1'
       placeholder='Search here...'
     />
@@ -43,10 +47,38 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
 
 const CustomSearchBox = connectSearchBox(SearchBox);
 
+//Markdown
+const Text = ({ children }) => {
+  return <p className="text-sm text-justify">{children}</p>
+};
+const options = {
+  renderText: text => {
+      return text.split('\n').reduce((children, textSegment, index) => {
+        return [...children, index > 0 && <br key={index} />, textSegment];
+      }, []);
+  },
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+    [BLOCKS.UL_LIST]: (node, children) => <UlList>{children}</UlList>,
+    [BLOCKS.OL_LIST]: (node, children) => <OlList>{children}</OlList>,
+    [BLOCKS.HEADING_1]: (node, children) => <HEADING1>{children}</HEADING1>,
+    [BLOCKS.HEADING_3]: (node, children) => <HEADING3>{children}</HEADING3>,
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      return <img src={node.data.target.fields.file.url} className='my-10'/>
+    },
+    [INLINES.HYPERLINK]: (node, children) => <MyLink>{children}</MyLink>,
+  },
+};
+
+
+
 const Header = props => {
   const refy = useRef();
   const [logoBgImage, setLogoBgImage] = useState([]);
   const [isShrink, setIsShrink] = useState(false);
+
+  const router = useRouter();
+  const slug = router.pathname;
   
   useEffect(() => {
     getData().then(data => {
@@ -62,11 +94,15 @@ const Header = props => {
     };
   });
 
+  const truncate = (str, value) => {
+    return str.length > 10 ? str.substring(0, `${value}`) + "..." : str;
+  };
   const handleScroll = () => {
     const posY = refy.current.getBoundingClientRect().top;
     const offset = window.pageYOffset - posY;
     offset > 200 ? isShrink ? '' : setIsShrink(true) : isShrink == false ? '' : setIsShrink(false);
   };
+  const { filteredBlogs, blogs, isSearching } = useContext(BlogDataContext);
 
   return (
     <div className='sticky top-0 z-50'>
@@ -88,9 +124,9 @@ const Header = props => {
             <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>ABOUT</h1>
           </Link>
 
-          <a href="/contact">
+          <Link href="/contact">
             <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
-          </a>
+          </Link>
           
         </div>
         <div className='lg:absolute lg:right-185px lg:bottom-12px'>
@@ -103,6 +139,26 @@ const Header = props => {
           </InstantSearch>
         </div>
       </nav>
+      {console.log(filteredBlogs)}
+      {slug.includes('/recipes/blog') ?
+      ''
+      :
+      <div className={`max-width-850 shadow-sm bg-white left-0 m-auto flex flex-col items-center px-4 py-4 even:bg-red absolute left-0 right-0 overflow-y-scroll max-h-25rem ease-in duration-200 ${isSearching ? '' : 'transform  -translate-y-full'}`}>
+        {_.map(filteredBlogs, blog => {
+          return (
+            <div key={blog.title} className='flex pointer hover:opacity-60 transform ease-in duration-100 '> 
+              <div className='mb-4 relative pointer max-w-280px max-h-284px min-h-284px min-w-228px lg:max-w-228px ' style={{backgroundSize: '50%', backgroundImage:`url(${blog.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
+              </div>
+              <div className='flex flex-col p-4'>
+                <h1 className='mb-10 text-sm text-center'>{blog.title}</h1>
+                {truncate(documentToReactComponents(blog.shortDescription, options), 400)}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+      }
+      
     </div>
   );
 }

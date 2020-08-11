@@ -400,6 +400,7 @@ module.exports = {
       full: '100%',
       screen: '100vh',
       5: '5em',
+      '25rem': '25rem',
       '40em': '40em',
       '4rem': '4rem',
       '284px': '284px'

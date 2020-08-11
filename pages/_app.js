@@ -8,6 +8,7 @@ function MyApp(props) {
   const { Component, pageProps, router, data } = props;
   const [initialBlogs, setInitialBlogs] = useState(null)
   const [filteredBlogs, setFilteredBlogs] = useState(null)
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     setInitialBlogs(_.orderBy(data, ['createdAt' ], ['desc']));
@@ -15,6 +16,11 @@ function MyApp(props) {
   }, []);
 
   const updateBlogs = data => {
+    if (data != [] && data.length != initialBlogs.length && data.length != 0){
+      setIsSearching(true);
+    }else{
+      setIsSearching(false);
+    }
     let slug = '';
     let hitData = '';
     let newArr = [];
@@ -33,7 +39,7 @@ function MyApp(props) {
 
   if (initialBlogs != {}) {
     return (
-      <BlogDataContext.Provider value={{ blogs: initialBlogs, filteredBlogs: filteredBlogs, updateBlogs: updateBlogs }}>
+      <BlogDataContext.Provider value={{ blogs: initialBlogs, filteredBlogs: filteredBlogs, updateBlogs: updateBlogs, isSearching: isSearching, setIsSearching: setIsSearching }}>
         <Component {...pageProps} key={router.route}/>
       </BlogDataContext.Provider>
     )

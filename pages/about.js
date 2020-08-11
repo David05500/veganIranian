@@ -2,6 +2,7 @@ import '../assets/styles/main.css';
 // import PostList from '../components/post-list';
 import Header from '../components/shared/Header';
 import Head from 'next/head';
+import _ from 'lodash';
 
 const  About = () => {
 
