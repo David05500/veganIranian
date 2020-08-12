@@ -157,20 +157,20 @@ const BlogPost = ({blogPost}) => {
 
                           <div className='px-4 lg:px-8 bg-gray-primary lg:pb-8 py-5'> 
                               
-                              <div className='border-btm mb-10 mt-4 pb-8'>
-                                  <h1  className="align-center text-gray-500 font-bold text-base mb-5">INGREDIENTS</h1>
-                                  {documentToReactComponents(post.ingredients, options)}
-                              </div>
-              
-                              
-                              <div className='border-btm mb-12 pb-8'>
-                                  <h1  className="align-center text-gray-500 font-bold text-base mb-5">INSTRUCTIONS</h1>
-                                  {documentToReactComponents(post.instructions, options)}
-                              </div>
-                              <h1 className="align-center flex items-center text-gray-500 font-bold text-base "><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
-                              <div className='bg-white p-4 lg:p-8 mb-12 pb-8 cut-corrner'>
-                                  {documentToReactComponents(post.notes, options)}
-                              </div>
+                                <div className='border-btm mb-10 mt-4 pb-8'>
+                                    <h1  className="align-center text-gray-500 font-bold text-base mb-5">INGREDIENTS</h1>
+                                    {documentToReactComponents(post.ingredients, options)}
+                                </div>
+                
+                                
+                                <div className='border-btm mb-10 pb-8'>
+                                    <h1  className="align-center text-gray-500 font-bold text-base mb-5">INSTRUCTIONS</h1>
+                                    {documentToReactComponents(post.instructions, options)}
+                                </div>
+                                <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-5 "><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
+                                <div className='bg-white p-4 lg:p-8 mb-12 pb-8 cut-corrner'>
+                                    {documentToReactComponents(post.notes, options)}
+                                </div>
                           </div>
                       
                           <div className='w-full flex bg-white p-4 lg:p-8'>

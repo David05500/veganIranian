@@ -41,6 +41,7 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
       onChange={event =>  refine(event.currentTarget.value)}
       className=' text-sm font-medium px-2 py-1'
       placeholder='SEARCH HERE...'
+      
     />
   </form>
 );
