@@ -11,12 +11,13 @@ function MyApp(props) {
   const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
+    console.log('data', data);
     setInitialBlogs(_.orderBy(data, ['createdAt' ], ['desc']));
     setFilteredBlogs(_.orderBy(data, ['createdAt' ], ['desc']));
   }, []);
 
   const updateBlogs = data => {
-    if (data && initialBlogs) {
+    if (!_.isEmpty(data) && !_.isEmpty(initialBlogs)) {
       if (data != [] && data.length != initialBlogs.length && data.length != 0){
         setIsSearching(true);
       }else{
