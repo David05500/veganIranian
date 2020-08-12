@@ -146,14 +146,16 @@ const Header = props => {
       <div className={`max-width-850 shadow-sm bg-white left-0 m-auto flex flex-col items-center px-4 py-4 even:bg-red absolute left-0 right-0 overflow-y-scroll max-h-25rem ease-in duration-200 ${isSearching ? '' : 'transform  -translate-y-full'}`}>
         {_.map(filteredBlogs, blog => {
           return (
-            <div key={blog.title} className='flex pointer hover:opacity-60 transform ease-in duration-100 '> 
-              <div className='mb-4 relative pointer max-w-280px max-h-284px min-h-284px min-w-228px lg:max-w-228px ' style={{backgroundSize: '50%', backgroundImage:`url(${blog.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
+            <Link   href='/recipes/[slug]' as={`/recipes/${blog.slug}/`}>
+              <div key={blog.title} className='flex pointer hover:opacity-60 transform ease-in duration-100 '> 
+                <div className='mb-4 relative pointer max-w-280px max-h-284px min-h-284px min-w-228px lg:max-w-228px ' style={{backgroundSize: '50%', backgroundImage:`url(${blog.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
+                </div>
+                <div className='flex flex-col p-4'>
+                  <h1 className='mb-10 text-sm text-center'>{blog.title}</h1>
+                  {truncate(documentToReactComponents(blog.shortDescription, options), 400)}
+                </div>
               </div>
-              <div className='flex flex-col p-4'>
-                <h1 className='mb-10 text-sm text-center'>{blog.title}</h1>
-                {truncate(documentToReactComponents(blog.shortDescription, options), 400)}
-              </div>
-            </div>
+            </Link>
           )
         })}
       </div>
