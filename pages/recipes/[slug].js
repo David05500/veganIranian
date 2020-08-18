@@ -87,7 +87,9 @@ const BlogPost = ({blogPost}) => {
 
                       <h1 className='mb-10 text-center'>{post.title}</h1>
                       {post.blogPostImage != undefined ? <img src={post.blogPostImage.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
-                      {post.blogPostImage2 != undefined ? <img src={post.blogPostImage2.fields.file.url} className='mb-10 w-5/6 m-auto'></img> : ''}
+                      {post.blogPostImage2 != undefined ? <img src={post.blogPostImage2.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
+                      {post.blogPostImage3 != undefined ? <img src={post.blogPostImage3.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
+                      {post.blogPostImage4 != undefined ? <img src={post.blogPostImage4.fields.file.url} className='mb-10 w-5/6 m-auto'></img> : ''}
 
 
                       <div className='w-full flex justify-center mb-10'>
