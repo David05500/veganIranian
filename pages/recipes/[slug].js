@@ -67,7 +67,6 @@ const BlogPost = ({blogPost}) => {
         [INLINES.HYPERLINK]: (node, children) => <MyLink>{children}</MyLink>,
       },
   };
-
   if (post == null) {
       return(
           <h1>Loading...</h1>
@@ -87,6 +86,9 @@ const BlogPost = ({blogPost}) => {
                   <div className='max-width-735 px-4 mx-auto mt-10 lg:mt-20'>
 
                       <h1 className='mb-10 text-center'>{post.title}</h1>
+                      {post.blogPostImage != undefined ? <img src={post.blogPostImage.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
+                      {post.blogPostImage2 != undefined ? <img src={post.blogPostImage2.fields.file.url} className='mb-10 w-5/6 m-auto'></img> : ''}
+
 
                       <div className='w-full flex justify-center mb-10'>
                           <button onClick={executeScroll}  className='flex items-center px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'><img src="/cutlery.svg"  className='w-8 text-gray-300 mr-3' /> JUMP TO RECIPE</button>
