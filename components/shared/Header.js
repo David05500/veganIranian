@@ -39,9 +39,8 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
       type="search"
       value={currentRefinement}
       onChange={event =>  refine(event.currentTarget.value)}
-      className=' text-sm font-medium px-2 py-1'
+      className='text-sm font-medium px-2 py-1 flex justify-center text-black items-center '
       placeholder='Search here...'
-      
     />
   </form>
 );
@@ -135,7 +134,7 @@ const Header = props => {
             indexName="dev_Iranian"
             searchClient={searchClient}
           >
-            <CustomSearchBox submit={<img src="" alt=""/>} setIsSearching={setIsSearching}/>
+            <CustomSearchBox  setIsSearching={setIsSearching}/>
             <CustomHits />
           </InstantSearch>
         </div>

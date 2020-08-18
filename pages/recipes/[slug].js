@@ -2,8 +2,8 @@ import React, {useEffect, useState, useRef} from 'react';
 import {useRouter} from 'next/router';
 import getContentfulContent from '../../lib/getContentfulContent';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import '../../assets/styles/main.css';
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
+import '../../assets/styles/main.css';
 import Header from '../../components/shared/Header';
 import { RiKnifeLine } from "react-icons/ri";
 import { GiCookingPot, GiChefToque, GiWorld } from "react-icons/gi";
@@ -90,7 +90,6 @@ const BlogPost = ({blogPost}) => {
 
                       <div className='w-full flex justify-center mb-10'>
                           <button onClick={executeScroll}  className='flex items-center px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'><img src="/cutlery.svg"  className='w-8 text-gray-300 mr-3' /> JUMP TO RECIPE</button>
-                          
                       </div>
 
                       {documentToReactComponents(post.recipeDescription, options)}
