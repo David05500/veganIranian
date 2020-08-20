@@ -43,7 +43,7 @@ const  HomePage = () => {
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet"></link>
           <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         </Head>
-        <div className='h-screen w-screen  bg-no-repeat bg-103p bg-center flex justify-center items-center' style={{backgroundSize: '100%', backgroundImage: windowWidth > 430 ? `url(${homePagePic})` : `url(${mobileHomePagePic})`}} >
+        <div className='h-screen w-screen  bg-no-repeat bg-103p bg-center flex justify-center items-center' style={{backgroundSize: 'cover', backgroundImage: windowWidth > 430 ? `url(${homePagePic})` : `url(${mobileHomePagePic})`}} >
           <div style={{background: 'linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3))', pointerEvents: 'none',  width: '100vw', height: '100vh', position: 'absolute'}} />
           <div className='flex flex-col justify-between pt-12 pb-28 lg:justify-center items-center h-screen '>
             <h1 className='italic text-3xl lg:text-7xl text-white font-bold z-50 main-logo lg:text-spaceping-4 mt-28' style={{textShadow: '6px 6px 0px rgba(0,0,0,0.1)'}} >THE    IRANIAN    VEGAN</h1>
