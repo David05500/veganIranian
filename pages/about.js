@@ -43,7 +43,7 @@ const About = () => {
 
   useEffect(() => {
     GetAboutPageData().then(data => {
-      setAboutMePagePic(data[0].aboutMePic.fields.file.url);
+      data[0].aboutMePic != undefined ? setAboutMePagePic(data[0].aboutMePic.fields.file.url) : '';
       setAboutMeDescription(data[0].aboutMeDescription)
     });
   }, []);
