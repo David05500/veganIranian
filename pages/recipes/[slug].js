@@ -171,7 +171,7 @@ const BlogPost = ({blogPost}) => {
                                     {documentToReactComponents(post.instructions, options)}
                                 </div>
                                 <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-5 "><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
-                                <div className='bg-white p-4 lg:p-8 mb-12 pb-8 cut-corrner'>
+                                <div className='bg-white p-4 pt-10 lg:p-8 mb-12 pb-8 cut-corrner'>
                                     {documentToReactComponents(post.notes, options)}
                                 </div>
                           </div>
