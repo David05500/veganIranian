@@ -28,11 +28,7 @@ const  HomePage = () => {
     setWindowWidth(window.innerWidth)
   }, []);
 
-//   async function fetchEntries() {
-//     const entries = await client.getEntries()
-//     if (entries.items) return entries.items
-//     console.log(`Error getting Entries for ${contentType.name}.`)
-//   }
+
   return (
     <div>
         <Head>

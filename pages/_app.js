@@ -6,19 +6,18 @@ import _ from 'lodash';
 
 function MyApp(props) {
   const { Component, pageProps, router, data } = props;
-  const [initialBlogs, setInitialBlogs] = useState(null)
-  const [filteredBlogs, setFilteredBlogs] = useState(null)
+  const [initialBlogs, setInitialBlogs] = useState(null);
+  const [filteredBlogs, setFilteredBlogs] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
-    console.log('data', data);
     setInitialBlogs(_.orderBy(data, ['createdAt' ], ['desc']));
     setFilteredBlogs(_.orderBy(data, ['createdAt' ], ['desc']));
   }, []);
 
   const updateBlogs = data => {
     if (!_.isEmpty(data) && !_.isEmpty(initialBlogs)) {
-      if (data != [] && data.length != initialBlogs.length && data.length != 0){
+      if (data != [] && data.length + 1 != initialBlogs.length && data.length != 0){
         setIsSearching(true);
       }else{
         setIsSearching(false);

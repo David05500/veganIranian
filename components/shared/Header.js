@@ -22,8 +22,8 @@ const getData = async () => {
 };
 
 const searchClient = algoliasearch(
-  'KCP4G3STUF',
-  '70231e407e7e59d0ed63b92e2f0a8be7'
+  'M9SIDYA62K',
+  '46b3e11ec2f46dac73c5358cce20ae0e'
 );
 const Hits = data => {
   const { updateBlogs } = useContext(BlogDataContext);
@@ -131,7 +131,7 @@ const Header = props => {
         </div>
         <div className='lg:absolute lg:right-185px lg:bottom-12px'>
           <InstantSearch
-            indexName="dev_Iranian"
+            indexName="prod_TheIranianVegan"
             searchClient={searchClient}
           >
             <CustomSearchBox  setIsSearching={setIsSearching}/>
@@ -145,7 +145,7 @@ const Header = props => {
       <div className={`max-width-850 shadow-sm bg-white left-0 m-auto flex flex-col items-center px-4 py-4 even:bg-red absolute left-0 right-0 overflow-y-scroll max-h-25rem ease-in duration-200 ${isSearching ? '' : 'transform  -translate-y-full'}`}>
         {_.map(filteredBlogs, blog => {
           return (
-            <Link   href='/recipes/[slug]' as={`/recipes/${blog.slug}/`}>
+            <Link  key={blog.slug} href='/recipes/[slug]' as={`/recipes/${blog.slug}/`}>
               <div key={blog.title} className='flex pointer hover:opacity-60 transform ease-in duration-100 '> 
                 <div className='mb-4 relative pointer max-w-280px max-h-284px min-h-284px min-w-228px lg:max-w-228px ' style={{backgroundSize: '50%', backgroundImage:`url(${blog.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
                 </div>
