@@ -33,15 +33,18 @@ const Hits = data => {
 const CustomHits = connectHits(Hits);
 
 
-const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
-  <form noValidate action="" role="search" className='mt-4 lg:mt-0'>
+const SearchBox = ( { currentRefinement, isSearchStalled, refine }) => (
+  <form noValidate action="" role="search" className='mt-4 lg:mt-0 relative'>
     <input
       type="search"
       value={currentRefinement}
       onChange={event =>  refine(event.currentTarget.value)}
-      className='text-sm font-medium px-2 py-1 flex justify-center text-black items-center '
+      className='search-input text-sm font-medium px-2 py-1 flex justify-center text-black items-center '
       placeholder='Search here...'
     />
+    <svg onClick={() => refine('')} role="presentation" className="i-search w-3" viewBox="5 5 30 30" fill="none" stroke="currentcolor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
+      <path d="M 10,10 L 30,30 M 30,10 L 10,30" />
+    </svg>
   </form>
 );
 
@@ -100,7 +103,7 @@ const Header = props => {
   const handleScroll = () => {
     const posY = refy.current.getBoundingClientRect().top;
     const offset = window.pageYOffset - posY;
-    offset > 200 ? isShrink ? '' : setIsShrink(true) : isShrink == false ? '' : setIsShrink(false);
+    offset >= 200 ? isShrink ? '' : setIsShrink(true) : isShrink == false ? '' : setIsShrink(false);
   };
   const { filteredBlogs, blogs, isSearching, setIsSearching } = useContext(BlogDataContext);
 
@@ -134,7 +137,7 @@ const Header = props => {
             indexName="prod_TheIranianVegan"
             searchClient={searchClient}
           >
-            <CustomSearchBox  setIsSearching={setIsSearching}/>
+            <CustomSearchBox reset={<img src='' alt="" />} setIsSearching={setIsSearching}/>
             <CustomHits />
           </InstantSearch>
         </div>

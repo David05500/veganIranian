@@ -124,3 +124,22 @@ ol, ul {
   border-right: 44px solid transparent;
   width: 0;
 }
+
+.search-input::-webkit-search-cancel-button {
+  /* Remove default */
+  -webkit-appearance: none;
+}
+
+
+.search-input + svg {
+  position: absolute;
+  right: 6%;
+  top: 28%;
+}
+
+.search-input + svg {
+  visibility: visible;
+}
+.search-input:placeholder-shown + svg {
+  visibility: hidden;
+} 
