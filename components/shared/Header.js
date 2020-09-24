@@ -42,7 +42,7 @@ const SearchBox = ( { currentRefinement, isSearchStalled, refine }) => (
       className='search-input text-sm font-medium px-2 py-1 flex justify-center text-black items-center '
       placeholder='Search here...'
     />
-    <svg onClick={() => refine('')} role="presentation" className="i-search w-3" viewBox="5 5 30 30" fill="none" stroke="currentcolor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
+    <svg onClick={() => refine('')} role="presentation" className="i-search w-3" viewBox="5 5 30 30" fill="none" stroke="currentcolor" color='gray' strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
       <path d="M 10,10 L 30,30 M 30,10 L 10,30" />
     </svg>
   </form>
