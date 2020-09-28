@@ -17,13 +17,13 @@ const getData = async () => {
     content_type: 'nav',
     limit: 100,
   });
-  const data = res.items.map(item => item.fields);
-  return data;
+  const navData = res.items.map(item => item.fields);
+  return navData;
 };
 
 const searchClient = algoliasearch(
   'M9SIDYA62K',
-  '46b3e11ec2f46dac73c5358cce20ae0e'
+  'e278595e667bbbe39f9dd4c380574c45'
 );
 const Hits = data => {
   const { updateBlogs } = useContext(BlogDataContext);
@@ -33,7 +33,7 @@ const Hits = data => {
 const CustomHits = connectHits(Hits);
 
 
-const SearchBox = ( { currentRefinement, isSearchStalled, refine }) => (
+const SearchBox = ( { currentRefinement, isSearchStalled, refine, setIsSearching }) => (
   <form noValidate action="" role="search" className='mt-4 lg:mt-0 relative'>
     <input
       type="search"
@@ -41,6 +41,8 @@ const SearchBox = ( { currentRefinement, isSearchStalled, refine }) => (
       onChange={event =>  refine(event.currentTarget.value)}
       className='search-input text-sm font-medium px-2 py-1 flex justify-center text-black items-center '
       placeholder='Search here...'
+      onFocus={() => setIsSearching(true)}
+      onBlur={() => setIsSearching(false)}
     />
     <svg onClick={() => refine('')} role="presentation" className="i-search w-3" viewBox="5 5 30 30" fill="none" stroke="currentcolor" color='gray' strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
       <path d="M 10,10 L 30,30 M 30,10 L 10,30" />
@@ -84,8 +86,8 @@ const Header = props => {
   const slug = router.pathname;
   
   useEffect(() => {
-    getData().then(data => {
-      setLogoBgImage(data[0].textBgImage.fields.file.url)
+    getData().then(navData => {
+      setLogoBgImage(navData[0].textBgImage.fields.file.url)
     });
   }, []);
 
