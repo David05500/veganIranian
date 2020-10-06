@@ -7,7 +7,7 @@ import Head from 'next/head';
 import BlogDataContext from '../../components/BlogDataContext';
 
 
-const  Blog = ( props ) => {
+const  Index = ( props ) => {
     const { filteredBlogs } = useContext(BlogDataContext);
     return (
         <div>
@@ -29,7 +29,8 @@ const  Blog = ( props ) => {
                                         <div key={blog.slug} className='lg:w-1/3 mb-8'>
                                             <Link   href='/recipes/[slug]' as={`/recipes/${blog.slug}/`}>
                                                 <div className='card'>
-                                                    <div className='m-auto mb-4 relative pointer max-w-280px max-h-284px min-h-284px min-w-228px lg:max-w-228px   pointer hover:opacity-60 transform ease-in duration-100 ' style={{backgroundSize: '50%', backgroundImage:`url(${blog.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
+                                                    <div className='m-auto mb-4 relative pointer max-w-280px max-h-284px min-h-284px min-w-228px lg:max-w-228px   pointer hover:opacity-60 transform ease-in duration-100 ' 
+                                                        style={{backgroundSize: '50%', backgroundImage:`url(${blog.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
                                                     </div>
                                                     <div >
                                                         <h2 className='text-xs text-center px-4'>{blog.title}</h2>
@@ -53,4 +54,4 @@ const  Blog = ( props ) => {
     )
 };
 
-export default Blog;
+export default Index;

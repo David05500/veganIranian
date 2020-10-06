@@ -21,11 +21,12 @@ const getData = async () => {
   return navData;
 };
 
+// ALGOLIA
 const searchClient = algoliasearch(
   'M9SIDYA62K',
   'e278595e667bbbe39f9dd4c380574c45'
 );
-const Hits = data => {
+const Hits = (data) => {
   const { updateBlogs } = useContext(BlogDataContext);
   updateBlogs(data.hits);
   return('');
@@ -33,18 +34,18 @@ const Hits = data => {
 const CustomHits = connectHits(Hits);
 
 
-const SearchBox = ( { currentRefinement, isSearchStalled, refine, setIsSearching }) => (
+const SearchBox = ( { currentRefinement, isSearchStalled, refine, setIsSearching, updateSearchState }) => (
   <form noValidate action="" role="search" className='mt-4 lg:mt-0 relative'>
     <input
       type="search"
       value={currentRefinement}
-      onChange={event =>  refine(event.currentTarget.value)}
+      onChange={event =>  updateSearchState(event.currentTarget.value)}
       className='search-input text-sm font-medium px-2 py-1 flex justify-center text-black items-center '
       placeholder='Search here...'
       onFocus={() => setIsSearching(true)}
       onBlur={() => setIsSearching(false)}
     />
-    <svg onClick={() => refine('')} role="presentation" className="i-search w-3" viewBox="5 5 30 30" fill="none" stroke="currentcolor" color='gray' strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
+    <svg onClick={() => updateSearchState('')} role="presentation" className="i-search w-3" viewBox="5 5 30 30" fill="none" stroke="currentcolor" color='gray' strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
       <path d="M 10,10 L 30,30 M 30,10 L 10,30" />
     </svg>
   </form>
@@ -52,7 +53,7 @@ const SearchBox = ( { currentRefinement, isSearchStalled, refine, setIsSearching
 
 const CustomSearchBox = connectSearchBox(SearchBox);
 
-//Markdown
+//MARKDOWN
 const Text = ({ children }) => {
   return <p className="text-sm text-justify">{children}</p>
 };
@@ -75,12 +76,14 @@ const options = {
   },
 };
 
-
-
+// COMPONENT
 const Header = props => {
   const refy = useRef();
   const [logoBgImage, setLogoBgImage] = useState([]);
   const [isShrink, setIsShrink] = useState(false);
+  const [isDropDown, setIsDropDown] = useState(false);
+  
+  const { filteredBlogs, blogs, isSearching, setIsSearching, userSearchQuery, setUserSearchQuery } = useContext(BlogDataContext);
 
   const router = useRouter();
   const slug = router.pathname;
@@ -107,7 +110,10 @@ const Header = props => {
     const offset = window.pageYOffset - posY;
     offset >= 200 ? isShrink ? '' : setIsShrink(true) : isShrink == false ? '' : setIsShrink(false);
   };
-  const { filteredBlogs, blogs, isSearching, setIsSearching } = useContext(BlogDataContext);
+
+  const updateSearchState = (query) => {
+    !slug.includes('/recipes') ? router.push("/recipes/").then(() => {setUserSearchQuery({query});}) : setUserSearchQuery({query});
+  };
 
   return (
     <div className='sticky top-0 z-50'>
@@ -120,13 +126,21 @@ const Header = props => {
           <h1 className={`italic relative z-10 text-3xl  text-black font-bold my-4 ${isShrink ? 'lg:m-0 mb-4 lg:text-6xl transform ease-in duration-200' : 'lg:my-8 lg:text-65xl transform ease-in duration-200 '} pointer main-logo  bg-gray-1000 bg-clip-text`}  style={{color: 'transparent', backgroundSize: '100%', backgroundImage: `url(${logoBgImage})`, textShadow: '4px 4px 0px rgba(0,0,0,0.1)'}}>THE IRANIAN VEGAN</h1>
         </Link>
 
-        <div className='flex w-4/5 lg:w-1/3 m-auto justify-around '> 
-          <Link href="/recipes/blog">
-            <h1 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100'>RECIPES</h1>
+        <div className='flex w-4/5 lg:w-1/3 m-auto justify-around relative' onMouseEnter={() => setIsDropDown(true)} onMouseLeave={() => setIsDropDown(false)} > 
+          <Link href="/recipes" >
+            <h1 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>RECIPES</h1>
           </Link>
+          <div className={`absolute pt-8 z-150  ${isDropDown ? 'block' : 'hidden'} `} style={{left: '2rem', top: '0', }}>
+            <div  className='bg-white p-8 flex flex-col shadow-lg' >
+              <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Appetizers' )}>Appetizers</h1>
+              <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Main Course' )}>Main Course</h1>
+              <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Dessert' )}>Dessert</h1>
+              <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Sides' )}>Sides</h1>
+            </div>
+          </div>
 
           <Link href="/about">
-            <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>ABOUT</h1>
+            <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'  onMouseEnter={() => setIsDropDown(false)} >ABOUT</h1>
           </Link>
 
           <a href="/contact">
@@ -138,13 +152,14 @@ const Header = props => {
           <InstantSearch
             indexName="prod_TheIranianVegan"
             searchClient={searchClient}
+            searchState={userSearchQuery}
           >
-            <CustomSearchBox reset={<img src='' alt="" />} setIsSearching={setIsSearching}/>
-            <CustomHits />
+            <CustomSearchBox reset={<img src='' alt="" />} setIsSearching={setIsSearching} updateSearchState={updateSearchState}/>
+            <CustomHits userSearchQuery={userSearchQuery}/>
           </InstantSearch>
         </div>
       </nav>
-      {slug.includes('/recipes/blog') ?
+      {slug.includes('/recipes') ?
       ''
       :
       <div className={`max-width-850 shadow-sm bg-white left-0 m-auto flex flex-col items-center px-4 py-4 even:bg-red absolute left-0 right-0 overflow-y-scroll max-h-25rem ease-in duration-200 ${isSearching ? '' : 'transform  -translate-y-full'}`}>
@@ -168,8 +183,6 @@ const Header = props => {
     </div>
   );
 }
-
-
 export default Header;
 
 
