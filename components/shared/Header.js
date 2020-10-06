@@ -131,7 +131,8 @@ const Header = props => {
           <h1 className={`italic relative z-10 text-3xl  text-black font-bold my-4 ${isShrink ? 'lg:m-0 mb-4 lg:text-6xl transform ease-in duration-200' : 'lg:my-8 lg:text-65xl transform ease-in duration-200 '} pointer main-logo  bg-gray-1000 bg-clip-text`}  style={{color: 'transparent', backgroundSize: '100%', backgroundImage: `url(${logoBgImage})`, textShadow: '4px 4px 0px rgba(0,0,0,0.1)'}}>THE IRANIAN VEGAN</h1>
         </Link>
 
-        <div className='flex w-4/5 lg:w-1/3 m-auto justify-around relative' onMouseEnter={() => setIsDropDown(true)} onMouseLeave={() => setIsDropDown(false)} > 
+        <div className='flex w-4/5 lg:w-1/3 m-auto justify-around relative'  > 
+        <div  onMouseEnter={() => setIsDropDown(true)} onMouseLeave={() => setIsDropDown(false)}>
           <Link href="/recipes" >
             <h1 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>RECIPES</h1>
           </Link>
@@ -143,6 +144,7 @@ const Header = props => {
               <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Sides' )}>Sides</h1>
             </div>
           </div>
+        </div>
 
           <Link href="/about">
             <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'  onMouseEnter={() => setIsDropDown(false)} >ABOUT</h1>
