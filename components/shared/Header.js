@@ -93,6 +93,10 @@ const Header = props => {
       setLogoBgImage(navData[0].textBgImage.fields.file.url)
     });
   }, []);
+  
+  useEffect(() => {
+    setUserSearchQuery({query: ""});
+  }, [slug]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -111,8 +115,9 @@ const Header = props => {
     offset >= 200 ? isShrink ? '' : setIsShrink(true) : isShrink == false ? '' : setIsShrink(false);
   };
 
+  
   const updateSearchState = (query) => {
-    !slug.includes('/recipes') ? router.push("/recipes/").then(() => {setUserSearchQuery({query});}) : setUserSearchQuery({query});
+    slug != '/recipes' ? router.push("/recipes/").then(() => {setUserSearchQuery({query});}) : setUserSearchQuery({query});
   };
 
   return (
