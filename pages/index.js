@@ -10,9 +10,8 @@ import ImageContainer from '../components/shared/ImageContainer';
 const HomePage = () => {
     return (
         <div className='w-screen h-screen flex justify-center items-center text-3xl' >
-            I will back shortly  =)
+            I will be back shortly  =)
         </div>
     )
 }
 export default HomePage;
-
