@@ -1,5 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {useRouter} from 'next/router';
+import React, {useEffect, useState, useRef, useContext} from 'react';
 import getContentfulContent from '../../lib/getContentfulContent';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
@@ -12,38 +11,113 @@ import { FaBatteryThreeQuarters } from "react-icons/fa";
 import Head from 'next/head';
 import { GiKnifeFork } from "react-icons/gi";
 import { GrInstagram } from "react-icons/gr";
-
-
-
+import BlogDataContext from '../../components/BlogDataContext';
+import {useRouter} from 'next/router';
+import _ from 'lodash';
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop - 220);
-
 const Bold = ({ children }) => <p className="text-6xl text-green-700">{children}</p>;
- 
-const Text = ({ children }) => {
-    return <p className="text-base text-justify">{children}</p>
-};
-
+const Text = ({ children }) => {return <p className="text-base text-justify">{children}</p>};
 const HEADING1 = ({ children }) => <p className="align-center text-gray-800 text-xl">{children}</p>;
-
 const HEADING3 = ({ children }) => <p className="align-center text-gray-800 text-lg ">{children}</p>;
-
 const MyLink = ({ children }) => <a className=" text-gray-600 pointer hover:opacity-60 transform ease-in duration-300">{children}</a>;
-
 const UlList = ({ children }) => <ul className="text-lg text-gray-700  list-disc">{children}</ul>;
-
 const OlList = ({ children }) => <ol className="text-lg text-red  list-decimal">{children}</ol>;
 
-const BlogPost = ({blogPost}) => {
-  const router = useRouter();
-  const {slug} = router.query;
-  const [post, setPost] = useState(null);
 
+
+
+const GetRecipeData = async (slug) => {
+    const res = await getContentfulContent('recipe', slug);
+    return res.recipe;
+};
+
+const addJSONLD = (recipe) => {
+    return {
+        __html: `[{
+            '@context': 'http://schema.org',
+            '@type': 'Recipe',
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.theiranianvegan.com//recepies/${recipe.slug}"
+            },
+            "title": ${recipe.title},
+            "image": [
+                "https://example.com/photos/1x1/photo.jpg",
+                "https://example.com/photos/4x3/photo.jpg",
+                "https://example.com/photos/16x9/photo.jpg"
+            ],
+            "author": {
+                "@type": "Person",
+                "name": "Mana Rose Shamshiri-Fard"
+            },
+            "datePosted": ${recipe.createdAt},
+            "description": "desc",
+            "image": "job.company.logo",
+            "prepTime": ${recipe.prepTime},
+            "cookTime": ${recipe.cookTime},
+            "totalTime": ${recipe.totalTime},
+            "keywords": "cake for a party, coffee",
+            "recipeYield": "10",
+            "recipeCategory": ${recipe.course},
+            "recipeCuisine": "Iranian",
+            "recipeIngredient": [
+                "2 cups of flour",
+                "3/4 cup white sugar",
+                "2 teaspoons baking powder",
+                "1/2 teaspoon salt",
+                "1/2 cup butter",
+                "2 eggs",
+                "3/4 cup milk"
+            ],
+            "recipeInstructions": [
+                {
+                  "@type": "HowToStep",
+                  "name": "Preheat",
+                  "text": "Preheat the oven to 350 degrees F. Grease and flour a 9x9 inch pan.",
+                  "url": "https://example.com/party-coffee-cake#step1",
+                  "image": "https://example.com/photos/party-coffee-cake/step1.jpg"
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Mix dry ingredients",
+                  "text": "In a large bowl, combine flour, sugar, baking powder, and salt.",
+                  "url": "https://example.com/party-coffee-cake#step2",
+                  "image": "https://example.com/photos/party-coffee-cake/step2.jpg"
+                },
+              ],  
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5",
+                "ratingCount": "108"
+            },
+        }]`,
+    }
+};
+
+
+
+const BlogPost = ({blogPost}) => {
+  const [post, setPost] = useState(null);
+  const { blogs } = useContext(BlogDataContext);
+
+    //FOR JUMP TO RECIPE BUTTON
   const myRef = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
+  
+  const router = useRouter();
+  const {slug} = router.query;
+
     
   useEffect(() => {
-      setPost(blogPost);
+      if(blogs === null){
+        GetRecipeData(slug).then(data => {
+            console.log(data)
+            setPost(data);
+        });
+      }else{
+        setPost(_.find(blogs, {"slug": slug}));
+      }
   }, []);
 
   const options = {
@@ -67,14 +141,14 @@ const BlogPost = ({blogPost}) => {
         [INLINES.HYPERLINK]: (node, children) => <MyLink>{children}</MyLink>,
       },
   };
-  if (post == null) {
-      return(
-          <h1>Loading...</h1>
-      )
-  }else{
-      return (
-          <div>
-              <Head>
+    if (post === null) {
+        return(
+            <h1>Loading...</h1>
+        )
+    }else{
+        return (
+            <div>
+                <Head>
                   <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet" />
                   <link href="https://fonts.googleapis.com/css?family=Cookie|Dancing+Script|Sacramento&display=swap" rel="stylesheet" />
                   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet"></link>
@@ -102,7 +176,7 @@ const BlogPost = ({blogPost}) => {
 
                       <div ref={myRef} className='mb-8  lg:mx-16 p-2 lg:p-8 lg:mb-20 mt-48 relative shadow-md bg-white'>
                           <div className='w-48 absolute my-auto left-23 lg:left-34 top-9n h-64'>
-                              <div className='clip-polygon w-full h-full absolute' style={{clipPath: 'polygon(50% 0, 100% 100%, 50% 100%, 0 50%)', backgroundSize: '62%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  backgroundImage: `url(${blogPost.smallBlogPostImage.fields.file.url})`}}>
+                              <div className='clip-polygon w-full h-full absolute' style={{clipPath: 'polygon(50% 0, 100% 100%, 50% 100%, 0 50%)', backgroundSize: '72%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  backgroundImage: `url(${post.image1.fields.src.fields.file.url})`}}>
                               </div>
                               <img src="/paisley.png"  className=' h-64 absolute text-gray-500' />
                           </div>
@@ -160,7 +234,7 @@ const BlogPost = ({blogPost}) => {
 
                           <div className='px-4 lg:px-8 bg-gray-primary lg:pb-8 py-5'> 
                               
-                                <div className='border-btm mb-10 mt-4 pb-8'>
+                                {/* <div className='border-btm mb-10 mt-4 pb-8'>
                                     <h1  className="align-center text-gray-500 font-bold text-base mb-5">INGREDIENTS</h1>
                                     {documentToReactComponents(post.ingredients, options)}
                                 </div>
@@ -169,11 +243,11 @@ const BlogPost = ({blogPost}) => {
                                 <div className='border-btm mb-10 pb-8'>
                                     <h1  className="align-center text-gray-500 font-bold text-base mb-5">INSTRUCTIONS</h1>
                                     {documentToReactComponents(post.instructions, options)}
-                                </div>
-                                <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-5 "><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
+                                </div> */}
+                                {/* <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-5 "><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
                                 <div className='bg-white p-4 pt-10 lg:p-8 mb-12 pb-8 cut-corrner'>
                                     {documentToReactComponents(post.notes, options)}
-                                </div>
+                                </div> */}
                           </div>
                       
                           <div className='w-full flex bg-white p-4 lg:p-8'>
@@ -199,15 +273,14 @@ const BlogPost = ({blogPost}) => {
               </div>
 
 
-              <div className='hidden'>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                <div className='hidden'>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={addJSONLD(post)}
+                />  
           </div>
       )
   }
 };
 
-BlogPost.getInitialProps = async ({ query }) => {
-    const { slug } = query;
-    const props = await getContentfulContent('blogPost', slug);
-    return {blogPost: props.blogPost};
-};
 export default BlogPost;

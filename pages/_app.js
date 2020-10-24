@@ -54,7 +54,7 @@ function MyApp(props) {
 MyApp.getInitialProps = async (appContext) => {
   const appProps = await App.getInitialProps(appContext)
   const res = await contentfulClient.getEntries({
-    content_type: 'blogPost',
+    content_type: 'recipe',
   });
   const data = res.items.map(item => item.fields);
   return { ...appProps, data }

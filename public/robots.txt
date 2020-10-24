@@ -1,0 +1,6 @@
+Sitemap: http://theiranianvegan.com/api/posts-sitemap
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*
