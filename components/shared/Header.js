@@ -112,7 +112,7 @@ const Header = props => {
   const handleScroll = () => {
     const posY = refy.current.getBoundingClientRect().top;
     const offset = window.pageYOffset - posY;
-    offset >= 200 ? isShrink ? '' : setIsShrink(true) : isShrink == false ? '' : setIsShrink(false);
+    offset > 200 ? isShrink ? '' : setIsShrink(true) : isShrink == false ? '' : setIsShrink(false);
   };
 
   
@@ -131,28 +131,32 @@ const Header = props => {
           <h1 className={`italic relative z-10 text-3xl  text-black font-bold my-4 ${isShrink ? 'lg:m-0 mb-4 lg:text-6xl transform ease-in duration-200' : 'lg:my-8 lg:text-65xl transform ease-in duration-200 '} pointer main-logo  bg-gray-1000 bg-clip-text`}  style={{color: 'transparent', backgroundSize: '100%', backgroundImage: `url(${logoBgImage})`, textShadow: '4px 4px 0px rgba(0,0,0,0.1)'}}>THE IRANIAN VEGAN</h1>
         </Link>
 
-        <div className='flex w-4/5 lg:w-1/3 m-auto justify-around relative'  > 
-        <div  onMouseEnter={() => setIsDropDown(true)} onMouseLeave={() => setIsDropDown(false)}>
-          <Link href="/recipes" >
-            <h1 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>RECIPES</h1>
-          </Link>
-          <div className={`absolute pt-8 z-150  ${isDropDown ? 'block' : 'hidden'} `} style={{left: '0.5rem', top: '0', }}>
-            <div  className='bg-white px-4 py-4 flex flex-col shadow-lg' >
-              <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Appetizers' )}>Appetizers</h1>
-              <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Main Course' )}>Main Course</h1>
-              <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Dessert' )}>Desserts</h1>
-              <h1 className='text-sm pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Sides' )}>Sides</h1>
+        <div className='flex w-4/5 lg:w-2/3 m-auto justify-around relative'  > 
+          <div  onMouseEnter={() => setIsDropDown(true)} onMouseLeave={() => setIsDropDown(false)}>
+            <Link href="/recipes" >
+              <h1 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>RECIPES</h1>
+            </Link>
+            <div className={`absolute pt-8 z-150  ${isDropDown ? 'block' : 'hidden'} `} style={{left: '0.5rem', top: '0', }}>
+              <div  className='bg-white px-4 py-4 flex flex-col shadow-lg' >
+                <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Appetizers' )}>Appetizers</h1>
+                <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Main Course' )}>Main Course</h1>
+                <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Dessert' )}>Desserts</h1>
+                <h1 className='text-sm pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Sides' )}>Sides</h1>
+              </div>
             </div>
           </div>
-        </div>
 
           <Link href="/about">
             <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'  onMouseEnter={() => setIsDropDown(false)} >ABOUT</h1>
           </Link>
 
-          <a href="/contact">
+          <Link href="/contact">
             <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
-          </a>
+          </Link>
+
+          <Link href="/services">
+            <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>PRODUCTS & SERVICES</h1>
+          </Link>
           
         </div>
         <div className='lg:absolute lg:right-185px lg:bottom-12px'>
