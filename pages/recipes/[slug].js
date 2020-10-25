@@ -33,33 +33,33 @@ const GetRecipeData = async (slug) => {
 };
 
 const addJSONLD = (recipe) => {
+    console.log(recipe);
     return {
         __html: `[{
             "@context": "https://schema.org/",
             "@type": "Recipe",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": "https://www.theiranianvegan.com//recepies/recipe.slug"
+              "@id": "https://www.theiranianvegan.com//recepies/${recipe.slug}"
             },  
             "name": "Party Coffee Cake",
             "image": [
-              "https://example.com/photos/1x1/photo.jpg",
-              "https://example.com/photos/4x3/photo.jpg",
-              "https://example.com/photos/16x9/photo.jpg"
+              "${recipe.image1.fields.src.fields.file.url}",
+              "${recipe.image1.fields.thumb.fields.file.url}",
             ],
             "author": {
               "@type": "Person",
               "name": "Mana Rose Shamshiri-Fard"
             },
-            "datePublished": "2018-03-10",
+            "datePublished": ${recipe.createdAt},
             "description": "This coffee cake is awesome and perfect for parties.",
-            "prepTime": "PT20M",
-            "cookTime": "PT30M",
-            "totalTime": "PT50M",
+            "prepTime": "${recipe.prepTime}",
+            "cookTime": "${recipe.cookTime}",
+            "totalTime": "${recipe.totalTime}",
             "keywords": "cake for a party, coffee",
-            "recipeYield": "10",
-            "recipeCategory": "Dessert",
-            "recipeCuisine": "Iranian",
+            "recipeYield": "${recipe.servings}",
+            "recipeCategory": "${recipe.course}",
+            "recipeCuisine": "${recipe.cuisine}",
             "recipeIngredient": [
               "2 cups of flour",
               "3/4 cup white sugar",
