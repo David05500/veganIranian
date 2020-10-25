@@ -51,7 +51,7 @@ const addJSONLD = (recipe) => {
               "@type": "Person",
               "name": "Mana Rose Shamshiri-Fard"
             },
-            "datePublished": ${recipe.createdAt},
+            "datePublished": "${recipe.createdAt}",
             "description": "This coffee cake is awesome and perfect for parties.",
             "prepTime": "${recipe.prepTime}",
             "cookTime": "${recipe.cookTime}",
