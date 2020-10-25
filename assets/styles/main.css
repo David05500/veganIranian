@@ -74,6 +74,10 @@ body{
   max-height: 284.33px;
 }
 
+ol {
+  list-style: revert;
+}
+
 ol, ul {
   margin: 0;
   margin-left: 0.7rem;

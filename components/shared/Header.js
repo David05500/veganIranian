@@ -153,10 +153,10 @@ const Header = props => {
           <Link href="/contact">
             <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
           </Link>
-
+{/* 
           <Link href="/services">
             <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>PRODUCTS & SERVICES</h1>
-          </Link>
+          </Link> */}
           
         </div>
         <div className='lg:absolute lg:right-185px lg:bottom-12px'>

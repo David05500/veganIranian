@@ -117,7 +117,7 @@ const BlogPost = ({blogPost}) => {
     useEffect(() => {
         if(blogs === null){
             GetRecipeData(slug).then(data => {
-                console.log(data)
+                console.log(_.isEmpty(data.notes.data))
                 setPost(data);
             });
         }else{
@@ -168,7 +168,7 @@ const BlogPost = ({blogPost}) => {
                             <button onClick={executeScroll}  className='flex items-center px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'><img src="/cutlery.svg"  className='w-8 text-gray-300 mr-3' /> JUMP TO RECIPE</button>
                         </div>
 
-                        {documentToReactComponents(post.recipeDescription, options)}
+                        {documentToReactComponents(post.description, options)}
 
                         {/* Recipe Card */}
 
@@ -180,7 +180,7 @@ const BlogPost = ({blogPost}) => {
                             </div>
 
                             <div className='w-full mt-24 '>
-                                <h1 className='py-10 text-center text-3xl font-medium border-btm mb-10'>{post.title}</h1>
+                                <h1 className='py-10 text-center text-2xl font-medium border-btm mb-10'>{post.title}</h1>
                                 <div className='my-2 text-lg pl-4 lg:pl-0'>
                                     <div className='flex items-center lg:justify-center w-full mb-4'>
                                         <img src="/course.svg"  className='w-5 text-gray-500 mr-3' />
@@ -232,20 +232,48 @@ const BlogPost = ({blogPost}) => {
 
                             <div className='px-4 lg:px-8 bg-gray-primary lg:pb-8 py-5'> 
                                 
-                                {/* <div className='border-btm mb-10 mt-4 pb-8'>
+                                <div className='border-btm mb-10 mt-4 pb-8'>
                                     <h1  className="align-center text-gray-500 font-bold text-base mb-5">INGREDIENTS</h1>
-                                    {documentToReactComponents(post.ingredients, options)}
+                                    {_.map(post.ingredients, (value, key) => {
+                                        return (
+                                            <div className='mb-8'>
+                                                <h1 className='align-center mb-3 text-gray-800 font-medium text-lg'>{key}</h1>
+                                                <ul>
+                                                    {value.map(v => {
+                                                        return (
+                                                            <li className='text-lg text-gray-700 mb-3 list-disc'>{v}</li>
+                                                        )
+                                                    })}
+                                                </ul>
+                                            </div>
+                                        )
+                                    })}
                                 </div>
-                
-                                
                                 <div className='border-btm mb-10 pb-8'>
-                                    <h1  className="align-center text-gray-500 font-bold text-base mb-5">INSTRUCTIONS</h1>
-                                    {documentToReactComponents(post.instructions, options)}
-                                </div> */}
-                                {/* <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-5 "><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
+                                    <h1  className="align-center text-gray-500 font-bold text-base mb-8">INSTRUCTIONS</h1>
+                                    <ol>
+                                        {_.map(post.instructions.data, inst => {
+                                            return (
+                                                <li className='text-lg text-gray-700 mb-6'>{inst}</li>
+                                            )
+                                        })}
+                                    </ol>
+                                </div>
+                                <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-5 "><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
                                 <div className='bg-white p-4 pt-10 lg:p-8 mb-12 pb-8 cut-corrner'>
-                                    {documentToReactComponents(post.notes, options)}
-                                </div> */}
+                                    {_.isEmpty(post.notes.data) 
+                                        ? '' 
+                                        : (
+                                            <ul>
+                                                {_.map(post.notes.data, note => {
+                                                    return (
+                                                        <li className='text-lg text-gray-700 mb-3 list-disc'>{note}</li>
+                                                    )
+                                                })}
+                                            </ul>
+                                        )
+                                    }
+                                </div>
                             </div>
                         
                             <div className='w-full flex bg-white p-4 lg:p-8'>
