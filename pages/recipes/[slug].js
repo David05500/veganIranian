@@ -45,7 +45,7 @@ const addJSONLD = (recipe) => {
             "name": "Party Coffee Cake",
             "image": [
               "${recipe.image1.fields.src.fields.file.url}",
-              "${recipe.image1.fields.thumb.fields.file.url}",
+              "${recipe.image1.fields.thumb.fields.file.url}"
             ],
             "author": {
               "@type": "Person",
