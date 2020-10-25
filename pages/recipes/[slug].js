@@ -35,63 +35,69 @@ const GetRecipeData = async (slug) => {
 const addJSONLD = (recipe) => {
     return {
         __html: `[{
-            '@context': 'http://schema.org',
-            '@type': 'Recipe',
+            "@context": "https://schema.org/",
+            "@type": "Recipe",
             "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "https://www.theiranianvegan.com//recepies/${recipe.slug}"
-            },
-            "title": ${recipe.title},
+              "@type": "WebPage",
+              "@id": "https://www.theiranianvegan.com//recepies/recipe.slug"
+            },  
+            "name": "Party Coffee Cake",
             "image": [
-                "https://example.com/photos/1x1/photo.jpg",
-                "https://example.com/photos/4x3/photo.jpg",
-                "https://example.com/photos/16x9/photo.jpg"
+              "https://example.com/photos/1x1/photo.jpg",
+              "https://example.com/photos/4x3/photo.jpg",
+              "https://example.com/photos/16x9/photo.jpg"
             ],
             "author": {
-                "@type": "Person",
-                "name": "Mana Rose Shamshiri-Fard"
+              "@type": "Person",
+              "name": "Mana Rose Shamshiri-Fard"
             },
-            "datePosted": ${recipe.createdAt},
-            "description": "desc",
-            "image": "job.company.logo",
-            "prepTime": ${recipe.prepTime},
-            "cookTime": ${recipe.cookTime},
-            "totalTime": ${recipe.totalTime},
+            "datePublished": "2018-03-10",
+            "description": "This coffee cake is awesome and perfect for parties.",
+            "prepTime": "PT20M",
+            "cookTime": "PT30M",
+            "totalTime": "PT50M",
             "keywords": "cake for a party, coffee",
             "recipeYield": "10",
-            "recipeCategory": ${recipe.course},
+            "recipeCategory": "Dessert",
             "recipeCuisine": "Iranian",
             "recipeIngredient": [
-                "2 cups of flour",
-                "3/4 cup white sugar",
-                "2 teaspoons baking powder",
-                "1/2 teaspoon salt",
-                "1/2 cup butter",
-                "2 eggs",
-                "3/4 cup milk"
-            ],
+              "2 cups of flour",
+              "3/4 cup white sugar",
+              "2 teaspoons baking powder",
+              "1/2 teaspoon salt",
+              "1/2 cup butter",
+              "2 eggs",
+              "3/4 cup milk"
+              ],
             "recipeInstructions": [
-                {
-                  "@type": "HowToStep",
-                  "name": "Preheat",
-                  "text": "Preheat the oven to 350 degrees F. Grease and flour a 9x9 inch pan.",
-                  "url": "https://example.com/party-coffee-cake#step1",
-                  "image": "https://example.com/photos/party-coffee-cake/step1.jpg"
-                },
-                {
-                  "@type": "HowToStep",
-                  "name": "Mix dry ingredients",
-                  "text": "In a large bowl, combine flour, sugar, baking powder, and salt.",
-                  "url": "https://example.com/party-coffee-cake#step2",
-                  "image": "https://example.com/photos/party-coffee-cake/step2.jpg"
-                },
-              ],  
+              {
+                "@type": "HowToStep",
+                "name": "Preheat",
+                "text": "Preheat the oven to 350 degrees F. Grease and flour a 9x9 inch pan.",
+                "url": "https://example.com/party-coffee-cake#step1",
+                "image": "https://example.com/photos/party-coffee-cake/step1.jpg"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Mix dry ingredients",
+                "text": "In a large bowl, combine flour, sugar, baking powder, and salt.",
+                "url": "https://example.com/party-coffee-cake#step2",
+                "image": "https://example.com/photos/party-coffee-cake/step2.jpg"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Add wet ingredients",
+                "text": "Mix in the butter, eggs, and milk.",
+                "url": "https://example.com/party-coffee-cake#step3",
+                "image": "https://example.com/photos/party-coffee-cake/step3.jpg"
+              }
+            ],
             "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "5",
-                "ratingCount": "108"
-            },
-        }]`,
+              "@type": "AggregateRating",
+              "ratingValue": "5",
+              "ratingCount": "18"
+            }
+          }]`,
     }
 };
 
