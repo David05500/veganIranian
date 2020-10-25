@@ -1,6 +1,7 @@
 // /pages/_document.js
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { GA_TRACKING_ID } from '../lib/gtag';
 
 class MyDocument extends Document {
     render() {
@@ -14,7 +15,19 @@ class MyDocument extends Document {
                     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                     <script
                         async
-                        src="https://www.googletagmanager.com/gtag/js?id=[UA-178786850-1]"
+                        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+                    />
+                    <script
+                        dangerouslySetInnerHTML={{
+                        __html: `
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', '${GA_TRACKING_ID}', {
+                        page_path: window.location.pathname,
+                        });
+                    `,
+                        }}
                     />
                 </Head>
                 <body>
