@@ -33,7 +33,6 @@ const GetRecipeData = async (slug) => {
 };
 
 const addJSONLD = (recipe) => {
-    console.log(recipe);
     return {
         __html: `[{
             "@context": "https://schema.org/",
@@ -42,7 +41,7 @@ const addJSONLD = (recipe) => {
               "@type": "WebPage",
               "@id": "https://www.theiranianvegan.com//recepies/${recipe.slug}"
             },  
-            "name": "Party Coffee Cake",
+            "name": "${recipe.title}",
             "image": [
               "${recipe.image1.fields.src.fields.file.url}",
               "${recipe.image1.fields.thumb.fields.file.url}"
@@ -97,56 +96,56 @@ const addJSONLD = (recipe) => {
               "ratingValue": "5",
               "ratingCount": "18"
             }
-          }]`,
+        }]`,
     }
 };
 
 
 
 const BlogPost = ({blogPost}) => {
-  const [post, setPost] = useState(null);
-  const { blogs } = useContext(BlogDataContext);
+    const [post, setPost] = useState(null);
+    const { blogs } = useContext(BlogDataContext);
 
     //FOR JUMP TO RECIPE BUTTON
-  const myRef = useRef(null);
-  const executeScroll = () => scrollToRef(myRef);
-  
-  const router = useRouter();
-  const {slug} = router.query;
+    const myRef = useRef(null);
+    const executeScroll = () => scrollToRef(myRef);
 
-    
-  useEffect(() => {
-      if(blogs === null){
-        GetRecipeData(slug).then(data => {
-            console.log(data)
-            setPost(data);
-        });
-      }else{
-        setPost(_.find(blogs, {"slug": slug}));
-      }
-  }, []);
+    const router = useRouter();
+    const {slug} = router.query;
 
-  const options = {
-      // renderMark: {
-      //   [MARKS.BOLD]: text => <Bold>{text}</Bold>,
-      // },
-      renderText: text => {
-          return text.split('\n').reduce((children, textSegment, index) => {
+
+    useEffect(() => {
+        if(blogs === null){
+            GetRecipeData(slug).then(data => {
+                console.log(data)
+                setPost(data);
+            });
+        }else{
+            setPost(_.find(blogs, {"slug": slug}));
+        }
+    }, []);
+
+    const options = {
+        // renderMark: {
+        //   [MARKS.BOLD]: text => <Bold>{text}</Bold>,
+        // },
+        renderText: text => {
+            return text.split('\n').reduce((children, textSegment, index) => {
             return [...children, index > 0 && <br key={index} />, textSegment];
-          }, []);
-      },
-      renderNode: {
+            }, []);
+        },
+        renderNode: {
         [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
         [BLOCKS.UL_LIST]: (node, children) => <UlList>{children}</UlList>,
         [BLOCKS.OL_LIST]: (node, children) => <OlList>{children}</OlList>,
         [BLOCKS.HEADING_1]: (node, children) => <HEADING1>{children}</HEADING1>,
         [BLOCKS.HEADING_3]: (node, children) => <HEADING3>{children}</HEADING3>,
         [BLOCKS.EMBEDDED_ASSET]: (node) => {
-          return <img src={node.data.target.fields.file.url} className='my-10'/>
+            return <img src={node.data.target.fields.file.url} className='my-10'/>
         },
         [INLINES.HYPERLINK]: (node, children) => <MyLink>{children}</MyLink>,
-      },
-  };
+        },
+    };
     if (post === null) {
         return(
             <h1>Loading...</h1>
@@ -154,92 +153,85 @@ const BlogPost = ({blogPost}) => {
     }else{
         return (
             <div>
-                <Head>
-                  <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet" />
-                  <link href="https://fonts.googleapis.com/css?family=Cookie|Dancing+Script|Sacramento&display=swap" rel="stylesheet" />
-                  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet"></link>
-                  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet"></link>
-                  <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-              </Head>
-              <div className='m-auto text-2xl bg-gray-primary '>
-                  <Header />
-                  <div className='max-width-735 px-4 mx-auto mt-10 lg:mt-20'>
+                <div className='m-auto text-2xl bg-gray-primary '>
+                    <Header />
+                    <div className='max-width-735 px-4 mx-auto mt-10 lg:mt-20'>
 
-                      <h1 className='mb-10 text-center'>{post.title}</h1>
-                      {post.blogPostImage != undefined ? <img src={post.blogPostImage.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
-                      {post.blogPostImage2 != undefined ? <img src={post.blogPostImage2.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
-                      {post.blogPostImage3 != undefined ? <img src={post.blogPostImage3.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
-                      {post.blogPostImage4 != undefined ? <img src={post.blogPostImage4.fields.file.url} className='mb-10 w-5/6 m-auto'></img> : ''}
+                        <h1 className='mb-10 text-center'>{post.title}</h1>
+                        {post.blogPostImage != undefined ? <img src={post.blogPostImage.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
+                        {post.blogPostImage2 != undefined ? <img src={post.blogPostImage2.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
+                        {post.blogPostImage3 != undefined ? <img src={post.blogPostImage3.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
+                        {post.blogPostImage4 != undefined ? <img src={post.blogPostImage4.fields.file.url} className='mb-10 w-5/6 m-auto'></img> : ''}
 
 
-                      <div className='w-full flex justify-center mb-10'>
-                          <button onClick={executeScroll}  className='flex items-center px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'><img src="/cutlery.svg"  className='w-8 text-gray-300 mr-3' /> JUMP TO RECIPE</button>
-                      </div>
+                        <div className='w-full flex justify-center mb-10'>
+                            <button onClick={executeScroll}  className='flex items-center px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'><img src="/cutlery.svg"  className='w-8 text-gray-300 mr-3' /> JUMP TO RECIPE</button>
+                        </div>
 
-                      {documentToReactComponents(post.recipeDescription, options)}
+                        {documentToReactComponents(post.recipeDescription, options)}
 
-                      {/* Recipe Card */}
+                        {/* Recipe Card */}
 
-                      <div ref={myRef} className='mb-8  lg:mx-16 p-2 lg:p-8 lg:mb-20 mt-48 relative shadow-md bg-white'>
-                          <div className='w-48 absolute my-auto left-23 lg:left-34 top-9n h-64'>
-                              <div className='clip-polygon w-full h-full absolute' style={{clipPath: 'polygon(50% 0, 100% 100%, 50% 100%, 0 50%)', backgroundSize: '72%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  backgroundImage: `url(${post.image1.fields.src.fields.file.url})`}}>
-                              </div>
-                              <img src="/paisley.png"  className=' h-64 absolute text-gray-500' />
-                          </div>
+                        <div ref={myRef} className='mb-8  lg:mx-16 p-2 lg:p-8 lg:mb-20 mt-48 relative shadow-md bg-white'>
+                            <div className='w-48 absolute my-auto left-23 lg:left-34 top-9n h-64'>
+                                <div className='clip-polygon w-full h-full absolute' style={{clipPath: 'polygon(50% 0, 100% 100%, 50% 100%, 0 50%)', backgroundSize: '72%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  backgroundImage: `url(${post.image1.fields.src.fields.file.url})`}}>
+                                </div>
+                                <img src="/paisley.png"  className=' h-64 absolute text-gray-500' />
+                            </div>
 
-                          <div className='w-full mt-24 '>
-                              <h1 className='py-10 text-center text-3xl font-medium border-btm mb-10'>{post.title}</h1>
-                              <div className='my-2 text-lg pl-4 lg:pl-0'>
-                                  <div className='flex items-center lg:justify-center w-full mb-4'>
-                                      <img src="/course.svg"  className='w-5 text-gray-500 mr-3' />
-                                      <div className='flex'>
-                                          <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Course: </h1>
-                                          <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.course}</h1>
-                                      </div>
-                                  </div>
-                                  
-                                  <div className='flex flex-col lg:flex-row items-center justify-center mb-4'>
+                            <div className='w-full mt-24 '>
+                                <h1 className='py-10 text-center text-3xl font-medium border-btm mb-10'>{post.title}</h1>
+                                <div className='my-2 text-lg pl-4 lg:pl-0'>
+                                    <div className='flex items-center lg:justify-center w-full mb-4'>
+                                        <img src="/course.svg"  className='w-5 text-gray-500 mr-3' />
+                                        <div className='flex'>
+                                            <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Course: </h1>
+                                            <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.course}</h1>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className='flex flex-col lg:flex-row items-center justify-center mb-4'>
 
-                                      <div className='w-1/2 flex items-center w-full lg:ml-4 mb-4 lg:mb-0'>
-                                          <img src="/cook-time.svg"  className='w-5 text-gray-500 mr-3' />
-                                          <div className='flex'>
-                                              <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1>
-                                              <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.cookTime}</h1>
-                                          </div>
-                                      </div>
+                                        <div className='w-1/2 flex items-center w-full lg:ml-4 mb-4 lg:mb-0'>
+                                            <img src="/cook-time.svg"  className='w-5 text-gray-500 mr-3' />
+                                            <div className='flex'>
+                                                <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1>
+                                                <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.cookTime}</h1>
+                                            </div>
+                                        </div>
 
-                                      <div className='w-1/2 flex items-center w-full lg:ml-4'>
-                                          <img src="/total-time.svg"  className='w-5 text-gray-500 mr-3' />
-                                          <div className='flex'>
-                                              <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Total Time: </h1>
-                                              <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.totalTime}</h1>
-                                          </div>
-                                      </div>
-                                  </div>
+                                        <div className='w-1/2 flex items-center w-full lg:ml-4'>
+                                            <img src="/total-time.svg"  className='w-5 text-gray-500 mr-3' />
+                                            <div className='flex'>
+                                                <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Total Time: </h1>
+                                                <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.totalTime}</h1>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                  <div className='flex flex-col lg:flex-row items-center justify-center mb-4'>
-                                      <div className='w-1/2 flex items-center w-full lg:ml-4 mb-4 lg:mb-0'>
-                                          <img src="/prep-time.svg"  className='w-5 text-gray-500 mr-3' />
-                                          <div className='flex'>
-                                              <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Prep Time: </h1>
-                                              <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.prepTime}</h1>
-                                          </div>
-                                      </div>
+                                    <div className='flex flex-col lg:flex-row items-center justify-center mb-4'>
+                                        <div className='w-1/2 flex items-center w-full lg:ml-4 mb-4 lg:mb-0'>
+                                            <img src="/prep-time.svg"  className='w-5 text-gray-500 mr-3' />
+                                            <div className='flex'>
+                                                <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Prep Time: </h1>
+                                                <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.prepTime}</h1>
+                                            </div>
+                                        </div>
 
-                                      <div className='w-1/2 flex items-center w-full lg:ml-4'>
-                                          <img src="/servings.svg"  className='w-5 text-gray-500 mr-3' />
-                                          <div className='flex'>
-                                              <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-4'>Servings: </h1>
-                                              <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.servings}</h1>
-                                          </div>
-                                      </div>
-                                  </div>
+                                        <div className='w-1/2 flex items-center w-full lg:ml-4'>
+                                            <img src="/servings.svg"  className='w-5 text-gray-500 mr-3' />
+                                            <div className='flex'>
+                                                <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-4'>Servings: </h1>
+                                                <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.servings}</h1>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                              </div>
-                          </div>
+                                </div>
+                            </div>
 
-                          <div className='px-4 lg:px-8 bg-gray-primary lg:pb-8 py-5'> 
-                              
+                            <div className='px-4 lg:px-8 bg-gray-primary lg:pb-8 py-5'> 
+                                
                                 {/* <div className='border-btm mb-10 mt-4 pb-8'>
                                     <h1  className="align-center text-gray-500 font-bold text-base mb-5">INGREDIENTS</h1>
                                     {documentToReactComponents(post.ingredients, options)}
@@ -254,39 +246,37 @@ const BlogPost = ({blogPost}) => {
                                 <div className='bg-white p-4 pt-10 lg:p-8 mb-12 pb-8 cut-corrner'>
                                     {documentToReactComponents(post.notes, options)}
                                 </div> */}
-                          </div>
-                      
-                          <div className='w-full flex bg-white p-4 lg:p-8'>
-                              <div className='w-1/3 flex justify-left lg:justify-center items-center'>
+                            </div>
+                        
+                            <div className='w-full flex bg-white p-4 lg:p-8'>
+                                <div className='w-1/3 flex justify-left lg:justify-center items-center'>
                                 <a href='https://www.instagram.com/theiranianvegan/' className='  hover:opacity-60 transform ease-in duration-100'> 
-                                  <GrInstagram  size={60}/>
+                                    <GrInstagram  size={60}/>
                                 </a>
-                              </div>
-                              <div className='w-2/3'>
-                                  <h1 className='text-xl mb-4'>Did you make this recipe?</h1>
-                                  <h1 className='text-base'>Tag 
-                                  <a href='https://www.instagram.com/theiranianvegan/' className='  hover:opacity-60 transform ease-in duration-100'> 
-                                  <span> @theiranianvegan </span>
-                                  </a>
-                                  <span>on Instagram and hashtag </span>  
-                                  <a href='https://www.instagram.com/theiranianvegan/' className='  hover:opacity-60 transform ease-in duration-100'> 
+                                </div>
+                                <div className='w-2/3'>
+                                    <h1 className='text-xl mb-4'>Did you make this recipe?</h1>
+                                    <h1 className='text-base'>Tag 
+                                    <a href='https://www.instagram.com/theiranianvegan/' className='  hover:opacity-60 transform ease-in duration-100'> 
+                                    <span> @theiranianvegan </span>
+                                    </a>
+                                    <span>on Instagram and hashtag </span>  
+                                    <a href='https://www.instagram.com/theiranianvegan/' className='  hover:opacity-60 transform ease-in duration-100'> 
                                     #theiranianvegan
-                                  </a></h1>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-
+                                    </a></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className='hidden'>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={addJSONLD(post)}
                 />  
-          </div>
-      )
-  }
+            </div>
+        )
+    }
 };
 
 export default BlogPost;
