@@ -168,6 +168,7 @@ const BlogPost = ({blogPost}) => {
                             <button onClick={executeScroll}  className='flex items-center px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'><img src="/cutlery.svg"  className='w-8 text-gray-300 mr-3' /> JUMP TO RECIPE</button>
                         </div>
 
+
                         {documentToReactComponents(post.description, options)}
 
                         {/* Recipe Card */}
