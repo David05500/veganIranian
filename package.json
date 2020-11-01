@@ -14,7 +14,7 @@
     "algoliasearch": "^4.4.0",
     "contentful": "^7.14.4",
     "framer-motion": "^1.11.1",
-    "next": "9.1.6",
+    "next": "10.0.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-icons": "^3.10.0",
