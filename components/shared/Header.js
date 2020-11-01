@@ -20,9 +20,9 @@ const index = client.initIndex('prod_TheIranianVegan');
 //   console.log(facetHits);
 // })
 
-index.search('Main Course', {facets: ['course']}).then(({ hits }) => {
-  console.log(hits);
-});
+// index.search('Main Course', {facets: ['course']}).then(({ hits }) => {
+//   console.log('asd', hits);
+// });
 
 const getData = async () => {
   const res = await contentfulClient.getEntries({
@@ -144,19 +144,33 @@ const Header = props => {
         </Link>
 
         <div className='flex w-4/5 lg:w-1/3 m-auto justify-around relative'  > 
-        <div  onMouseEnter={() => setIsDropDown(true)} onMouseLeave={() => setIsDropDown(false)}>
-          <Link href="/recipes" >
-            <h1 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>RECIPES</h1>
-          </Link>
-          <div className={`absolute pt-8 z-150  ${isDropDown ? 'block' : 'hidden'} `} style={{left: '0.5rem', top: '0', }}>
-            <div  className='bg-white px-4 py-4 flex flex-col shadow-lg' >
-              <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Appetizers' )}>Appetizers</h1>
-              <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Main Course' )}>Main Course</h1>
-              <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Dessert' )}>Desserts</h1>
-              <h1 className='text-sm pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Sides' )}>Sides</h1>
+          {/* <div  onMouseEnter={() => setIsDropDown(true)} onMouseLeave={() => setIsDropDown(false)}>
+            <Link href="/recipes" >
+              <h1 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>RECIPES</h1>
+            </Link>
+            <div className={`absolute pt-8 z-150 border ${isDropDown ? 'block' : 'hidden'} `} style={{left: '0.5rem', top: '0', }}>
+              <div  className='bg-white px-4 py-4 flex flex-col shadow-lg' >
+                <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Appetizers' )}>Appetizers</h1>
+                <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Main Course' )}>Main Course</h1>
+                <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Dessert' )}>Desserts</h1>
+                <h1 className='text-sm pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Sides' )}>Sides</h1>
+              </div>
+            </div>
+          </div> */}
+
+          <div className="dropdown">
+            <Link href="/recipes" >
+              <h1 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>RECIPES</h1>
+            </Link>
+            <div className="dropdown-content">
+              <div  className='bg-white px-4 py-4 flex flex-col shadow-lg' >
+                <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Appetizers' )}>Appetizers</h1>
+                <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Main Course' )}>Main Course</h1>
+                <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Dessert' )}>Desserts</h1>
+                <h1 className='text-sm pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Sides' )}>Sides</h1>
+              </div>
             </div>
           </div>
-        </div>
 
           <Link href="/about">
             <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'  onMouseEnter={() => setIsDropDown(false)} >ABOUT</h1>
