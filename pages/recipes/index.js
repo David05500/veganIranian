@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import '../../assets/styles/main.css';
 import Link from 'next/link';
 import _ from 'lodash';
@@ -9,6 +9,17 @@ import BlogDataContext from '../../components/BlogDataContext';
 
 const  Index = ( props ) => {
     const { filteredBlogs } = useContext(BlogDataContext);
+    const [data, setData] = useState([]);
+    
+    useEffect(() => {
+        if (_.isEmpty(data)){
+            setData(filteredBlogs);
+        }else{
+            const aremovedDuplicates = _.uniqBy(filteredBlogs, 'slug');
+            setData(aremovedDuplicates);
+        }
+    }, [filteredBlogs])
+
     return (
         <div>
             <Head>
@@ -18,12 +29,12 @@ const  Index = ( props ) => {
                 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet"></link>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             </Head>
-            {filteredBlogs != null ? 
+            {data != null ? 
                 (<div className='m-auto text-2xl bg-gray-primary'>
                     <Header />
                     <div className='max-width-735 px-4 lg:px-0 mx-auto lg:flex lg:flex-wrap mt-10'>
-                        {!_.isEmpty(filteredBlogs) ?
-                            _.map(filteredBlogs, blog => {
+                        {!_.isEmpty(data) ?
+                            _.map(data, blog => {
                                 if(blog != undefined ) {
                                     return(
                                         <div key={blog.slug} className='lg:w-1/3 mb-8'>

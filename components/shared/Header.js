@@ -3,7 +3,7 @@ import Link from 'next/link';
 import '../../assets/styles/main.css';
 import Head from 'next/head';
 import contentfulClient from '../../lib/contentful';
-import algoliasearch from 'algoliasearch/lite';
+// import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch,   connectHits, connectSearchBox } from 'react-instantsearch-dom';
 import BlogDataContext from '../BlogDataContext';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -11,6 +11,18 @@ import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import {useRouter} from 'next/router';
 import _ from 'lodash';
 
+// new
+import algoliasearch from 'algoliasearch';
+const client = algoliasearch('M9SIDYA62K', 'e278595e667bbbe39f9dd4c380574c45');
+const index = client.initIndex('prod_TheIranianVegan');
+
+// index.searchForFacetValues('course', 'Main Course').then(({ facetHits }) => {
+//   console.log(facetHits);
+// })
+
+index.search('Main Course', {facets: ['course']}).then(({ hits }) => {
+  console.log(hits);
+});
 
 const getData = async () => {
   const res = await contentfulClient.getEntries({
@@ -27,9 +39,9 @@ const searchClient = algoliasearch(
   'e278595e667bbbe39f9dd4c380574c45'
 );
 const Hits = (data) => {
-  const { updateBlogs } = useContext(BlogDataContext);
-  updateBlogs(data.hits);
-  return('');
+  const {updateBlogs} = useContext(BlogDataContext);
+  data.hits != undefined ? updateBlogs(data.hits) : null;
+  return(null);
 };
 const CustomHits = connectHits(Hits);
 
