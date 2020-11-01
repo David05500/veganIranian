@@ -18,7 +18,7 @@ const index = client.initIndex('prod_TheIranianVegan');
 
 // index.searchForFacetValues('course', 'Main Course').then(({ facetHits }) => {
 //   console.log(facetHits);
-// });
+// })
 
 index.search('Main Course', {facets: ['course']}).then(({ hits }) => {
   console.log(hits);
