@@ -167,7 +167,17 @@ const BlogPost = ({blogPost}) => {
                 
                                 
                                 <div className='border-btm mb-10 pb-8'>
-                                    <h1  className="align-center text-gray-500 font-bold text-base mb-5">INSTRUCTIONS</h1>
+                                    <div className='mb-5 flex flex-row items-center justify-between'>
+                                        <h1 className="align-center text-gray-500 font-bold text-base ">INSTRUCTIONS</h1>
+                                        {/* <div className="bg-gray-200 text-sm text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex">
+                                            <button className="inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-blue-400 rounded-l-full px-4 py-2 active" id="grid">
+                                                <span>English</span>
+                                            </button>
+                                            <button className="inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-blue-400 rounded-r-full px-4 py-2" id="list">
+                                                <span>فارسی</span>
+                                            </button>
+                                        </div> */}
+                                    </div>
                                     {documentToReactComponents(post.instructions, options)}
                                 </div>
                                 <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-5 "><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>

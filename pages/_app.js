@@ -3,6 +3,7 @@ import App from 'next/app'
 import contentfulClient from '../lib/contentful';
 import BlogDataContext from '../components/BlogDataContext';
 import _ from 'lodash';
+import * as gtag from '../lib/gtag';
 
 function MyApp(props) {
   const { Component, pageProps, router, data } = props;
@@ -16,6 +17,16 @@ function MyApp(props) {
     setInitialBlogs(_.orderBy(data, ['createdAt' ], ['desc']));
     setFilteredBlogs(_.orderBy(data, ['createdAt' ], ['desc']));
   }, []);
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
   
   const updateBlogs = data => {
     let slug = '';
