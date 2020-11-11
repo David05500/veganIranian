@@ -13,9 +13,7 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop - 220);
 
 const Bold = ({ children }) => <p className="text-6xl text-green-700">{children}</p>;
  
-const Text = ({ children }) => {
-    return <p className="text-base text-justify">{children}</p>
-};
+const Text = ({ children }) => <p className="text-base text-justify">{children}</p>;
 
 const HEADING1 = ({ children }) => <p className="align-center text-gray-800 text-xl">{children}</p>;
 
@@ -47,21 +45,19 @@ const BlogPost = ({blogPost}) => {
             }, []);
         },
         renderNode: {
-            [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+            [BLOCKS.PARAGRAPH]: (node, children) => <p className={`text-base ${isEnglish ? 'text-justify' : 'text-right'}`}>{children}</p>,
             [BLOCKS.UL_LIST]: (node, children) => <UlList>{children}</UlList>,
             [BLOCKS.OL_LIST]: (node, children) => <OlList>{children}</OlList>,
             [BLOCKS.HEADING_1]: (node, children) => <HEADING1>{children}</HEADING1>,
             [BLOCKS.HEADING_3]: (node, children) => <HEADING3>{children}</HEADING3>,
             [BLOCKS.EMBEDDED_ASSET]: (node) => {
-            return <img src={node.data.target.fields.file.url} className='my-10'/>
+                return <img src={node.data.target.fields.file.url} className='my-10'/>
             },
             [INLINES.HYPERLINK]: (node, children) => <MyLink>{children}</MyLink>,
         },
     };
     if (post == null) {
-        return(
-            <h1>Loading...</h1>
-        )
+        return <h1>Loading...</h1>
     }else{
         return (
             <div>
