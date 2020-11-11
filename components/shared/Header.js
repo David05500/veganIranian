@@ -183,12 +183,12 @@ const Header = props => {
             }
           </Link>
 
-          <a href="/contact">
+          <Link href="/contact">
             {isEnglish 
               ? <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
               : <h1 className='pointer text-base font-medium hover:opacity-60 transform ease-in duration-100'>تماس با من</h1>
             }
-          </a>
+          </Link>
           
         </div>
         <div className='lg:absolute lg:right-185px lg:bottom-12px'>
