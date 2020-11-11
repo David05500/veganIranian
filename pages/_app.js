@@ -12,6 +12,7 @@ function MyApp(props) {
   const [filteredBlogs, setFilteredBlogs] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
   const [userSearchQuery, setUserSearchQuery] = useState({query: ""});
+  const [isEnglish, setIsEnglish] = useState(true);
   
   useEffect(() => {
     setInitialBlogs(_.orderBy(data, ['createdAt' ], ['desc']));
@@ -51,7 +52,17 @@ function MyApp(props) {
 
   if (initialBlogs != {}) {
     return (
-      <BlogDataContext.Provider value={{ blogs: initialBlogs, filteredBlogs: filteredBlogs, updateBlogs: updateBlogs, isSearching: isSearching, setIsSearching: setIsSearching,  userSearchQuery: userSearchQuery, setUserSearchQuery: setUserSearchQuery }}>
+      <BlogDataContext.Provider value={{ 
+        blogs: initialBlogs, 
+        filteredBlogs: filteredBlogs, 
+        updateBlogs: updateBlogs, 
+        isSearching: isSearching, 
+        setIsSearching: setIsSearching,  
+        userSearchQuery: userSearchQuery, 
+        setUserSearchQuery: setUserSearchQuery,
+        isEnglish: isEnglish,
+        setIsEnglish: setIsEnglish
+      }}>
         <Component {...pageProps} key={router.route}/>
       </BlogDataContext.Provider>
     )

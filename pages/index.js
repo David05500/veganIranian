@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Head from 'next/head';
 import {createClient} from 'contentful';
 import contentfulClient from '../lib/contentful';
 import '../assets/styles/main.css';
 import Link from 'next/link';
 import { GrInstagram } from "react-icons/gr";
+import BlogDataContext from '../components/BlogDataContext';
 
 const GetHomePageData = async () => {
   const res = await contentfulClient.getEntries({
@@ -15,6 +16,7 @@ const GetHomePageData = async () => {
   return data;
 };
 
+
 const  HomePage = () => {
   const [homePagePic, setHomePagePic] = useState('')
   const [mobileHomePagePic, setMobileHomePagePic] = useState('')
@@ -22,11 +24,13 @@ const  HomePage = () => {
     
   useEffect(() => {
     GetHomePageData().then(phrases => {
-        setHomePagePic(phrases[0].homePageImage.fields.file.url);
-        setMobileHomePagePic(phrases[0].mobileHomePageImage.fields.file.url);
+      setHomePagePic(phrases[0].homePageImage.fields.file.url);
+      setMobileHomePagePic(phrases[0].mobileHomePageImage.fields.file.url);
     });
     setWindowWidth(window.innerWidth)
   }, []);
+  
+  const { isEnglish, setIsEnglish } = useContext(BlogDataContext);
 
 
   return (
@@ -47,17 +51,25 @@ const  HomePage = () => {
             <div className='flex flex-col justify-center items-center w-full'>
               <div className='flex flex-col lg:flex-row items-center text-white w-5/7 min-h-24 max-w-26 tracking-wide z-50 justify-around'>
                 <Link href="/recipes">
-                  <h1 className='checking pointer text-small font-medium hover:opacity-60 transform ease-in duration-100'>RECIPES</h1>
+                  {isEnglish 
+                    ? <h1 className='checking pointer text-small font-medium hover:opacity-60 transform ease-in duration-100'>RECIPES</h1>
+                    : <h1 className='checking pointer text-xl font-medium hover:opacity-60 transform ease-in duration-100'>طرز تهیه غذاها</h1>
+                  }
                 </Link>
 
                 <Link href="/about">
-                  <h1 className='pointer text-small font-medium hover:opacity-60 transform ease-in duration-100' >ABOUT</h1>
+                  {isEnglish 
+                    ? <h1 className='checking pointer text-small font-medium hover:opacity-60 transform ease-in duration-100'>ABOUT</h1>
+                    : <h1 className='checking pointer text-xl font-medium hover:opacity-60 transform ease-in duration-100'>درباره من</h1>
+                  }
                 </Link>
 
                 <a href="/contact">
-                  <h1 className='pointer text-small font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
+                  {isEnglish 
+                    ? <h1 className='checking pointer text-small font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
+                    : <h1 className='checking pointer text-xl font-medium hover:opacity-60 transform ease-in duration-100'>تماس با من</h1>
+                  }
                 </a>
-
               </div>
 
               <a href='https://www.instagram.com/theiranianvegan/' className='text-white mt-10 z-50  hover:opacity-60 transform ease-in duration-100'> 
@@ -65,6 +77,16 @@ const  HomePage = () => {
               </a>
             </div>
             
+            <div style={{top: '50px', right: '50px', backdropFilter: 'saturate(150%) blur(20px)', backgroundColor: 'rgba(255, 255, 255, 0.8)'}} className="absolute text-sm text-gray-500 leading-none rounded-full inline-flex">
+              <button className={`inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 ${isEnglish ? 'text-blue-400' : 'text-white'} rounded-l-full px-4 py-2`} onClick={() => setIsEnglish(true)}>
+                  <span>English</span>
+              </button>
+              <button className={`inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 ${isEnglish ? 'text-white' : 'text-blue-400'} rounded-r-full px-4 py-2`} onClick={() => setIsEnglish(false)}>
+                  <span>فارسی</span>
+              </button>
+            </div>
+
+
           </div>
         </div>
     </div>
