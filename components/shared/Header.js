@@ -94,6 +94,7 @@ const Header = props => {
   const [logoBgImage, setLogoBgImage] = useState([]);
   const [isShrink, setIsShrink] = useState(false);
   const [isDropDown, setIsDropDown] = useState(false);
+  const { isEnglish, setIsEnglish } = useContext(BlogDataContext);
   
   const { filteredBlogs, blogs, isSearching, setIsSearching, userSearchQuery, setUserSearchQuery } = useContext(BlogDataContext);
 
@@ -160,7 +161,10 @@ const Header = props => {
 
           <div className="dropdown">
             <Link href="/recipes" >
-              <h1 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>RECIPES</h1>
+              {isEnglish 
+                ? <h1 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>RECIPES</h1>
+                : <h1 className='pointer text-base font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>طرز تهیه غذاها</h1>
+              }
             </Link>
             <div className="dropdown-content">
               <div  className='bg-white px-4 py-4 flex flex-col shadow-lg' >
@@ -173,11 +177,17 @@ const Header = props => {
           </div>
 
           <Link href="/about">
-            <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'  onMouseEnter={() => setIsDropDown(false)} >ABOUT</h1>
+            {isEnglish 
+              ? <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>ABOUT</h1>
+              : <h1 className='pointer text-base font-medium hover:opacity-60 transform ease-in duration-100'>درباره من</h1>
+            }
           </Link>
 
           <a href="/contact">
-            <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
+            {isEnglish 
+              ? <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
+              : <h1 className='pointer text-base font-medium hover:opacity-60 transform ease-in duration-100'>تماس با من</h1>
+            }
           </a>
           
         </div>
@@ -212,6 +222,14 @@ const Header = props => {
         })}
       </div>
       }
+      <div style={{top: '50px', right: '50px', backdropFilter: 'saturate(150%) blur(20px)', backgroundColor: 'rgba(255, 255, 255, 0.5)'}} className="absolute text-sm text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex">
+        <button className={`inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 ${isEnglish ? 'text-blue-400' : ''} rounded-l-full px-4 py-2`} onClick={() => setIsEnglish(true)}>
+            <span>English</span>
+        </button>
+        <button className={`inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 ${isEnglish ? '' : 'text-blue-400'} rounded-r-full px-4 py-2`} onClick={() => setIsEnglish(false)}>
+            <span>فارسی</span>
+        </button>
+      </div>
       
     </div>
   );
