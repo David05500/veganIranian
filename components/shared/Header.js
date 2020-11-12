@@ -46,14 +46,14 @@ const Hits = (data) => {
 const CustomHits = connectHits(Hits);
 
 
-const SearchBox = ( { currentRefinement, isSearchStalled, refine, setIsSearching, updateSearchState }) => (
+const SearchBox = ( { currentRefinement, isSearchStalled, refine, setIsSearching, updateSearchState, isEnglish }) => (
   <form noValidate action="" role="search" className='mt-4 lg:mt-0 relative'>
     <input
       type="search"
       value={currentRefinement}
       onChange={event =>  updateSearchState(event.currentTarget.value)}
-      className='search-input text-sm font-medium px-2 py-1 flex justify-center text-black items-center '
-      placeholder='Search here...'
+      className={`search-input text-sm font-medium px-2 py-1 flex justify-center text-black items-center  ${isEnglish ? '' : 'text-right'}`}
+      placeholder={isEnglish ? 'Search here...' : '...بیشتر بدانید'}
       onFocus={() => setIsSearching(true)}
       onBlur={() => setIsSearching(false)}
     />
@@ -167,12 +167,23 @@ const Header = props => {
               }
             </Link>
             <div className="dropdown-content">
-              <div  className='bg-white px-4 py-4 flex flex-col shadow-lg' >
-                <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Appetizers' )}>Appetizers</h1>
-                <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Main Course' )}>Main Course</h1>
-                <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Dessert' )}>Desserts</h1>
-                <h1 className='text-sm pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Sides' )}>Sides</h1>
-              </div>
+              {isEnglish 
+                ? (
+                  <div  className='bg-white px-4 py-4 flex flex-col shadow-lg' >
+                    <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Appetizers' )}>Appetizers</h1>
+                    <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Main Course' )}>Main Course</h1>
+                    <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Dessert' )}>Desserts</h1>
+                    <h1 className='text-sm pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Sides' )}>Sides</h1>
+                  </div>
+                )
+                : (
+                  <div  className='bg-white px-4 py-4 flex flex-col shadow-lg' >
+                    <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'پیش غذا' )}>پیش غذا</h1>
+                    <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'غذای اصلی' )}>غذای اصلی</h1>
+                    <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'دسر' )}>دسر</h1>
+                  </div>
+                )
+              }
             </div>
           </div>
 
@@ -197,7 +208,7 @@ const Header = props => {
             searchClient={searchClient}
             searchState={userSearchQuery}
           >
-            <CustomSearchBox reset={<img src='' alt="" />} setIsSearching={setIsSearching} updateSearchState={updateSearchState}/>
+            <CustomSearchBox reset={<img src='' alt="" />} setIsSearching={setIsSearching} updateSearchState={updateSearchState} isEnglish={isEnglish}/>
             <CustomHits userSearchQuery={userSearchQuery}/>
           </InstantSearch>
         </div>

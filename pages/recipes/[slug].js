@@ -80,7 +80,10 @@ const BlogPost = ({blogPost}) => {
 
 
                         <div className='w-full flex justify-center mb-10'>
-                            <button onClick={executeScroll}  className='flex items-center px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'><img src="/cutlery.svg"  className='w-8 text-gray-300 mr-3' /> JUMP TO RECIPE</button>
+                            <button onClick={executeScroll}  className='flex items-center px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'>
+                                <img src="/cutlery.svg"  className='w-8 text-gray-300 mr-3' /> 
+                                {isEnglish ? 'JUMP TO RECIPE' : 'دسترسی به طرز تهیه'}
+                            </button>
                         </div>
 
                         {documentToReactComponents(isEnglish ? post.recipeDescription : post.farsiRecipeDescription, options)}
@@ -100,7 +103,10 @@ const BlogPost = ({blogPost}) => {
                                     <div className='flex items-center lg:justify-center w-full mb-4'>
                                         <img src="/course.svg"  className='w-5 text-gray-500 mr-3' />
                                         <div className='flex'>
-                                            <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Course: </h1>
+                                            {isEnglish 
+                                                ? <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Course: </h1> 
+                                                : <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>نوع وعده:</h1>
+                                            }
                                             <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.course}</h1>
                                         </div>
                                     </div>
@@ -110,7 +116,10 @@ const BlogPost = ({blogPost}) => {
                                         <div className='w-1/2 flex items-center w-full lg:ml-4 mb-4 lg:mb-0'>
                                             <img src="/cook-time.svg"  className='w-5 text-gray-500 mr-3' />
                                             <div className='flex'>
-                                                <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1>
+                                                {isEnglish 
+                                                    ? <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1> 
+                                                    : <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>مدت زمان پخت:</h1>
+                                                }
                                                 <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.cookTime}</h1>
                                             </div>
                                         </div>
@@ -118,7 +127,10 @@ const BlogPost = ({blogPost}) => {
                                         <div className='w-1/2 flex items-center w-full lg:ml-4'>
                                             <img src="/total-time.svg"  className='w-5 text-gray-500 mr-3' />
                                             <div className='flex'>
-                                                <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Total Time: </h1>
+                                                {isEnglish 
+                                                    ? <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Total Time: </h1> 
+                                                    : <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>کل مدت زمان مورد نیاز:</h1>
+                                                }
                                                 <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.totalTime}</h1>
                                             </div>
                                         </div>
@@ -128,7 +140,10 @@ const BlogPost = ({blogPost}) => {
                                         <div className='w-1/2 flex items-center w-full lg:ml-4 mb-4 lg:mb-0'>
                                             <img src="/prep-time.svg"  className='w-5 text-gray-500 mr-3' />
                                             <div className='flex'>
-                                                <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Prep Time: </h1>
+                                                {isEnglish 
+                                                    ? <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Prep Time: </h1> 
+                                                    : <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>مدت زمان تهیه:</h1>
+                                                }
                                                 <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.prepTime}</h1>
                                             </div>
                                         </div>
@@ -136,7 +151,10 @@ const BlogPost = ({blogPost}) => {
                                         <div className='w-1/2 flex items-center w-full lg:ml-4'>
                                             <img src="/servings.svg"  className='w-5 text-gray-500 mr-3' />
                                             <div className='flex'>
-                                                <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-4'>Servings: </h1>
+                                                {isEnglish 
+                                                    ? <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Servings: </h1> 
+                                                    : <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>وعده:</h1>
+                                                }
                                                 <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.servings}</h1>
                                             </div>
                                         </div>
@@ -148,18 +166,26 @@ const BlogPost = ({blogPost}) => {
                             <div className='px-4 lg:px-8 bg-gray-primary lg:pb-8 py-5'> 
                                 
                                     <div className='border-btm mb-10 mt-4 pb-8'>
-                                        <h1  className="align-center text-gray-500 font-bold text-base mb-5">INGREDIENTS</h1>
+                                        {isEnglish 
+                                            ? <h1 className="align-center text-gray-500 font-bold text-base mb-5">INGREDIENTS</h1> 
+                                            : <h1 className="align-center text-gray-500 font-bold text-2xl text-right mb-8">عناصر</h1>
+                                        }
                                         {documentToReactComponents(isEnglish ? post.ingredients : post.farsiIngredients, options)}
                                     </div>
                     
                                     
                                     <div className='border-btm mb-10 pb-8'>
-                                        <div className='mb-5 flex flex-row items-center justify-between'>
-                                            <h1 className="align-center text-gray-500 font-bold text-base ">INSTRUCTIONS</h1>
-                                        </div>
+                                        {isEnglish 
+                                            ? <h1 className="align-center text-gray-500 font-bold text-base mb-8">INSTRUCTIONS</h1>
+                                            : <h1 className="align-center text-gray-500 font-bold text-2xl text-right mb-8">طرز تهیه</h1>
+                                        }
                                         {documentToReactComponents(isEnglish ? post.instructions : post.farsiInstructions, options)}
                                     </div>
-                                    <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-5 "><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
+
+                                        {isEnglish 
+                                            ? <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-5 "><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
+                                            : <h1 className="align-center flex items-center justify-end text-gray-500 font-bold text-2xl text-right mb-8  ">یادداشت ها <img src="/notes.svg"  className='w-5 text-gray-500 ml-3' /></h1>
+                                        }
                                     <div className='bg-white p-4 pt-10 lg:p-8 mb-12 pb-8 cut-corrner'>
                                         {documentToReactComponents(isEnglish ? post.notes : post.farsiNotes, options)}
                                     </div>
