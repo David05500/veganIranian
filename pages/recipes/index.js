@@ -46,7 +46,7 @@ const  Index = ( props ) => {
                                                                 style={{backgroundSize: '50%', backgroundImage:`url(${blog.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
                                                             </div>
                                                             <div >
-                                                                <h2 className='text-xs text-center px-4'>{isEnglish ? blog.title : blog.farsiTitle}</h2>
+                                                                <h2 className={`text-xs text-center px-4 ${isEnglish ? 'text-xs' : 'text-base'}`}>{isEnglish ? blog.title : blog.farsiTitle}</h2>
                                                             </div>
                                                         </div>
                                                     </Link>
@@ -62,7 +62,7 @@ const  Index = ( props ) => {
                                                             style={{backgroundSize: '50%', backgroundImage:`url(${blog.smallBlogPostImage.fields.file.url})`, backgroundRepeat:  'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
                                                         </div>
                                                         <div >
-                                                            <h2 className='text-xs text-center px-4'>{isEnglish ? blog.title : blog.farsiTitle}</h2>
+                                                            <h2 className={`text-xs text-center px-4 ${isEnglish ? 'text-xs' : 'text-base'}`}>{isEnglish ? blog.title : blog.farsiTitle}</h2>
                                                         </div>
                                                     </div>
                                                 </Link>
