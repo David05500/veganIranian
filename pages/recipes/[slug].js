@@ -13,7 +13,7 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop - 220);
 
 const Bold = ({ children }) => <p className="text-6xl text-green-700">{children}</p>;
  
-const Text = ({ children }) => <p className="text-base text-justify">{children}</p>;
+// const Text = ({ children }) => <p className="text-base text-justify">{children}</p>;
 
 const HEADING1 = ({ children }) => <p className="align-center text-gray-800 text-xl">{children}</p>;
 
@@ -21,7 +21,7 @@ const HEADING3 = ({ children }) => <p className="align-center text-gray-800 text
 
 const MyLink = ({ children }) => <a className=" text-gray-600 pointer hover:opacity-60 transform ease-in duration-300">{children}</a>;
 
-const UlList = ({ children }) => <ul className="text-lg text-gray-700  list-disc">{children}</ul>;
+// const UlList = ({ children }) => <ul className="text-lg text-gray-700  list-disc">{children}</ul>;
 
 const OlList = ({ children }) => <ol className="text-lg text-red  list-decimal">{children}</ol>;
 
@@ -45,9 +45,9 @@ const BlogPost = ({blogPost}) => {
             }, []);
         },
         renderNode: {
-            [BLOCKS.PARAGRAPH]: (node, children) => <p className={`text-base ${isEnglish ? 'text-justify' : 'text-right'}`}>{children}</p>,
-            [BLOCKS.UL_LIST]: (node, children) => <UlList>{children}</UlList>,
-            [BLOCKS.OL_LIST]: (node, children) => <OlList>{children}</OlList>,
+            [BLOCKS.PARAGRAPH]: (node, children) => <p className={`text-base mb-4 ${isEnglish ? 'text-justify' : 'text-right'}`}>{children}</p>,
+            [BLOCKS.UL_LIST]: (node, children) => <ul className={`text-lg text-gray-700  list-disc`} style={{direction: isEnglish ? 'unset' : 'rtl'}}>{children}</ul>,
+            [BLOCKS.OL_LIST]: (node, children) => <ol className="text-lg text-red  list-decimal" style={{direction: isEnglish ? 'unset' : 'rtl', listStyle: isEnglish ? 'unset' : 'persian'}}>{children}</ol>,
             [BLOCKS.HEADING_1]: (node, children) => <HEADING1>{children}</HEADING1>,
             [BLOCKS.HEADING_3]: (node, children) => <HEADING3>{children}</HEADING3>,
             [BLOCKS.EMBEDDED_ASSET]: (node) => {
