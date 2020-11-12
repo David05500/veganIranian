@@ -72,7 +72,7 @@ const BlogPost = ({blogPost}) => {
                     <Header />
                     <div className='max-width-735 px-4 mx-auto mt-10 lg:mt-20'>
 
-                        <h1 className='mb-10 text-center'>{isEnglish ? post.title : post.farsiTitle}</h1>
+                        <h1 className='mb-10 text-center transform ease-in duration-100'>{isEnglish ? post.title : post.farsiTitle}</h1>
                         {post.blogPostImage != undefined ? <img src={post.blogPostImage.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
                         {post.blogPostImage2 != undefined ? <img src={post.blogPostImage2.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
                         {post.blogPostImage3 != undefined ? <img src={post.blogPostImage3.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
