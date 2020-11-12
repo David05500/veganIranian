@@ -23,7 +23,7 @@ const MyLink = ({ children }) => <a className=" text-gray-600 pointer hover:opac
 
 // const UlList = ({ children }) => <ul className="text-lg text-gray-700  list-disc">{children}</ul>;
 
-const OlList = ({ children }) => <ol className="text-lg text-red  list-decimal">{children}</ol>;
+const OlList = ({ children }) => <ol className="text-lg text-red list-decimal">{children}</ol>;
 
 const BlogPost = ({blogPost}) => {
     const { isEnglish } = useContext(BlogDataContext);
@@ -46,8 +46,8 @@ const BlogPost = ({blogPost}) => {
         },
         renderNode: {
             [BLOCKS.PARAGRAPH]: (node, children) => <p className={`text-base mb-4 ${isEnglish ? 'text-justify' : 'text-right'}`}>{children}</p>,
-            [BLOCKS.UL_LIST]: (node, children) => <ul className={`text-lg text-gray-700  list-disc`} style={{direction: isEnglish ? 'unset' : 'rtl'}}>{children}</ul>,
-            [BLOCKS.OL_LIST]: (node, children) => <ol className="text-lg text-red  list-decimal" style={{direction: isEnglish ? 'unset' : 'rtl', listStyle: isEnglish ? 'unset' : 'persian'}}>{children}</ol>,
+            [BLOCKS.UL_LIST]: (node, children) => <ul className={`text-lg text-gray-700  list-disc`} style={{direction: isEnglish ? 'unset' : 'rtl',  marginRight: isEnglish ? 'unset' : '1.5rem'}}>{children}</ul>,
+            [BLOCKS.OL_LIST]: (node, children) => <ol className="text-lg text-red  list-decimal" style={{direction: isEnglish ? 'unset' : 'rtl', listStyle: isEnglish ? 'unset' : 'persian', marginRight: isEnglish ? 'unset' : '1.5rem'}}>{children}</ol>,
             [BLOCKS.HEADING_1]: (node, children) => <HEADING1>{children}</HEADING1>,
             [BLOCKS.HEADING_3]: (node, children) => <HEADING3>{children}</HEADING3>,
             [BLOCKS.EMBEDDED_ASSET]: (node) => {
