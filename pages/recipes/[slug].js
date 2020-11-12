@@ -97,14 +97,14 @@ const BlogPost = ({blogPost}) => {
                                 <img src="/paisley.png"  className=' h-64 absolute text-gray-500' />
                             </div>
 
-                            <div className='w-full mt-24 '>
+                            <div className='w-full mt-24 px-4 lg:px-0'>
                                 <h1 className='py-10 text-center text-3xl font-medium border-btm mb-10'>{isEnglish ? post.title : post.farsiTitle}</h1>
                                 <div className='my-2 text-lg pl-4 lg:pl-0'>
 
 
                                     {isEnglish 
                                         ?(
-                                            <div className='flex items-center lg:justify-center w-full mb-6'>
+                                            <div className='flex items-center justify-end lg:justify-center w-full mb-6'>
                                                 <img src="/course.svg"  className='w-5 text-gray-500 mr-3' />
                                                 <div className='flex'>
                                                     <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Course: </h1> 
@@ -113,10 +113,10 @@ const BlogPost = ({blogPost}) => {
                                             </div>
                                         )
                                         :(
-                                            <div className='flex items-center lg:justify-center w-full mb-6'>
+                                            <div className='flex items-center  justify-end lg:justify-center w-full mb-6'>
                                                 <div className='flex'>
                                                     <h1 className='text-gray-800 font-medium text-base lg:text-lg'>{post.course}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm ml-1 lg:ml-2'>:نوع وعده</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm  ml-2'>:نوع وعده</h1>
                                                 </div>
                                                 <img src="/course.svg"  className='w-5 text-gray-500 ml-3' />
                                             </div>
@@ -133,14 +133,14 @@ const BlogPost = ({blogPost}) => {
                                                     <img src="/cook-time.svg"  className='w-5 text-gray-500 mr-3' />
                                                     <div className='flex'>
                                                         <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1> 
-                                                        <h1 className='text-gray-800 font-medium text-base lg:text-lg underline'>{post.cookTime}</h1>
+                                                        <h1 className='text-gray-800 font-medium text-base lg:text-lg '>{post.cookTime}</h1>
                                                     </div>
                                                 </div>
                                             )
                                             :(
-                                                <div className='w-1/3 flex items-center justify-end mb-4 lg:mb-0 lg:mr-3'>
-                                                    <h1 className='text-gray-800 font-medium text-base lg:text-lg underline'>{post.cookTime}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm ml-1 lg:ml-4 text-right'>:مدت زمان پخت</h1>
+                                                <div className='w-full lg:w-1/3 flex items-center justify-end mb-4 lg:mb-0 lg:mr-3'>
+                                                    <h1 className='text-gray-800 font-medium text-base lg:text-lg '>{post.cookTime}</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm  ml-4 text-right'>:مدت زمان پخت</h1>
                                                     <img src="/cook-time.svg"  className='w-5 text-gray-500 ml-3' />
                                                 </div>
                                             )
@@ -153,14 +153,14 @@ const BlogPost = ({blogPost}) => {
                                                     <img src="/total-time.svg"  className='w-5 text-gray-500 mr-3' />
                                                     <div className='flex'>
                                                         <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Total Time: </h1> 
-                                                        <h1 className='text-gray-800 font-medium text-base lg:text-lg underline'>{post.totalTime}</h1>
+                                                        <h1 className='text-gray-800 font-medium text-base lg:text-lg '>{post.totalTime}</h1>
                                                     </div>
                                                 </div>
                                             )
                                             :(
-                                                <div className='w-2/3 flex items-center justify-end'>
-                                                    <h1 className='text-gray-800 font-medium text-base lg:text-lg underline'>{post.totalTime}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm ml-1 lg:ml-4 text-right'>:کل مدت زمان مورد نیاز</h1>
+                                                <div className='w-full lg:w-2/3 flex items-center justify-end'>
+                                                    <h1 className='text-gray-800 font-medium text-base lg:text-lg '>{post.totalTime}</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm ml-4 text-right'>:کل مدت زمان مورد نیاز</h1>
                                                     <img src="/total-time.svg"  className='w-5 text-gray-500 ml-3' />
                                                 </div>
                                             )
@@ -175,14 +175,14 @@ const BlogPost = ({blogPost}) => {
                                                     <img src="/prep-time.svg"  className='w-5 text-gray-500 mr-3' />
                                                     <div className='flex'>
                                                         <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Prep Time: </h1> 
-                                                        <h1 className='text-gray-800 font-medium text-base lg:text-lg underline'>{post.prepTime}</h1>
+                                                        <h1 className='text-gray-800 font-medium text-base lg:text-lg '>{post.prepTime}</h1>
                                                     </div>
                                                 </div>
                                             )
                                             :(
-                                                <div  className='w-1/3 flex items-center justify-end lg:mr-3'>
-                                                    <h1 className='text-gray-800 font-medium text-base lg:text-lg underline'>{post.servings}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm ml-1 lg:ml-4 text-right'>:وعده</h1>
+                                                <div  className='w-full lg:w-1/3 flex items-center justify-end lg:mr-3'>
+                                                    <h1 className='text-gray-800 font-medium text-base lg:text-lg '>{post.servings}</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm ml-4 text-right'>:وعده</h1>
                                                     <img src="/servings.svg"  className='w-5 text-gray-500 ml-3' />
                                                 </div>
                                             )
@@ -194,14 +194,14 @@ const BlogPost = ({blogPost}) => {
                                                     <img src="/servings.svg"  className='w-5 text-gray-500 mr-3' />
                                                     <div className='flex'>
                                                         <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Servings: </h1> 
-                                                        <h1 className='text-gray-800 font-medium text-base lg:text-lg underline'>{post.servings}</h1>
+                                                        <h1 className='text-gray-800 font-medium text-base lg:text-lg '>{post.servings}</h1>
                                                     </div>
                                                 </div>
                                             )
                                             :(
-                                                <div  className='w-2/3 flex items-center justify-end mb-4 lg:mb-0 '>
-                                                    <h1 className='text-gray-800 font-medium text-base lg:text-lg underline'>{post.prepTime}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm ml-1 lg:ml-4 text-right'>:مدت زمان تهیه</h1>
+                                                <div  className='w-full lg:w-2/3 flex items-center justify-end mb-4 lg:mb-0 '>
+                                                    <h1 className='text-gray-800 font-medium text-base lg:text-lg '>{post.prepTime}</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm ml-4 text-right'>:مدت زمان تهیه</h1>
                                                     <img src="/prep-time.svg"  className='w-5 text-gray-500 ml-3' />
                                                 </div>
                                             )
