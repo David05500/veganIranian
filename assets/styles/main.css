@@ -133,7 +133,6 @@ ol, ul {
 
 .search-input + svg {
   position: absolute;
-  right: 6%;
   top: 28%;
 }
 

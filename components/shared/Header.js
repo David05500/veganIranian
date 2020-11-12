@@ -57,7 +57,7 @@ const SearchBox = ( { currentRefinement, isSearchStalled, refine, setIsSearching
       onFocus={() => setIsSearching(true)}
       onBlur={() => setIsSearching(false)}
     />
-    <svg onClick={() => updateSearchState('')} role="presentation" className="i-search w-3" viewBox="5 5 30 30" fill="none" stroke="currentcolor" color='gray' strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
+    <svg onClick={() => updateSearchState('')} role="presentation" style={{right: isEnglish ? '6%' : 'unset', left: isEnglish ? 'unset' : '6%'}} className="i-search w-3" viewBox="5 5 30 30" fill="none" stroke="currentcolor" color='gray' strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
       <path d="M 10,10 L 30,30 M 30,10 L 10,30" />
     </svg>
   </form>
