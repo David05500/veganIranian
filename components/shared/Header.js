@@ -222,7 +222,7 @@ const Header = props => {
         })}
       </div>
       }
-      <div style={{top: '50px', right: '50px', zIndex: '1111111111', backdropFilter: 'saturate(150%) blur(20px)', backgroundColor: 'rgba(255, 255, 255, 0.5)'}} className="absolute text-sm text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex">
+      <div style={{top: '50px', right: '50px', zIndex: '1111111111', backdropFilter: 'saturate(150%) blur(20px)', backgroundColor: 'rgba(255, 255, 255, 0.5)'}} className="absolute text-sm text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex hidden md:block">
         <button className={`inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 ${isEnglish ? 'text-blue-400' : ''} rounded-l-full px-4 py-2`} onClick={() => setIsEnglish(true)}>
             <span>English</span>
         </button>
