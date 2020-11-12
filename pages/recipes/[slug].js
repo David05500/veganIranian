@@ -104,7 +104,7 @@ const BlogPost = ({blogPost}) => {
 
                                     {isEnglish 
                                         ?(
-                                            <div className='flex items-center justify-end lg:justify-center w-full mb-6'>
+                                            <div className='flex items-center  lg:justify-center w-full mb-6'>
                                                 <img src="/course.svg"  className='w-5 text-gray-500 mr-3' />
                                                 <div className='flex'>
                                                     <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Course: </h1> 
