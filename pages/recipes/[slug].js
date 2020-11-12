@@ -180,7 +180,7 @@ const BlogPost = ({blogPost}) => {
                                                 </div>
                                             )
                                             :(
-                                                <div  className='w-full lg:w-2/5 flex items-center justify-end lg:mr-3'>
+                                                <div  className='w-full lg:w-2/5 flex items-center justify-end mb-4 lg:mb-0 lg:mr-3'>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base lg:text-lg '>{post.servings}</h1>
                                                     <h1 className='self-center text-gray-600 text-sm ml-4 text-right'>:وعده</h1>
                                                     <img src="/servings.svg"  className='w-5 text-gray-500 ml-3' />
