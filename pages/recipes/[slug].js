@@ -140,7 +140,7 @@ const BlogPost = ({blogPost}) => {
                                             :(
                                                 <div className='w-full lg:w-1/3 flex items-center justify-end mb-4 lg:mb-0 lg:mr-3'>
                                                     <h1 className='text-gray-800 font-medium text-base lg:text-lg '>{post.cookTime}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm  ml-4 text-right'>:مدت زمان پخت</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm  ml-4 lg:ml-2 text-right'>:مدت زمان پخت</h1>
                                                     <img src="/cook-time.svg"  className='w-5 text-gray-500 ml-3' />
                                                 </div>
                                             )
