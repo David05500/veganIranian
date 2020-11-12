@@ -139,9 +139,9 @@ const BlogPost = ({blogPost}) => {
                                             )
                                             :(
                              
-                                                <div  className='w-full lg:w-1/2 flex items-center justify-end mb-4 lg:mb-0 lg:mr-3'>
+                                                <div  className='w-full lg:w-45p flex items-center justify-end mb-4 lg:mb-0 lg:mr-3'>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.prepTime}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm ml-4 text-right'>:مدت زمان تهیه</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:مدت زمان تهیه</h1>
                                                     <img src="/prep-time.svg"  className='w-5 text-gray-500 ml-3' />
                                                 </div>
                                             )
@@ -159,9 +159,9 @@ const BlogPost = ({blogPost}) => {
                                                 </div>
                                             )
                                             :(
-                                                <div className='w-full lg:w-1/2 flex items-center justify-end'>
+                                                <div className='w-full lg:w-55p flex items-center justify-end'>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.totalTime}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm ml-4 text-right'>:کل مدت زمان مورد نیاز</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:کل مدت زمان مورد نیاز</h1>
                                                     <img src="/total-time.svg"  className='w-5 text-gray-500 ml-3' />
                                                 </div>
                                             )
@@ -181,9 +181,9 @@ const BlogPost = ({blogPost}) => {
                                                 </div>
                                             )
                                             :(
-                                                <div  className='w-full lg:w-1/2 flex items-center justify-end mb-4 lg:mb-0 lg:mr-3'>
+                                                <div  className='w-full lg:w-45p flex items-center justify-end mb-4 lg:mb-0 lg:mr-3'>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.servings}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm ml-4 text-right'>:وعده</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:وعده</h1>
                                                     <img src="/servings.svg"  className='w-5 text-gray-500 ml-3' />
                                                 </div>
                                             )
@@ -200,9 +200,9 @@ const BlogPost = ({blogPost}) => {
                                                 </div>
                                             )
                                             :(
-                                                <div className='w-full lg:w-1/2 flex items-center justify-end mb-4 lg:mb-0 '>
+                                                <div className='w-full lg:w-55p flex items-center justify-end mb-4 lg:mb-0 '>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.cookTime}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm  ml-4 lg:ml-2 text-right'>:مدت زمان پخت</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm  ml-3 lg:ml-2 text-right'>:مدت زمان پخت</h1>
                                                     <img src="/cook-time.svg"  className='w-5 text-gray-500 ml-3' />
                                                 </div>
                                             )
