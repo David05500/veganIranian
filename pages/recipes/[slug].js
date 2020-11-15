@@ -11,7 +11,7 @@ import BlogDataContext from '../../components/BlogDataContext';
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop - 220);
 
-const Bold = ({ children }) => <p className="text-6xl text-green-700">{children}</p>;
+// const Bold = ({ children }) => <p className="text-6xl text-green-700">{children}</p>;
  
 // const Text = ({ children }) => <p className="text-base text-justify">{children}</p>;
 
@@ -46,8 +46,8 @@ const BlogPost = ({blogPost}) => {
         },
         renderNode: {
             [BLOCKS.PARAGRAPH]: (node, children) => <p className={`text-base mb-4 ${isEnglish ? 'text-justify' : 'text-right'}`}>{children}</p>,
-            [BLOCKS.UL_LIST]: (node, children) => <ul className={`text-lg text-gray-700  list-disc`} style={{direction: isEnglish ? 'unset' : 'rtl',  marginRight: isEnglish ? 'unset' : '1.5rem'}}>{children}</ul>,
-            [BLOCKS.OL_LIST]: (node, children) => <ol className="text-lg text-red  list-decimal" style={{direction: isEnglish ? 'unset' : 'rtl', listStyle: isEnglish ? 'unset' : 'persian', marginRight: isEnglish ? 'unset' : '1.5rem'}}>{children}</ol>,
+            [BLOCKS.UL_LIST]: (node, children) => <ul className={`text-base lg:text-lg text-gray-700  list-disc`} style={{direction: isEnglish ? 'unset' : 'rtl',  marginRight: isEnglish ? 'unset' : '1.5rem'}}>{children}</ul>,
+            [BLOCKS.OL_LIST]: (node, children) => <ol className="text-base lg:text-lg text-red  list-decimal" style={{direction: isEnglish ? 'unset' : 'rtl', listStyle: isEnglish ? 'unset' : 'persian', marginRight: isEnglish ? 'unset' : '1.5rem'}}>{children}</ol>,
             [BLOCKS.HEADING_1]: (node, children) => <HEADING1>{children}</HEADING1>,
             [BLOCKS.HEADING_3]: (node, children) => <HEADING3>{children}</HEADING3>,
             [BLOCKS.EMBEDDED_ASSET]: (node) => {
@@ -72,7 +72,7 @@ const BlogPost = ({blogPost}) => {
                     <Header />
                     <div className='max-width-735 px-4 mx-auto mt-10 lg:mt-20'>
 
-                        <h1 className='mb-10 text-center transform ease-in duration-100'>{isEnglish ? post.title : post.farsiTitle}</h1>
+                        <h1 className='mb-10 text-center transform ease-in text-xl lg:text-2xl duration-100'>{isEnglish ? post.title : post.farsiTitle}</h1>
                         {post.blogPostImage != undefined ? <img src={post.blogPostImage.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
                         {post.blogPostImage2 != undefined ? <img src={post.blogPostImage2.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
                         {post.blogPostImage3 != undefined ? <img src={post.blogPostImage3.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
@@ -98,7 +98,7 @@ const BlogPost = ({blogPost}) => {
                             </div>
 
                             <div className='w-full mt-24 px-4 lg:px-0'>
-                                <h1 className='py-10 text-center text-3xl font-medium border-btm mb-10'>{isEnglish ? post.title : post.farsiTitle}</h1>
+                                <h1 className='py-10 text-center text-2xl lg:text-3xl font-medium border-btm mb-10'>{isEnglish ? post.title : post.farsiTitle}</h1>
                                 <div className='my-2 text-lg pl-4 lg:pl-0'>
 
 
@@ -141,7 +141,7 @@ const BlogPost = ({blogPost}) => {
                              
                                                 <div  className='w-full lg:w-45p flex items-center justify-end mb-4 lg:mb-0 lg:mr-3'>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.prepTime}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:مدت زمان تهیه</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:آماده سازی</h1>
                                                     <img src="/prep-time.svg"  className='w-5 text-gray-500 ml-3' />
                                                 </div>
                                             )
@@ -183,7 +183,7 @@ const BlogPost = ({blogPost}) => {
                                             :(
                                                 <div  className='w-full lg:w-45p flex items-center justify-end mb-4 lg:mb-0 lg:mr-3'>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.servings}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:وعده</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:تعداد سرو</h1>
                                                     <img src="/servings.svg"  className='w-5 text-gray-500 ml-3' />
                                                 </div>
                                             )
@@ -231,7 +231,7 @@ const BlogPost = ({blogPost}) => {
                                     <div className='border-btm mb-10 mt-4 pb-8'>
                                         {isEnglish 
                                             ? <h1 className="align-center text-gray-500 font-bold text-base mb-5">INGREDIENTS</h1> 
-                                            : <h1 className="align-center text-gray-500 font-bold text-2xl text-right mb-8">عناصر</h1>
+                                            : <h1 className="align-center text-gray-500 font-bold text-2xl text-right mb-8">مواد لازم</h1>
                                         }
                                         {documentToReactComponents(isEnglish ? post.ingredients : post.farsiIngredients, options)}
                                     </div>
@@ -247,7 +247,7 @@ const BlogPost = ({blogPost}) => {
 
                                         {isEnglish 
                                             ? <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-5 "><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
-                                            : <h1 className="align-center flex items-center justify-end text-gray-500 font-bold text-2xl text-right mb-8  ">یادداشت ها <img src="/notes.svg"  className='w-5 text-gray-500 ml-3' /></h1>
+                                            : <h1 className="align-center flex items-center justify-end text-gray-500 font-bold text-2xl text-right mb-8  ">فوت و فن <img src="/notes.svg"  className='w-5 text-gray-500 ml-3' /></h1>
                                         }
                                     <div className='bg-white p-4 pt-10 lg:p-8 mb-12 pb-8 cut-corrner'>
                                         {documentToReactComponents(isEnglish ? post.notes : post.farsiNotes, options)}
