@@ -34,7 +34,9 @@ const addJSONLD = (recipe) => {
               "@id": "https://www.theiranianvegan.com//recepies/${recipe.slug}"
             },  
             "name": "${recipe.title}",
-      
+            "image": [
+              "${recipe.smallBlogPostImage.fields.file.url}",
+            ],
             "author": {
               "@type": "Person",
               "name": "Mana Rose Shamshiri-Fard"
