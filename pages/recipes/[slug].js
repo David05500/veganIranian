@@ -24,7 +24,70 @@ const MyLink = ({ children }) => <a className=" text-gray-600 pointer hover:opac
 // const UlList = ({ children }) => <ul className="text-lg text-gray-700  list-disc">{children}</ul>;
 
 const OlList = ({ children }) => <ol className="text-lg text-red list-decimal">{children}</ol>;
-
+const addJSONLD = (recipe) => {
+    return {
+        __html: `[{
+            "@context": "https://schema.org/",
+            "@type": "Recipe",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.theiranianvegan.com//recepies/${recipe.slug}"
+            },  
+            "name": "${recipe.title}",
+      
+            "author": {
+              "@type": "Person",
+              "name": "Mana Rose Shamshiri-Fard"
+            },
+            "datePublished": "${recipe.createdAt}",
+            "description": "This coffee cake is awesome and perfect for parties.",
+            "prepTime": "${recipe.prepTime}",
+            "cookTime": "${recipe.cookTime}",
+            "totalTime": "${recipe.totalTime}",
+            "keywords": "cake for a party, coffee",
+            "recipeYield": "${recipe.servings}",
+            "recipeCategory": "${recipe.course}",
+            "recipeCuisine": "${recipe.cuisine}",
+            "recipeIngredient": [
+              "2 cups of flour",
+              "3/4 cup white sugar",
+              "2 teaspoons baking powder",
+              "1/2 teaspoon salt",
+              "1/2 cup butter",
+              "2 eggs",
+              "3/4 cup milk"
+              ],
+            "recipeInstructions": [
+              {
+                "@type": "HowToStep",
+                "name": "Preheat",
+                "text": "Preheat the oven to 350 degrees F. Grease and flour a 9x9 inch pan.",
+                "url": "https://example.com/party-coffee-cake#step1",
+                "image": "https://example.com/photos/party-coffee-cake/step1.jpg"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Mix dry ingredients",
+                "text": "In a large bowl, combine flour, sugar, baking powder, and salt.",
+                "url": "https://example.com/party-coffee-cake#step2",
+                "image": "https://example.com/photos/party-coffee-cake/step2.jpg"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Add wet ingredients",
+                "text": "Mix in the butter, eggs, and milk.",
+                "url": "https://example.com/party-coffee-cake#step3",
+                "image": "https://example.com/photos/party-coffee-cake/step3.jpg"
+              }
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5",
+              "ratingCount": "18"
+            }
+        }]`,
+    }
+};
 const BlogPost = ({blogPost}) => {
     const { isEnglish } = useContext(BlogDataContext);
     const [post, setPost] = useState(null);
@@ -278,6 +341,10 @@ const BlogPost = ({blogPost}) => {
 
 
                 <div className='hidden'>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={addJSONLD(post)}
+                /> 
             </div>
         )
     }
