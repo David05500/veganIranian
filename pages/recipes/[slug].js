@@ -35,7 +35,7 @@ const addJSONLD = (recipe) => {
             },  
             "name": "${recipe.title}",
             "image": [
-              "${recipe.smallBlogPostImage.fields.file.url}",
+                "/course.svg"
             ],
             "author": {
               "@type": "Person",
