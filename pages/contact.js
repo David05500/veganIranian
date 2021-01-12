@@ -3,6 +3,8 @@ import Header from '../components/shared/Header';
 import Head from 'next/head';
 import ContactForm from '../components/contactForm';
 import _ from 'lodash';
+
+
 const addJSONLD = (recipe) => {
   return {
       __html: `[{
@@ -13,22 +15,27 @@ const addJSONLD = (recipe) => {
           "addressLocality": "London",
           "addressRegion": "Greater London"
         },
-        "image": [
-          "/logoBG.svg"
-        ],
-        "description": "A superb collection of fine iranian vegan recipes and history behind each recipe.",
+        "@id": "https://theiranianvegan.com/",
+        "url": "https://theiranianvegan.com/contact",
         "name": "The Iranian Vegan",
-        "telephone": "0746073786"
+        "description": "A superb collection of fine iranian vegan recipes and history behind each recipe.",
+        "telephone": "07462073786",
+        "openingHours": "Mo,Tu,We,Th,Fr,St,Sn 00:00-12:00",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "51.50878537293554",
+          "longitude":"-0.1274682631419993"
+        },
+        "image": [
+          "https://images.ctfassets.net/mucdmvfhn5wx/6SDWj4oNqwhJ9uejpjjite/487df877950108133bfcc0a63ff6bfde/manaHomePage.png"
+        ],
+        "sameAs": [
+          "https://www.instagram.com/theiranianvegan/"
+        ]
+    
       }]`,
   }
 };
-
-
-
-
-
-
-
 
 const  Contact = () => {
 
