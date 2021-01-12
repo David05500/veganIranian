@@ -5,7 +5,7 @@ import ContactForm from '../components/contactForm';
 import _ from 'lodash';
 
 
-const addJSONLD = (recipe) => {
+const addJSONLD = () => {
   return {
       __html: `[{
         "@context": "https://schema.org",

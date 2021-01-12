@@ -26,7 +26,7 @@ const UlList = ({ children }) => <ul className="text-lg text-gray-700  list-disc
 
 const OlList = ({ children }) => <ol className="text-lg text-red  list-decimal">{children}</ol>;
 
-const addJSONLD = (recipe) => {
+const addJSONLD = () => {
   return {
     __html: `[{
       "@context": "http://schema.org",

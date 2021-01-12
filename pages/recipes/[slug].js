@@ -34,15 +34,16 @@ const addJSONLD = (recipe) => {
               "@id": "https://www.theiranianvegan.com//recepies/${recipe.slug}"
             },  
             "name": "${recipe.title}",
-            "image": [
-                "/course.svg"
-            ],
+            "image": {
+                "@type": "ImageObject",
+                "url": "${recipe.smallBlogPostImage.fields.file.url}"
+            },
             "author": {
               "@type": "Person",
               "name": "Mana Rose Shamshiri-Fard"
             },
             "datePublished": "${recipe.createdAt}",
-            "description": "This coffee cake is awesome and perfect for parties.",
+            "description": "${recipe.shortDescription}",
             "prepTime": "${recipe.prepTime}",
             "cookTime": "${recipe.cookTime}",
             "totalTime": "${recipe.totalTime}",
@@ -110,7 +111,7 @@ const BlogPost = ({blogPost}) => {
             }, []);
         },
         renderNode: {
-            [BLOCKS.PARAGRAPH]: (node, children) => <p className={`text-base mb-4 ${isEnglish ? 'text-justify' : 'text-right'}`}>{children}</p>,
+            [BLOCKS.PARAGRAPH]: (node, children) => <p className={`text-base mb-4 ${isEnglish ? 'lg:text-justify' : 'text-right'}`}>{children}</p>,
             [BLOCKS.UL_LIST]: (node, children) => <ul className={`text-base lg:text-lg text-gray-700  list-disc`} style={{direction: isEnglish ? 'unset' : 'rtl',  marginRight: isEnglish ? 'unset' : '1.5rem'}}>{children}</ul>,
             [BLOCKS.OL_LIST]: (node, children) => <ol className="text-base lg:text-lg text-red  list-decimal" style={{direction: isEnglish ? 'unset' : 'rtl', listStyle: isEnglish ? 'unset' : 'persian', marginRight: isEnglish ? 'unset' : '1.5rem'}}>{children}</ol>,
             [BLOCKS.HEADING_1]: (node, children) => <HEADING1>{children}</HEADING1>,
@@ -189,55 +190,10 @@ const BlogPost = ({blogPost}) => {
                                     }
 
            
-                                    <div className='flex flex-col lg:flex-row items-center justify-center mb-4 lg:mr-3'>
-
-
+                                    <div className='flex flex-col lg:flex-row items-center justify-center lg:ml-3'>
                                         {isEnglish 
                                             ?(
-                                                <div className='w-1/2 flex items-center w-full lg:ml-4 mb-4 lg:mb-0'>
-                                                    <img src="/cook-time.svg"  className='w-5 text-gray-500 mr-3' />
-                                                    <div className='flex'>
-                                                        <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1> 
-                                                        <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.cookTime}</h1>
-                                                    </div>
-                                                </div>
-                                            )
-                                            :(
-                             
-                                                <div  className='w-full lg:w-45p flex items-center justify-end mb-4 lg:mb-0 lg:mr-3'>
-                                                    <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.prepTime}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:آماده سازی</h1>
-                                                    <img src="/prep-time.svg"  className='w-5 text-gray-500 ml-3' />
-                                                </div>
-                                            )
-                                        }
-
-
-                                        {isEnglish 
-                                            ?(
-                                                <div className='w-1/2 flex items-center w-full lg:ml-4'>
-                                                    <img src="/total-time.svg"  className='w-5 text-gray-500 mr-3' />
-                                                    <div className='flex'>
-                                                        <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Total Time: </h1> 
-                                                        <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.totalTime}</h1>
-                                                    </div>
-                                                </div>
-                                            )
-                                            :(
-                                                <div className='w-full lg:w-55p flex items-center justify-end'>
-                                                    <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.totalTime}</h1>
-                                                    <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:کل مدت زمان مورد نیاز</h1>
-                                                    <img src="/total-time.svg"  className='w-5 text-gray-500 ml-3' />
-                                                </div>
-                                            )
-                                        }
-                                        
-                                    </div>
-
-                                    <div className='flex flex-col lg:flex-row items-center justify-center mb-4 lg:mr-3'>
-                                        {isEnglish 
-                                            ?(
-                                                <div  className='w-1/2 flex items-center w-full lg:ml-4 mb-4 lg:mb-0'>
+                                                <div  className='w-1/2 flex items-center w-full lg:ml-4 mb-6'>
                                                     <img src="/prep-time.svg"  className='w-5 text-gray-500 mr-3' />
                                                     <div className='flex'>
                                                         <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Prep Time: </h1> 
@@ -246,7 +202,7 @@ const BlogPost = ({blogPost}) => {
                                                 </div>
                                             )
                                             :(
-                                                <div  className='w-full lg:w-45p flex items-center justify-end mb-4 lg:mb-0 lg:mr-3'>
+                                                <div  className='w-full lg:w-45p flex items-center justify-end mb-6 lg:ml-3'>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.servings}</h1>
                                                     <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:تعداد سرو</h1>
                                                     <img src="/servings.svg"  className='w-5 text-gray-500 ml-3' />
@@ -256,7 +212,49 @@ const BlogPost = ({blogPost}) => {
 
                                         {isEnglish 
                                             ?(
-                                                <div  className='w-1/2 flex items-center w-full lg:ml-4'>
+                                                <div className='w-1/2 flex items-center w-full lg:ml-4 mb-6'>
+                                                    <img src="/cook-time.svg"  className='w-5 text-gray-500 mr-3' />
+                                                    <div className='flex'>
+                                                        <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1> 
+                                                        <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.cookTime}</h1>
+                                                    </div>
+                                                </div>
+                                            )
+                                            :(
+                             
+                                                <div  className='w-full lg:w-45p flex items-center justify-end mb-6 lg:ml-3'>
+                                                    <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.prepTime}</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:آماده سازی</h1>
+                                                    <img src="/prep-time.svg"  className='w-5 text-gray-500 ml-3' />
+                                                </div>
+                                            )
+                                        }
+                                    </div>
+
+                                    <div className='flex flex-col lg:flex-row items-center justify-center lg:mb-4 lg:ml-3'>
+                                        
+                                        {isEnglish 
+                                            ?(
+                                                <div className='w-1/2 flex items-center w-full lg:ml-4 mb-6'>
+                                                    <img src="/total-time.svg"  className='w-5 text-gray-500 mr-3' />
+                                                    <div className='flex'>
+                                                        <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Total Time: </h1> 
+                                                        <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.totalTime}</h1>
+                                                    </div>
+                                                </div>
+                                            )
+                                            :(
+                                                <div className='w-full lg:w-55p flex items-center justify-end mb-6'>
+                                                    <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.totalTime}</h1>
+                                                    <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:کل مدت زمان مورد نیاز</h1>
+                                                    <img src="/total-time.svg"  className='w-5 text-gray-500 ml-3' />
+                                                </div>
+                                            )
+                                        }
+
+                                        {isEnglish 
+                                            ?(
+                                                <div  className='w-1/2 flex items-center w-full lg:ml-4 mb-6'>
                                                     <img src="/servings.svg"  className='w-5 text-gray-500 mr-3' />
                                                     <div className='flex'>
                                                         <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Servings: </h1> 
@@ -265,7 +263,7 @@ const BlogPost = ({blogPost}) => {
                                                 </div>
                                             )
                                             :(
-                                                <div className='w-full lg:w-55p flex items-center justify-end mb-4 lg:mb-0 '>
+                                                <div className='w-full lg:w-55p flex items-center justify-end mb-6 lg:mb-0 '>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.cookTime}</h1>
                                                     <h1 className='self-center text-gray-600 text-sm  ml-3 lg:ml-2 text-right'>:مدت زمان پخت</h1>
                                                     <img src="/cook-time.svg"  className='w-5 text-gray-500 ml-3' />
