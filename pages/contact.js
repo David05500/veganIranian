@@ -3,6 +3,22 @@ import Header from '../components/shared/Header';
 import Head from 'next/head';
 import ContactForm from '../components/contactForm';
 import _ from 'lodash';
+const addJSONLD = (recipe) => {
+  return {
+      __html: `[{
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "London",
+          "addressRegion": "Greater London",
+        },
+        "description": "A superb collection of fine iranian vegan recipes and history behind each recipe.",
+        "name": "The Iranian Vegan",
+        "telephone": "0746073786"
+      }]`,
+  }
+};
 
 const  Contact = () => {
 
@@ -22,6 +38,10 @@ const  Contact = () => {
             <ContactForm />
           </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={addJSONLD()}
+      /> 
     </div>
 )
 }
