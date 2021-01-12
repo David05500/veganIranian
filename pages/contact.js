@@ -11,14 +11,24 @@ const addJSONLD = (recipe) => {
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "London",
-          "addressRegion": "Greater London",
+          "addressRegion": "Greater London"
         },
+        "image": [
+          "/logoBG.svg"
+        ],
         "description": "A superb collection of fine iranian vegan recipes and history behind each recipe.",
         "name": "The Iranian Vegan",
         "telephone": "0746073786"
       }]`,
   }
 };
+
+
+
+
+
+
+
 
 const  Contact = () => {
 
