@@ -26,6 +26,19 @@ const UlList = ({ children }) => <ul className="text-lg text-gray-700  list-disc
 
 const OlList = ({ children }) => <ol className="text-lg text-red  list-decimal">{children}</ol>;
 
+const addJSONLD = (recipe) => {
+  return {
+    __html: `[{
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "name": "About The Iranian Vegan",
+      "description": "I believe in compassion. I think we have a duty to create a world that is more ethical and just than the one in which we were raised. For me, this duty extends to all forms of life.",
+      "publisher": {
+        "@type": "ProfilePage",
+        "name": "The Iranian Vegan"
+    }]`,
+  }
+};
 
 
 const GetAboutPageData = async () => {
@@ -90,6 +103,10 @@ const About = () => {
 
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={addJSONLD()}
+      /> 
     </div>
 )
 }
