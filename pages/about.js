@@ -36,6 +36,7 @@ const addJSONLD = (recipe) => {
       "publisher": {
         "@type": "ProfilePage",
         "name": "The Iranian Vegan"
+      }
     }]`,
   }
 };
