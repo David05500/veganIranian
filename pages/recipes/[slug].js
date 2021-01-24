@@ -31,7 +31,7 @@ const addJSONLD = (recipe) => {
             "@type": "Recipe",
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": "https://www.theiranianvegan.com//recepies/${recipe.slug}"
+              "@id": "https://www.theiranianvegan.com/recepies/${recipe.slug}"
             },  
             "name": "${recipe.title}",
             "image": {
@@ -125,6 +125,7 @@ const BlogPost = ({blogPost}) => {
     if (post == null) {
         return <h1>Loading...</h1>
     }else{
+        console.log(post.prepTime)
         return (
             <div>
                 <Head>
