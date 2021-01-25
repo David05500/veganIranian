@@ -16,6 +16,20 @@ const GetHomePageData = async () => {
   return data;
 };
 
+const addJSONLD = () => {
+  return {
+      __html: `[{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "The Iranian Vegan",
+        "description": "I believe in compassion. I think we have a duty to create a world that is more ethical and just than the one in which we were raised. For me, this duty extends to all forms of life.",
+        "publisher": {
+            "@type": "Person",
+            "name": "Mana Rose Shamshiri-Fard"
+        }
+      }]`
+  }
+};
 
 const  HomePage = () => {
   const [homePagePic, setHomePagePic] = useState('')
@@ -89,6 +103,10 @@ const  HomePage = () => {
 
           </div>
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={addJSONLD()}
+        /> 
     </div>
     
   )

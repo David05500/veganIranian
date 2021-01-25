@@ -15,7 +15,7 @@ const addJSONLD = () => {
           "addressLocality": "London",
           "addressRegion": "Greater London"
         },
-        "@id": "https://theiranianvegan.com/",
+        "@id": "https://theiranianvegan.com/contact",
         "url": "https://theiranianvegan.com/contact",
         "name": "The Iranian Vegan",
         "description": "A superb collection of fine iranian vegan recipes and history behind each recipe.",
