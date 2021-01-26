@@ -21,7 +21,19 @@ const addJSONLD = () => {
       __html: `[{
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "The Iranian Vegan",
+        "@id": "https://theiranianvegan.com/#webpage",
+        "url": "https://theiranianvegan.com/",
+        "name": "Homepage - The Iranian Vegan",
+        "datePublished": "2020-06-26T12:00:44+00:00",
+        "inLanguage": "en-GB",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://theiranianvegan.com/#webpage",
+          "url": "https://theiranianvegan.com/",
+          "name": "The Iranian Vegan",
+          "description": "Discover authentic iranian vegan recipes!",
+          "inLanguage": "en-GB" 
+        },
         "description": "I believe in compassion. I think we have a duty to create a world that is more ethical and just than the one in which we were raised. For me, this duty extends to all forms of life.",
         "publisher": {
             "@type": "Person",

@@ -28,18 +28,31 @@ const OlList = ({ children }) => <ol className="text-lg text-red  list-decimal">
 
 const addJSONLD = () => {
   return {
-    __html: `[{
-      "@context": "http://schema.org",
-      "@type": "WebPage",
-      "name": "About The Iranian Vegan",
-      "description": "I believe in compassion. I think we have a duty to create a world that is more ethical and just than the one in which we were raised. For me, this duty extends to all forms of life.",
-      "publisher": {
-        "@type": "ProfilePage",
-        "name": "The Iranian Vegan"
-      }
-    }]`,
+      __html: `[{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://theiranianvegan.com/about/#webpage",
+        "url": "https://theiranianvegan.com/about/",
+        "name": "About Me - The Iranian Vegan",
+        "datePublished": "2020-08-31T12:00:44+00:00",
+        "inLanguage": "en-GB",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://theiranianvegan.com/#webpage",
+          "url": "https://theiranianvegan.com/",
+          "name": "The Iranian Vegan",
+          "description": "Discover authentic iranian vegan recipes!",
+          "inLanguage": "en-GB" 
+        },
+        "description": "One of the cultural traits that immigrant communities pass on from generation to generation is the heritage of our cuisine. For us, as Iranians, and especially as the Iranian diaspora, food is so much more than just food.",
+        "publisher": {
+            "@type": "Person",
+            "name": "Mana Rose Shamshiri-Fard"
+        }
+      }]`
   }
 };
+
 
 
 const GetAboutPageData = async () => {
