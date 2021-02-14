@@ -10,15 +10,15 @@ import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop - 220);
 
-const Bold = ({ children }) => <p className="text-base text-black font-medium">{children}</p>;
+const Bold = ({ children }) => <span className="text-base text-black font-medium">{children}</span>;
  
 const Text = ({ children }) => {
     return <p className="text-base text-justify">{children}</p>
 };
 
-const HEADING1 = ({ children }) => <p className="align-center text-gray-800 text-xl">{children}</p>;
+const HEADING1 = ({ children }) => <h1 className="align-center text-gray-800 text-xl">{children}</h1>;
 
-const HEADING3 = ({ children }) => <p className="align-center text-gray-800 text-lg ">{children}</p>;
+const HEADING3 = ({ children }) => <h3 className="align-center text-gray-800 text-lg ">{children}</h3>;
 
 const MyLink = ({ children }) => <a className=" text-gray-600 pointer hover:opacity-60 transform ease-in duration-300">{children}</a>;
 

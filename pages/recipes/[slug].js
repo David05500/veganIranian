@@ -7,24 +7,38 @@ import Header from '../../components/shared/Header';
 import Head from 'next/head';
 import { GrInstagram } from "react-icons/gr";
 import BlogDataContext from '../../components/BlogDataContext';
-
+import Image from 'next/image';
+import Link from 'next/link';
+import _ from 'lodash';
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop - 220);
 
 // const Bold = ({ children }) => <p className="text-6xl text-green-700">{children}</p>;
- 
+// const UlList = ({ children }) => <ul className="text-lg text-gray-700  list-disc">{children}</ul>;
 // const Text = ({ children }) => <p className="text-base text-justify">{children}</p>;
+// const OlList = ({ children }) => <ol className="text-lg text-red list-decimal">{children}</ol>;
 
 const HEADING1 = ({ children }) => <p className="align-center text-gray-800 text-xl">{children}</p>;
-
 const HEADING3 = ({ children }) => <p className="align-center text-gray-800 text-lg ">{children}</p>;
+const MyLink = ({link, children }) => <Link href={`http://${link}`}><a className=" text-gray-600 pointer hover:opacity-60 transform ease-in duration-300">{children}</a></Link>;
 
-const MyLink = ({ children }) => <a className=" text-gray-600 pointer hover:opacity-60 transform ease-in duration-300">{children}</a>;
-
-// const UlList = ({ children }) => <ul className="text-lg text-gray-700  list-disc">{children}</ul>;
-
-const OlList = ({ children }) => <ol className="text-lg text-red list-decimal">{children}</ol>;
 const addJSONLD = (recipe) => {
+    let ingredientsArray = [];
+
+    _.map(documentToReactComponents(recipe.ingredients), i => {
+        if(i.props.children.every(i => (typeof i === "string"))) {
+            if(i.props.children[0] !== '') ingredientsArray.push(i.props.children[0])
+        }else if(i.props.children[0] != ''){
+            
+            _.map(i.props.children, c => {
+                if(c.props.children.props){
+                    ingredientsArray.push(c.props.children.props.children);
+                }else {
+                    ingredientsArray.push(c.props.children[0].props.children[0])
+                }
+            })
+        }
+    })
     return {
         __html: `[{
             "@context": "https://schema.org/",
@@ -51,43 +65,27 @@ const addJSONLD = (recipe) => {
             "recipeYield": "${recipe.servings}",
             "recipeCategory": "${recipe.course}",
             "recipeCuisine": "${recipe.cuisine}",
-            "recipeIngredient": [
-              "2 cups of flour",
-              "3/4 cup white sugar",
-              "2 teaspoons baking powder",
-              "1/2 teaspoon salt",
-              "1/2 cup butter",
-              "2 eggs",
-              "3/4 cup milk"
-              ],
+            "recipeIngredient": ${ingredientsArray},
             "recipeInstructions": [
               {
                 "@type": "HowToStep",
                 "name": "Preheat",
                 "text": "Preheat the oven to 350 degrees F. Grease and flour a 9x9 inch pan.",
                 "url": "https://example.com/party-coffee-cake#step1",
-                "image": "https://example.com/photos/party-coffee-cake/step1.jpg"
               },
               {
                 "@type": "HowToStep",
                 "name": "Mix dry ingredients",
                 "text": "In a large bowl, combine flour, sugar, baking powder, and salt.",
                 "url": "https://example.com/party-coffee-cake#step2",
-                "image": "https://example.com/photos/party-coffee-cake/step2.jpg"
               },
               {
                 "@type": "HowToStep",
                 "name": "Add wet ingredients",
                 "text": "Mix in the butter, eggs, and milk.",
                 "url": "https://example.com/party-coffee-cake#step3",
-                "image": "https://example.com/photos/party-coffee-cake/step3.jpg"
               }
             ],
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5",
-              "ratingCount": "18"
-            }
         }]`,
     }
 };
@@ -117,15 +115,14 @@ const BlogPost = ({blogPost}) => {
             [BLOCKS.HEADING_1]: (node, children) => <HEADING1>{children}</HEADING1>,
             [BLOCKS.HEADING_3]: (node, children) => <HEADING3>{children}</HEADING3>,
             [BLOCKS.EMBEDDED_ASSET]: (node) => {
-                return <img src={node.data.target.fields.file.url} className='my-10'/>
+                return <img  src={node.data.target.fields.file.url} className='my-10'/>
             },
-            [INLINES.HYPERLINK]: (node, children) => <MyLink>{children}</MyLink>,
+            [INLINES.HYPERLINK]: (node, children) => <MyLink link={node.data.uri}>{children}</MyLink>,
         },
     };
     if (post == null) {
         return <h1>Loading...</h1>
     }else{
-        console.log(post.prepTime)
         return (
             <div>
                 <Head>
@@ -140,15 +137,17 @@ const BlogPost = ({blogPost}) => {
                     <div className='max-width-735 px-4 mx-auto mt-10 lg:mt-20'>
 
                         <h1 className='mb-10 text-center transform ease-in text-xl lg:text-2xl duration-100'>{isEnglish ? post.title : post.farsiTitle}</h1>
-                        {post.blogPostImage != undefined ? <img src={post.blogPostImage.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
-                        {post.blogPostImage2 != undefined ? <img src={post.blogPostImage2.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
-                        {post.blogPostImage3 != undefined ? <img src={post.blogPostImage3.fields.file.url} className='mb-8 w-5/6 m-auto'></img> : ''}
-                        {post.blogPostImage4 != undefined ? <img src={post.blogPostImage4.fields.file.url} className='mb-10 w-5/6 m-auto'></img> : ''}
+                        {post.blogPostImage != undefined ? <Image  height="20" width="20" src={post.blogPostImage.fields.file.url} className='mb-8 w-5/6 m-auto'></Image> : ''}
+                        {post.blogPostImage2 != undefined ? <Image  height="20" width="20" src={post.blogPostImage2.fields.file.url} className='mb-8 w-5/6 m-auto'></Image> : ''}
+                        {post.blogPostImage3 != undefined ? <Image  height="20" width="20" src={post.blogPostImage3.fields.file.url} className='mb-8 w-5/6 m-auto'></Image> : ''}
+                        {post.blogPostImage4 != undefined ? <Image  height="20" width="20" src={post.blogPostImage4.fields.file.url} className='mb-10 w-5/6 m-auto'></Image> : ''}
 
 
                         <div className='w-full flex justify-center mb-10'>
                             <button onClick={executeScroll}  className='flex items-center px-4 py-3 bg-white rounded border-solid border border-gray-500 text-base flex'>
-                                <img src="/cutlery.svg"  className='w-8 text-gray-300 mr-3' /> 
+                                <div className='w-8 text-gray-300 mr-3'>
+                                    <Image  height="30" width="30" src="/cutlery.svg"   /> 
+                                </div>
                                 {isEnglish ? 'JUMP TO RECIPE' : 'دسترسی به طرز تهیه'}
                             </button>
                         </div>
@@ -161,7 +160,7 @@ const BlogPost = ({blogPost}) => {
                             <div className='w-48 absolute my-auto left-23 lg:left-34 top-9n h-64'>
                                 <div className='clip-polygon w-full h-full absolute' style={{clipPath: 'polygon(50% 0, 100% 100%, 50% 100%, 0 50%)', backgroundSize: '62%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  backgroundImage: `url(${blogPost.smallBlogPostImage.fields.file.url})`}}>
                                 </div>
-                                <img src="/paisley.png"  className=' h-64 absolute text-gray-500' />
+                                <img  src="/paisley.png"  className=' h-64 absolute text-gray-500' />
                             </div>
 
                             <div className='w-full mt-24 px-4 lg:px-0'>
@@ -172,7 +171,9 @@ const BlogPost = ({blogPost}) => {
                                     {isEnglish 
                                         ?(
                                             <div className='flex items-center lg:justify-center w-full mb-6'>
-                                                <img src="/course.svg"  className='w-5 text-gray-500 mr-3' />
+                                                <div className='w-5 text-gray-500 mr-3'>
+                                                    <Image  height="20" width="20" src="/course.svg" alt='Course icon'/>
+                                                </div>
                                                 <div className='flex'>
                                                     <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Course: </h1> 
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base'>{post.course}</h1>
@@ -185,7 +186,9 @@ const BlogPost = ({blogPost}) => {
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base'>{post.course}</h1>
                                                     <h1 className='self-center text-gray-600 text-sm  ml-2'>:نوع وعده</h1>
                                                 </div>
-                                                <img src="/course.svg"  className='w-5 text-gray-500 ml-3' />
+                                                <div className='w-5 text-gray-500 ml-3'>
+                                                    <Image  height="20" width="20" src="/course.svg" alt='Course icon'/>
+                                                </div>
                                             </div>
                                         )
                                     }
@@ -195,7 +198,9 @@ const BlogPost = ({blogPost}) => {
                                         {isEnglish 
                                             ?(
                                                 <div  className='w-1/2 flex items-center w-full lg:ml-4 mb-6'>
-                                                    <img src="/prep-time.svg"  className='w-5 text-gray-500 mr-3' />
+                                                    <div className='w-5 text-gray-500 mr-3'>
+                                                        <Image  height="20" width="20" src="/prep-time.svg" alt='Prep time icon'/>
+                                                    </div>
                                                     <div className='flex'>
                                                         <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Prep Time: </h1> 
                                                         <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.prepTime}</h1>
@@ -206,7 +211,9 @@ const BlogPost = ({blogPost}) => {
                                                 <div  className='w-full lg:w-45p flex items-center justify-end mb-6 lg:ml-3'>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.servings}</h1>
                                                     <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:تعداد سرو</h1>
-                                                    <img src="/servings.svg"  className='w-5 text-gray-500 ml-3' />
+                                                    <div className='w-5 text-gray-500 ml-3'>
+                                                        <Image  height="20" width="20" src="/servings.svg" alt='Servings icon'/>
+                                                    </div>
                                                 </div>
                                             )
                                         }
@@ -214,7 +221,9 @@ const BlogPost = ({blogPost}) => {
                                         {isEnglish 
                                             ?(
                                                 <div className='w-1/2 flex items-center w-full lg:ml-4 mb-6'>
-                                                    <img src="/cook-time.svg"  className='w-5 text-gray-500 mr-3' />
+                                                    <div className='w-5 text-gray-500 mr-3'>
+                                                        <Image  height="20" width="20" src="/cook-time.svg" alt='Cook time icon'/>
+                                                    </div>
                                                     <div className='flex'>
                                                         <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Cook Time: </h1> 
                                                         <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.cookTime}</h1>
@@ -226,7 +235,9 @@ const BlogPost = ({blogPost}) => {
                                                 <div  className='w-full lg:w-45p flex items-center justify-end mb-6 lg:ml-3'>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.prepTime}</h1>
                                                     <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:آماده سازی</h1>
-                                                    <img src="/prep-time.svg"  className='w-5 text-gray-500 ml-3' />
+                                                    <div className='w-5 text-gray-500 ml-3'>
+                                                        <Image  height="20" width="20" src="/prep-time.svg"  alt='Prep time icon' />
+                                                    </div>
                                                 </div>
                                             )
                                         }
@@ -237,7 +248,9 @@ const BlogPost = ({blogPost}) => {
                                         {isEnglish 
                                             ?(
                                                 <div className='w-1/2 flex items-center w-full lg:ml-4 mb-6'>
-                                                    <img src="/total-time.svg"  className='w-5 text-gray-500 mr-3' />
+                                                    <div className='w-5 text-gray-500 mr-3'>
+                                                        <Image  height="20" width="20" src="/total-time.svg" alt='Total time icon'/>
+                                                    </div>
                                                     <div className='flex'>
                                                         <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Total Time: </h1> 
                                                         <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.totalTime}</h1>
@@ -248,7 +261,9 @@ const BlogPost = ({blogPost}) => {
                                                 <div className='w-full lg:w-55p flex items-center justify-end mb-6'>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.totalTime}</h1>
                                                     <h1 className='self-center text-gray-600 text-sm ml-3 text-right'>:کل مدت زمان مورد نیاز</h1>
-                                                    <img src="/total-time.svg"  className='w-5 text-gray-500 ml-3' />
+                                                    <div className='w-5 text-gray-500 ml-3'>
+                                                        <Image  height="20" width="20" src="/total-time.svg" alt='Total time icon'/>
+                                                    </div>
                                                 </div>
                                             )
                                         }
@@ -256,7 +271,9 @@ const BlogPost = ({blogPost}) => {
                                         {isEnglish 
                                             ?(
                                                 <div  className='w-1/2 flex items-center w-full lg:ml-4 mb-6'>
-                                                    <img src="/servings.svg"  className='w-5 text-gray-500 mr-3' />
+                                                    <div className='w-5 text-gray-500 mr-3'>
+                                                        <Image  height="20" width="20" src="/servings.svg" alt='Servings icon'/>
+                                                    </div>
                                                     <div className='flex'>
                                                         <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Servings: </h1> 
                                                         <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.servings}</h1>
@@ -267,7 +284,9 @@ const BlogPost = ({blogPost}) => {
                                                 <div className='w-full lg:w-55p flex items-center justify-end mb-6 lg:mb-0 '>
                                                     <h1 className='text-gray-800 font-medium text-sm lg:text-base  '>{post.cookTime}</h1>
                                                     <h1 className='self-center text-gray-600 text-sm  ml-3 lg:ml-2 text-right'>:مدت زمان پخت</h1>
-                                                    <img src="/cook-time.svg"  className='w-5 text-gray-500 ml-3' />
+                                                    <div className='w-5 text-gray-500 ml-3'>
+                                                        <Image  height="20" width="20" src="/cook-time.svg" alt='Cook time icon' />
+                                                    </div>
                                                 </div>
                                             )
                                         }
@@ -276,7 +295,7 @@ const BlogPost = ({blogPost}) => {
                                        
 
                                         {/* <div className='w-1/2 flex items-center w-full lg:ml-4'>
-                                            <img src="/servings.svg"  className='w-5 text-gray-500 mr-3' />
+                                            <Image  height="20" width="20" src="/servings.svg"  className='w-5 text-gray-500 mr-3' />
                                             <div className='flex'>
                                                 {isEnglish 
                                                     ? <h1 className='self-center text-gray-600 text-sm mr-1 lg:mr-1'>Servings: </h1> 
@@ -310,8 +329,8 @@ const BlogPost = ({blogPost}) => {
                                     </div>
 
                                         {isEnglish 
-                                            ? <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-5 "><img src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
-                                            : <h1 className="align-center flex items-center justify-end text-gray-500 font-bold text-2xl text-right mb-8  ">فوت و فن <img src="/notes.svg"  className='w-5 text-gray-500 ml-3' /></h1>
+                                            ? <h1 className="align-center flex items-center text-gray-500 font-bold text-base mb-5 "><Image  height="20" width="20" src="/notes.svg"  className='w-5 text-gray-500 mr-3' />NOTES</h1>
+                                            : <h1 className="align-center flex items-center justify-end text-gray-500 font-bold text-2xl text-right mb-8  ">فوت و فن <Image  height="20" width="20" src="/notes.svg"  className='w-5 text-gray-500 ml-3' /></h1>
                                         }
                                     <div className='bg-white p-4 pt-10 lg:p-8 mb-12 pb-8 cut-corrner'>
                                         {documentToReactComponents(isEnglish ? post.notes : post.farsiNotes, options)}
