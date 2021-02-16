@@ -13,8 +13,8 @@ import _ from 'lodash';
 
 // new
 import algoliasearch from 'algoliasearch';
-const client = algoliasearch('M9SIDYA62K', 'e278595e667bbbe39f9dd4c380574c45');
-const index = client.initIndex('prod_TheIranianVegan');
+// const client = algoliasearch('M9SIDYA62K', 'e278595e667bbbe39f9dd4c380574c45');
+// const index = client.initIndex('prod_TheIranianVegan');
 
 // index.searchForFacetValues('course', 'Main Course').then(({ facetHits }) => {
 //   console.log(facetHits);
@@ -32,12 +32,9 @@ const getData = async () => {
   const navData = res.items.map(item => item.fields);
   return navData;
 };
-
 // ALGOLIA
-const searchClient = algoliasearch(
-  'M9SIDYA62K',
-  'e278595e667bbbe39f9dd4c380574c45'
-);
+const searchClient = algoliasearch( process.env.ALGOLIA_APPLICATION_ID,  process.env.ALGOLIA_ADMIN_API_KEY);
+
 const Hits = (data) => {
   const {updateBlogs} = useContext(BlogDataContext);
   data.hits != undefined ? updateBlogs(data.hits) : null;

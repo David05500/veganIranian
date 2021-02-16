@@ -22,14 +22,64 @@ const HEADING1 = ({ children }) => <p className="align-center text-gray-800 text
 const HEADING3 = ({ children }) => <p className="align-center text-gray-800 text-lg ">{children}</p>;
 const MyLink = ({link, children }) => <Link href={`http://${link}`}><a className=" text-gray-600 pointer hover:opacity-60 transform ease-in duration-300">{children}</a></Link>;
 
+const ORDEREDLIST = ({ isEnglish, children }) => {
+    return(
+        <ol className="text-base lg:text-lg text-red  list-decimal" style={{direction: isEnglish ? 'unset' : 'rtl', listStyle: isEnglish ? '' : 'persian', marginRight: isEnglish ? 'unset' : '1.5rem'}}>{children}</ol>
+    );
+};
+
+const LISTITEM = ({ node, children }) => {
+    if (!_.isEmpty(node.data) && node.data.type === 'instructions') {
+        return <li id={node.data.id}>{children}</li>
+    };
+    return(
+        <li>{children}</li>
+    );
+};
+
 const addJSONLD = (recipe) => {
     let ingredientsArray = [];
-
+    let instructionsArray = [];
+    let instructionStepCount = 1;
+    _.map(documentToReactComponents(recipe.instructions), r => {
+        if(r.props.children.every(i => (typeof i === "string")) && r.props.children[0] !== '') {
+            instructionsArray.push(
+                {
+                    "@type": "HowToStep",
+                    "text": r.props.children[0],
+                    "url": `https://www.theiranianvegan.com/recepies/${recipe.slug}#step${instructionStepCount}`
+                }
+            );
+            instructionStepCount++;
+        }else if(r.props.children[0] != ''){
+            _.map(r.props.children, p => {
+                if(p.props.children.props){
+                    instructionsArray.push(
+                        {
+                            "@type": "HowToStep",
+                            "text": p.props.children.props.children,
+                            "url": `https://www.theiranianvegan.com/recepies/${recipe.slug}#step${instructionStepCount}`
+                        }
+                        
+                    );
+                    instructionStepCount++;
+                }else {
+                    instructionsArray.push(
+                        {
+                            "@type": "HowToStep",
+                            "text": p.props.children[0].props.children[0],
+                            "url": `https://www.theiranianvegan.com/recepies/${recipe.slug}#step${instructionStepCount}`
+                        }
+                    );
+                    instructionStepCount++;
+                }
+            })
+        }
+    })
     _.map(documentToReactComponents(recipe.ingredients), i => {
         if(i.props.children.every(i => (typeof i === "string"))) {
             if(i.props.children[0] !== '') ingredientsArray.push(i.props.children[0])
         }else if(i.props.children[0] != ''){
-            
             _.map(i.props.children, c => {
                 if(c.props.children.props){
                     ingredientsArray.push(c.props.children.props.children);
@@ -39,6 +89,7 @@ const addJSONLD = (recipe) => {
             })
         }
     })
+    const keywords = recipe.slug.split('-').join(', ')
     return {
         __html: `[{
             "@context": "https://schema.org/",
@@ -61,31 +112,12 @@ const addJSONLD = (recipe) => {
             "prepTime": "${recipe.prepTime}",
             "cookTime": "${recipe.cookTime}",
             "totalTime": "${recipe.totalTime}",
-            "keywords": "cake for a party, coffee",
+            "keywords": ${keywords},
             "recipeYield": "${recipe.servings}",
             "recipeCategory": "${recipe.course}",
             "recipeCuisine": "${recipe.cuisine}",
             "recipeIngredient": ${ingredientsArray},
-            "recipeInstructions": [
-              {
-                "@type": "HowToStep",
-                "name": "Preheat",
-                "text": "Preheat the oven to 350 degrees F. Grease and flour a 9x9 inch pan.",
-                "url": "https://example.com/party-coffee-cake#step1",
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Mix dry ingredients",
-                "text": "In a large bowl, combine flour, sugar, baking powder, and salt.",
-                "url": "https://example.com/party-coffee-cake#step2",
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Add wet ingredients",
-                "text": "Mix in the butter, eggs, and milk.",
-                "url": "https://example.com/party-coffee-cake#step3",
-              }
-            ],
+            "recipeInstructions": ${instructionsArray},
         }]`,
     }
 };
@@ -96,13 +128,31 @@ const BlogPost = ({blogPost}) => {
     const executeScroll = () => scrollToRef(myRef);
         
     useEffect(() => {
-        setPost(blogPost);
+        const bruv = _.cloneDeep(blogPost);
+        let stepHowToCount = 1;
+        _.map(bruv.instructions, (value, key) => {
+            if(key == 'data'){
+                bruv.instructions[key] = {type: 'instructions'}
+                _.map(bruv.instructions.content,  ol => {
+                    if(ol.nodeType == "ordered-list") {
+                        _.map(ol.content, iol => {
+                            _.map(iol, (value, key) => {
+                                if(key == 'data'){
+                                    iol[key] = {
+                                        type: 'instructions',
+                                        id: `step${stepHowToCount}`
+                                    }
+                                    stepHowToCount++
+                                }
+                            })
+                        })
+                    }
+                })
+            }
+        })
+        setPost(bruv);
     }, []);
-
     const options = {
-        // renderMark: {
-        //   [MARKS.BOLD]: text => <Bold>{text}</Bold>,
-        // },
         renderText: text => {
             return text.split('\n').reduce((children, textSegment, index) => {
                 return [...children, index > 0 && <br key={index} />, textSegment];
@@ -111,15 +161,15 @@ const BlogPost = ({blogPost}) => {
         renderNode: {
             [BLOCKS.PARAGRAPH]: (node, children) => <p className={`text-base mb-4 ${isEnglish ? 'lg:text-justify' : 'text-right'}`}>{children}</p>,
             [BLOCKS.UL_LIST]: (node, children) => <ul className={`text-base lg:text-lg text-gray-700  list-disc`} style={{direction: isEnglish ? 'unset' : 'rtl',  marginRight: isEnglish ? 'unset' : '1.5rem'}}>{children}</ul>,
-            [BLOCKS.OL_LIST]: (node, children) => <ol className="text-base lg:text-lg text-red  list-decimal" style={{direction: isEnglish ? 'unset' : 'rtl', listStyle: isEnglish ? 'unset' : 'persian', marginRight: isEnglish ? 'unset' : '1.5rem'}}>{children}</ol>,
+            [BLOCKS.OL_LIST]: (node, children) => <ORDEREDLIST node={node}isEnglish={isEnglish}>{children}</ORDEREDLIST>,
             [BLOCKS.HEADING_1]: (node, children) => <HEADING1>{children}</HEADING1>,
             [BLOCKS.HEADING_3]: (node, children) => <HEADING3>{children}</HEADING3>,
-            [BLOCKS.EMBEDDED_ASSET]: (node) => {
-                return <img  src={node.data.target.fields.file.url} className='my-10'/>
-            },
+            [BLOCKS.LIST_ITEM]: (node, children) => <LISTITEM node={node}>{children}</LISTITEM>,
+            [BLOCKS.EMBEDDED_ASSET]: (node) => <img  src={node.data.target.fields.file.url} className='my-10'/>,
             [INLINES.HYPERLINK]: (node, children) => <MyLink link={node.data.uri}>{children}</MyLink>,
         },
     };
+
     if (post == null) {
         return <h1>Loading...</h1>
     }else{
@@ -167,7 +217,6 @@ const BlogPost = ({blogPost}) => {
                                 <h1 className='py-10 text-center text-2xl lg:text-3xl font-medium border-btm mb-10'>{isEnglish ? post.title : post.farsiTitle}</h1>
                                 <div className='my-2 text-lg pl-4 lg:pl-0'>
 
-
                                     {isEnglish 
                                         ?(
                                             <div className='flex items-center lg:justify-center w-full mb-6'>
@@ -192,7 +241,6 @@ const BlogPost = ({blogPost}) => {
                                             </div>
                                         )
                                     }
-
            
                                     <div className='flex flex-col lg:flex-row items-center justify-center lg:ml-3'>
                                         {isEnglish 
@@ -290,9 +338,6 @@ const BlogPost = ({blogPost}) => {
                                                 </div>
                                             )
                                         }
-
-                                        
-                                       
 
                                         {/* <div className='w-1/2 flex items-center w-full lg:ml-4'>
                                             <Image  height="20" width="20" src="/servings.svg"  className='w-5 text-gray-500 mr-3' />
