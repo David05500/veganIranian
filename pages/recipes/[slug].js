@@ -53,25 +53,30 @@ const addJSONLD = (recipe) => {
             instructionStepCount++;
         }else if(r.props.children[0] != ''){
             _.map(r.props.children, p => {
-                if(p.props.children.props){
-                    instructionsArray.push(
-                        {
-                            "@type": "HowToStep",
-                            "text": p.props.children.props.children,
-                            "url": `https://www.theiranianvegan.com/recepies/${recipe.slug}#step${instructionStepCount}`
-                        }
+                if (p.props != undefined) {
+                    if(p.props.children.props){
+                        instructionsArray.push(
+                            {
+                                "@type": "HowToStep",
+                                "text": p.props.children.props.children,
+                                "url": `https://www.theiranianvegan.com/recepies/${recipe.slug}#step${instructionStepCount}`
+                            }
+                            
+                        );
+                        instructionStepCount++;
+                    }else {
+                       if(typeof p.props.children == 'array'){
+                            instructionsArray.push(
+                                {
+                                    "@type": "HowToStep",
+                                    "text": p.props.children[0].props.children[0],
+                                    "url": `https://www.theiranianvegan.com/recepies/${recipe.slug}#step${instructionStepCount}`
+                                }
+                            )
+                            instructionStepCount++;
+                        } 
                         
-                    );
-                    instructionStepCount++;
-                }else {
-                    instructionsArray.push(
-                        {
-                            "@type": "HowToStep",
-                            "text": p.props.children[0].props.children[0],
-                            "url": `https://www.theiranianvegan.com/recepies/${recipe.slug}#step${instructionStepCount}`
-                        }
-                    );
-                    instructionStepCount++;
+                    }
                 }
             })
         }
@@ -134,7 +139,7 @@ const BlogPost = ({blogPost}) => {
             if(key == 'data'){
                 bruv.instructions[key] = {type: 'instructions'}
                 _.map(bruv.instructions.content,  ol => {
-                    if(ol.nodeType == "ordered-list") {
+                    if(ol.nodeType == "ordered-list" ) {
                         _.map(ol.content, iol => {
                             _.map(iol, (value, key) => {
                                 if(key == 'data'){
