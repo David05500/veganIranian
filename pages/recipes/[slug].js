@@ -54,12 +54,12 @@ const addJSONLD = (recipe) => {
         }else if(r.props.children[0] != ''){
             _.map(r.props.children, p => {
                 if (p.props != undefined) {
-                    if(p.props.children.props){
+                    if(p.props.children[0].props){
                         instructionsArray.push(
                             {
                                 "@type": "HowToStep",
-                                "text": p.props.children.props.children,
-                                "url": `https://www.theiranianvegan.com/recepies/${recipe.slug}#step${instructionStepCount}`
+                                "text": `"${p.props.children[0].props.children}"`,
+                                "url": `"https://www.theiranianvegan.com/recepies/${recipe.slug}#step${instructionStepCount}"`
                             }
                             
                         );
@@ -69,8 +69,8 @@ const addJSONLD = (recipe) => {
                             instructionsArray.push(
                                 {
                                     "@type": "HowToStep",
-                                    "text": p.props.children[0].props.children[0],
-                                    "url": `https://www.theiranianvegan.com/recepies/${recipe.slug}#step${instructionStepCount}`
+                                    "text": `"${p.props.children[0].props.children[0]}"`,
+                                    "url": `"https://www.theiranianvegan.com/recepies/${recipe.slug}#step${instructionStepCount}"`
                                 }
                             )
                             instructionStepCount++;
@@ -94,6 +94,7 @@ const addJSONLD = (recipe) => {
             })
         }
     })
+    ingredientsArray = `[${ingredientsArray.map(s => `"${s}"`).join(', ')}]`;
     const keywords = recipe.slug.split('-').join(', ')
     return {
         __html: `[{
@@ -117,12 +118,12 @@ const addJSONLD = (recipe) => {
             "prepTime": "${recipe.prepTime}",
             "cookTime": "${recipe.cookTime}",
             "totalTime": "${recipe.totalTime}",
-            "keywords": ${keywords},
+            "keywords": "${keywords}",
             "recipeYield": "${recipe.servings}",
             "recipeCategory": "${recipe.course}",
             "recipeCuisine": "${recipe.cuisine}",
             "recipeIngredient": ${ingredientsArray},
-            "recipeInstructions": ${instructionsArray},
+            "recipeInstructions": ${_.isEmpty(instructionsArray) ? "[]" : `[${instructionsArray}]`}
         }]`,
     }
 };
