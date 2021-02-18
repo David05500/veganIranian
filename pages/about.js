@@ -34,7 +34,7 @@ const addJSONLD = () => {
         "@type": "WebPage",
         "@id": "https://theiranianvegan.com/about/#webpage",
         "url": "https://theiranianvegan.com/about/",
-        "name": "About Me - The Iranian Vegan",
+        "name": "Iranian Vegan | About",
         "datePublished": "2020-08-31T12:00:44+00:00",
         "inLanguage": "en-GB",
         "isPartOf": {

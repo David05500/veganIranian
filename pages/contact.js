@@ -18,7 +18,7 @@ const addJSONLD = () => {
         },
         "@id": "https://theiranianvegan.com/contact/#webpage",
         "url": "https://theiranianvegan.com/contact",
-        "name": "The Iranian Vegan",
+        "name": "Iranian Vegan | Contact Me",
         "description": "A superb collection of fine iranian vegan recipes and history behind each recipe.",
         "telephone": "07462073786",
         "openingHours": "Mo,Tu,We,Th,Fr,St,Sn 00:00-12:00",
