@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { GrInstagram } from "react-icons/gr";
 import BlogDataContext from '../components/BlogDataContext';
 import useProgressiveImageHook from '../components/shared/useProgressiveImageHook';
-import Meta from '../components/shared/SeoMeta.js'
+import Meta from '../components/shared/SeoMeta.js';
 
 const GetHomePageData = async () => {
   const res = await contentfulClient.getEntries({

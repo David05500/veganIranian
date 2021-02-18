@@ -5,6 +5,7 @@ import _ from 'lodash';
 import Header from '../../components/shared/Header';
 import Head from 'next/head';
 import BlogDataContext from '../../components/BlogDataContext';
+import Meta from '../../components/shared/SeoMeta.js';
 
 
 const  Index = ( props ) => {
