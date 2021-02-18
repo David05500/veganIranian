@@ -159,25 +159,25 @@ const Header = props => {
           <div className="dropdown">
             <Link href="/recipes" >
               {isEnglish 
-                ? <h1 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>RECIPES</h1>
-                : <h1 className='pointer text-lg font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>طرز تهیه غذاها</h1>
+                ? <h4 className='pointer text-sm font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>RECIPES</h4>
+                : <h4 className='pointer text-lg font-medium  hover:opacity-60 transform ease-in duration-100 pointer'>طرز تهیه غذاها</h4>
               }
             </Link>
             <div className="dropdown-content">
               {isEnglish 
                 ? (
                   <div  className='bg-white px-4 py-4 flex flex-col shadow-lg' >
-                    <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Appetizers' )}>Appetizers</h1>
-                    <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Main Course' )}>Main Course</h1>
-                    <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Dessert' )}>Desserts</h1>
-                    <h1 className='text-sm pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Sides' )}>Sides</h1>
+                    <h4 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Appetizers' )}>Appetizers</h4>
+                    <h4 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Main Course' )}>Main Course</h4>
+                    <h4 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Dessert' )}>Desserts</h4>
+                    <h4 className='text-sm pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'Sides' )}>Sides</h4>
                   </div>
                 )
                 : (
                   <div  className='bg-white px-4 py-4 flex flex-col shadow-lg' >
-                    <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'پیش غذا' )}>پیش غذا</h1>
-                    <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'غذای اصلی' )}>غذای اصلی</h1>
-                    <h1 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'دسر' )}>دسر</h1>
+                    <h4 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'پیش غذا' )}>پیش غذا</h4>
+                    <h4 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'غذای اصلی' )}>غذای اصلی</h4>
+                    <h4 className='text-sm mb-4 pointer opacity-75 hover:opacity-100' onClick={() => updateSearchState( 'دسر' )}>دسر</h4>
                   </div>
                 )
               }
@@ -186,15 +186,15 @@ const Header = props => {
 
           <Link href="/about">
             {isEnglish 
-              ? <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>ABOUT</h1>
-              : <h1 className='pointer text-lg font-medium hover:opacity-60 transform ease-in duration-100'>درباره من</h1>
+              ? <h4 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>ABOUT</h4>
+              : <h4 className='pointer text-lg font-medium hover:opacity-60 transform ease-in duration-100'>درباره من</h4>
             }
           </Link>
 
           <Link href="/contact">
             {isEnglish 
-              ? <h1 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
-              : <h1 className='pointer text-lg font-medium hover:opacity-60 transform ease-in duration-100'>تماس با من</h1>
+              ? <h4 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h4>
+              : <h4 className='pointer text-lg font-medium hover:opacity-60 transform ease-in duration-100'>تماس با من</h4>
             }
           </Link>
           
