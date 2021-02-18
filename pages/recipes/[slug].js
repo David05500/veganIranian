@@ -115,7 +115,7 @@ const addJSONLD = (recipe) => {
               "name": "Mana Rose Shamshiri-Fard"
             },
             "datePublished": "${recipe.createdAt}",
-            "description": "${recipe.shortDescription}",
+            "description": "${documentToReactComponents(recipe.shortDescription)[0].props.children[0]}",
             "prepTime": "${recipe.prepTime}",
             "cookTime": "${recipe.cookTime}",
             "totalTime": "${recipe.totalTime}",
@@ -417,6 +417,8 @@ const BlogPost = ({blogPost}) => {
                     type="application/ld+json"
                     dangerouslySetInnerHTML={addJSONLD(post)}
                 /> 
+                {/* {console.log(addJSONLD(post).__html)} */}
+                {/* {console.log(JSON.parse(addJSONLD(post).__html))} */}
             </div>
         )
     }
