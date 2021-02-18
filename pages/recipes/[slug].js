@@ -81,6 +81,7 @@ const addJSONLD = (recipe) => {
             })
         }
     })
+    instructionsArray = JSON.stringify(instructionsArray);
     _.map(documentToReactComponents(recipe.ingredients), i => {
         if(i.props.children.every(i => (typeof i === "string"))) {
             if(i.props.children[0] !== '') ingredientsArray.push(i.props.children[0])
