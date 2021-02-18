@@ -3,6 +3,7 @@ import Header from '../components/shared/Header';
 import Head from 'next/head';
 import ContactForm from '../components/contactForm';
 import _ from 'lodash';
+import Meta from '../components/shared/SeoMeta.js'
 
 
 const addJSONLD = () => {
@@ -41,13 +42,10 @@ const  Contact = () => {
 
   return (
     <div>
-      <Head>
-          <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css?family=Cookie|Dancing+Script|Sacramento&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet"></link>
-          <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet"></link>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-      </Head>
+      <Meta 
+        title='Iranian Vegan | Contact Me' 
+        description='A superb collection of fine iranian vegan recipes and history behind each recipe.'
+      />
       <div className='m-auto text-2xl bg-gray-primary'>
           <Header />
           <div className='max-width-920 px-4 lg:px-8 mx-auto my-20'>

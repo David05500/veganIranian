@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { GrInstagram } from "react-icons/gr";
 import BlogDataContext from '../components/BlogDataContext';
 import useProgressiveImageHook from '../components/shared/useProgressiveImageHook';
+import Meta from '../components/shared/SeoMeta.js'
 
 const GetHomePageData = async () => {
   const res = await contentfulClient.getEntries({
@@ -66,20 +67,16 @@ const  HomePage = () => {
   if (loaded == null){
     return (
       <div className='h-screen w-screen flex items-center justify-center'>
-        <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16"></div>
+        <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16"></div>
       </div>
     )
   }
   return (
     <div>
-        <Head>
-          <title>Home</title>
-          <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css?family=Cookie|Dancing+Script|Sacramento&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet"></link>
-          <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet"></link>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-        </Head>
+        <Meta 
+          title='Iranian Vegan | Home' 
+          description='I believe in compassion. I think we have a duty to create a world that is more ethical and just than the one in which we were raised. For me, this duty extends to all forms of life.'
+        />
 
         {/* <useProgressiveImage src={windowWidth > 430 ? `url(${homePagePic})` : `url(${mobileHomePagePic})`} placeholder='path/to/placeholder.jpg' /> */}
 
@@ -92,22 +89,22 @@ const  HomePage = () => {
                 <div className='flex flex-col lg:flex-row items-center text-white w-5/7 min-h-24 max-w-26 tracking-wide z-50 justify-around'>
                   <Link href="/recipes">
                     {isEnglish 
-                      ? <h1 className='checking pointer text-small font-medium hover:opacity-60 transform ease-in duration-100'>RECIPES</h1>
-                      : <h1 className='checking pointer text-xl font-medium hover:opacity-60 transform ease-in duration-100'>طرز تهیه غذاها</h1>
+                      ? <h2 className='checking pointer text-small font-medium hover:opacity-60 transform ease-in duration-100'>RECIPES</h2>
+                      : <h2 className='checking pointer text-xl font-medium hover:opacity-60 transform ease-in duration-100'>طرز تهیه غذاها</h2>
                     }
                   </Link>
 
                   <Link href="/about">
                     {isEnglish 
-                      ? <h1 className='checking pointer text-small font-medium hover:opacity-60 transform ease-in duration-100'>ABOUT</h1>
-                      : <h1 className='checking pointer text-xl font-medium hover:opacity-60 transform ease-in duration-100'>درباره من</h1>
+                      ? <h2 className='checking pointer text-small font-medium hover:opacity-60 transform ease-in duration-100'>ABOUT</h2>
+                      : <h2 className='checking pointer text-xl font-medium hover:opacity-60 transform ease-in duration-100'>درباره من</h2>
                     }
                   </Link>
 
                   <a href="/contact">
                     {isEnglish 
-                      ? <h1 className='checking pointer text-small font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h1>
-                      : <h1 className='checking pointer text-xl font-medium hover:opacity-60 transform ease-in duration-100'>تماس با من</h1>
+                      ? <h2 className='checking pointer text-small font-medium hover:opacity-60 transform ease-in duration-100'>CONTACT</h2>
+                      : <h2 className='checking pointer text-xl font-medium hover:opacity-60 transform ease-in duration-100'>تماس با من</h2>
                     }
                   </a>
                 </div>
