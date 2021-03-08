@@ -52,9 +52,8 @@ const ContactForm = () => {
     };
 
     const notify = () => {
-        toast.success("Your message has been sent!", {
+        toast.dark("Your message has been sent!", {
             position: toast.POSITION.BOTTOM_RIGHT,
-            className: 'bg-success'
         });
     }
 

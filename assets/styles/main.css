@@ -179,3 +179,16 @@ ol, ul {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.Toastify__progress-bar--dark {
+  display: none !important;
+}
+.Toastify__toast-container {
+  font-size: 17px !important;
+}
+.Toastify__toast  {
+  background-color: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  color: black !important;
+}
