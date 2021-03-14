@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
+.Toastify__toast-body {
+  justify-content: center !important; 
+  display: flex !important;
+  font-size: 1.125rem !important; 
+  font-family: 'Work Sans', sans-serif !important;
+}
 .loader {
   border-top-color: #691e09;
   -webkit-animation: spinner 1.5s linear infinite;

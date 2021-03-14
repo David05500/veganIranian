@@ -142,6 +142,7 @@ const Header = props => {
   }
 
   const updateSearchState = (query) => {
+    console.log(query);
     slug != '/recipes' ? router.push("/recipes/").then(() => {setUserSearchQuery({query});}) : setUserSearchQuery({query});
   };
 
@@ -202,7 +203,7 @@ const Header = props => {
           <Link href="/about">
             {isEnglish 
               ? <h4 className='pointer text-sm font-medium hover:opacity-60 transform ease-in duration-100'>ABOUT</h4>
-              : <h4 className='pointer text-lg font-medium hover:opacity-60 transform ease-in duration-100'>درباره من</h4>
+              : <h4 className='pointer text-lg font-medium hover:opacity-60 transform ease-in duration-100' >درباره من</h4>
             }
           </Link>
 
