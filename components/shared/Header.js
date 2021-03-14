@@ -43,16 +43,18 @@ const Hits = (data) => {
 const CustomHits = connectHits(Hits);
 
 
-const SearchBox = ( { currentRefinement, isSearchStalled, refine, setIsSearching, updateSearchState, isEnglish }) => (
-  <form noValidate action="" role="search" className='mt-4 lg:mt-0 relative'>
+const SearchBox = ( { currentRefinement, isSearchStalled, refine, setIsSearching, updateSearchState, isEnglish, handleKeyDown, navigate, searchRef }) => (
+  <form noValidate action="" role="search" className='lg:mt-0 relative'>
     <input
+      ref={searchRef}
       type="search"
       value={currentRefinement}
       onChange={event =>  updateSearchState(event.currentTarget.value)}
       className={`search-input text-sm font-medium px-2 py-1 flex justify-center text-black items-center transform ease-in duration-100 ${isEnglish ? '' : 'text-right'}`}
       placeholder={isEnglish ? 'Search here...' : '...جستجو'}
-      onFocus={() => setIsSearching(true)}
-      onBlur={() => setIsSearching(false)}
+      onFocus={() => navigate()}
+      // onBlur={() => setIsSearching(false)}
+      onKeyDown={(e) => handleKeyDown(e)}
     />
     <svg onClick={() => updateSearchState('')} role="presentation" style={{right: isEnglish ? '6%' : 'unset', left: isEnglish ? 'unset' : '6%'}} className="i-search w-3" viewBox="5 5 30 30" fill="none" stroke="currentcolor" color='gray' strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
       <path d="M 10,10 L 30,30 M 30,10 L 10,30" />
@@ -93,7 +95,7 @@ const Header = props => {
   const [isDropDown, setIsDropDown] = useState(false);
   const { isEnglish, setIsEnglish } = useContext(BlogDataContext);
   
-  const { filteredBlogs, blogs, isSearching, setIsSearching, userSearchQuery, setUserSearchQuery } = useContext(BlogDataContext);
+  const { filteredBlogs, blogs, isSearching, setIsSearching, userSearchQuery, setUserSearchQuery, searchRef } = useContext(BlogDataContext);
 
   const router = useRouter();
   const slug = router.pathname;
@@ -102,8 +104,11 @@ const Header = props => {
     getData().then(navData => {
       setLogoBgImage(navData[0].textBgImage.fields.file.url)
     });
+
+    if(router.pathname === '/recipes' && window.innerWidth > 430){
+      searchRef.current.focus();
+    }
   }, []);
-  
   useEffect(() => {
     setUserSearchQuery({query: ""});
   }, [slug]);
@@ -125,7 +130,17 @@ const Header = props => {
     offset >= 200 ? isShrink ? '' : setIsShrink(true) : isShrink == false ? '' : setIsShrink(false);
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  }
   
+
+  const navigate = () => {
+    router.push("/recipes/");
+  }
+
   const updateSearchState = (query) => {
     slug != '/recipes' ? router.push("/recipes/").then(() => {setUserSearchQuery({query});}) : setUserSearchQuery({query});
   };
@@ -199,18 +214,27 @@ const Header = props => {
           </Link>
           
         </div>
-        <div className='lg:absolute lg:right-185px lg:bottom-12px'>
+        <div className='mt-4 flex justify-center items-center w-full md:w-auto  md:absolute lg:right-185px lg:bottom-12px'>
           <InstantSearch
             indexName="prod_TheIranianVegan"
             searchClient={searchClient}
             searchState={userSearchQuery}
           >
-            <CustomSearchBox reset={<img src='' alt="" />} setIsSearching={setIsSearching} updateSearchState={updateSearchState} isEnglish={isEnglish}/>
+            <CustomSearchBox reset={<img src='' alt="" />}  searchRef={searchRef} navigate={navigate} handleKeyDown={handleKeyDown} updateSearchState={updateSearchState} isEnglish={isEnglish}/>
+            {/* <CustomSearchBox reset={<img src='' alt="" />} setIsSearching={setIsSearching} searchRef={searchRef} navigate={navigate} handleKeyDown={handleKeyDown} updateSearchState={updateSearchState} isEnglish={isEnglish}/> */}
             <CustomHits userSearchQuery={userSearchQuery}/>
           </InstantSearch>
+          <div style={{zIndex: '1111111111', backdropFilter: 'saturate(150%) blur(20px)'}} className="ml-4 text-sm text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex block md:hidden">
+            <button className={`inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 ${isEnglish ? 'text-blue-400' : ''} rounded-md px-4 py-2`} onClick={() => setIsEnglish(true)}>
+                <span>En</span>
+            </button>
+            <button className={`inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 ${isEnglish ? '' : 'text-blue-400'} rounded-md px-4 py-2`} onClick={() => setIsEnglish(false)}>
+                <span>Fa</span>
+            </button>
+        </div>
         </div>
       </nav>
-      {slug.includes('/recipes') ?
+      {!slug.includes('/abcdesd1235asd') ?
       ''
       :
       <div className={`max-width-850 shadow-sm bg-white left-0 m-auto flex flex-col items-center px-4 py-4 even:bg-red absolute left-0 right-0 overflow-y-scroll max-h-25rem ease-in duration-200 ${isSearching ? '' : 'transform  -translate-y-full'}`}>
@@ -232,10 +256,10 @@ const Header = props => {
       }
       <div style={{top: '50px', right: '50px', zIndex: '1111111111', backdropFilter: 'saturate(150%) blur(20px)', backgroundColor: 'rgba(255, 255, 255, 0.5)'}} className="absolute text-sm text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex hidden md:block">
         <button className={`inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 ${isEnglish ? 'text-blue-400' : ''} rounded-l-full px-4 py-2`} onClick={() => setIsEnglish(true)}>
-            <span>English</span>
+            <span className='hidden md:block'> English</span>
         </button>
         <button className={`inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 ${isEnglish ? '' : 'text-blue-400'} rounded-r-full px-4 py-2`} onClick={() => setIsEnglish(false)}>
-            <span>فارسی</span>
+            <span className='hidden md:block'>فارسی</span>
         </button>
       </div>
       

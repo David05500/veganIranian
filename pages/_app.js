@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import App from 'next/app'
 import contentfulClient from '../lib/contentful';
 import BlogDataContext from '../components/BlogDataContext';
@@ -7,6 +7,7 @@ import * as gtag from '../lib/gtag';
 
 function MyApp(props) {
   const { Component, pageProps, router, data } = props;
+  const searchRef = useRef();
   
   const [initialBlogs, setInitialBlogs] = useState(null);
   const [filteredBlogs, setFilteredBlogs] = useState(null);
@@ -61,7 +62,8 @@ function MyApp(props) {
         userSearchQuery: userSearchQuery, 
         setUserSearchQuery: setUserSearchQuery,
         isEnglish: isEnglish,
-        setIsEnglish: setIsEnglish
+        setIsEnglish: setIsEnglish,
+        searchRef: searchRef
       }}>
         <Component {...pageProps} key={router.route}/>
       </BlogDataContext.Provider>
